@@ -1,33 +1,22 @@
 import React, { useEffect } from 'react';
-import { getterMenus } from '@/geters/index';
 import { Service, ProductCom, ProductsCom, Video } from '@/components/home/index';
-import axiosClient from '@/api/base/axios-client';
-import { post, product } from '@/service/data-modal';
+import { apollo } from '@/api/index';
+import { homeGQL } from '@/geters/home';
 
 export async function getStaticProps() {
-  const proMenu = getterMenus('top-menu');
-  const proService = axiosClient.get('/wp/v2/posts?_embed&categories=20');
-  const proProduct = axiosClient.get('wc/v3/products?_embed');
-  const [menuItems, service, products] = await Promise.all([proMenu, proService, proProduct]);
-
-  const productWaterproofing = [];
-  const productList = [];
-
-  products.forEach((element) => {
-    if (element.categories.find((item) => item.id === 21)) productWaterproofing.push(element);
-    else productList.push(element);
+  const data = await apollo.query({ query: homeGQL });
+  const props = {};
+  Object.keys(data).map((key) => {
+    const element = data[key];
+    props[key] = element.nodes;
   });
-
-  const props = {
-    menuItems: menuItems,
-    service: service.map((element) => post(element)),
-    productWaterproofing: productWaterproofing.map((element) => product(element)),
-    products: productList.map((element) => product(element))
-  };
-  return { props: props, revalidate: 10 * 60 * 1000 };
+  return { props: props || {}, revalidate: 10 * 60 * 1000 };
 }
 
-export default function Home({ service, productWaterproofing, products }) {
+export default function Home({ data }) {
+  useEffect(() => {
+    console.log(data);
+  });
   return (
     // <a className="skip-link screen-reader-text" href="#main">
     //   Skip to content
@@ -573,10 +562,10 @@ export default function Home({ service, productWaterproofing, products }) {
               }}
             />
           </section>
-          <Service data={service} />
-          <ProductCom data={productWaterproofing} />
+          {/* <Service data={service} /> */}
+          {/* <ProductCom data={productWaterproofing} />
           <ProductsCom data={products} />
-          <Video />
+          <Video /> */}
 
           <section className="section cam-ket" id="section_602094206">
             <div className="bg section-bg fill bg-fill  ">
