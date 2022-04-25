@@ -142,6 +142,13 @@ export default function HeadSEO() {
         />
         <link
           rel="stylesheet"
+          id="custom-css"
+          href="/css/custom.css"
+          type="text/css"
+          media="all"
+        />
+        <link
+          rel="stylesheet"
           id="flatsome-style-css"
           href="https://nhaankhang.com/wp-content/themes/funiture/style.css?ver=3.0"
           type="text/css"

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { getterMenus } from '@/geters/index';
-import { Service, ProductCom, ProductsCom } from '@/components/home/index';
+import { Service, ProductCom, ProductsCom, Video } from '@/components/home/index';
 import axiosClient from '@/api/base/axios-client';
 import { post, product } from '@/service/data-modal';
 
@@ -576,6 +576,7 @@ export default function Home({ service, productWaterproofing, products }) {
           <Service data={service} />
           <ProductCom data={productWaterproofing} />
           <ProductsCom data={products} />
+          <Video />
 
           <section className="section cam-ket" id="section_602094206">
             <div className="bg section-bg fill bg-fill  ">

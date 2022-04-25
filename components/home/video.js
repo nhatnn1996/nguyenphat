@@ -1,9 +1,7 @@
-import Link from 'next/link';
-
-export const ProductsCom = ({ data }) => {
+export const Video = () => {
   return (
     <>
-      <div className="container section-title-container">
+      <div className="container section-title-container mt-5">
         <h3 className="section-title section-title-center">
           <b />
           <span className="section-title-main" style={{ fontSize: '144%', color: 'rgb(238, 28, 28)' }}>
