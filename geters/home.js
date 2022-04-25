@@ -9,6 +9,7 @@ export const homeGQL = gql`
         url
         title
         order
+        path
       }
     }
     posts {

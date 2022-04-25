@@ -4,19 +4,18 @@ import { apollo } from '@/api/index';
 import { homeGQL } from '@/geters/home';
 
 export async function getStaticProps() {
-  const data = await apollo.query({ query: homeGQL });
+  const result = await apollo.query({ query: homeGQL });
   const props = {};
-  Object.keys(data).map((key) => {
-    const element = data[key];
-    props[key] = element.nodes;
+  Object.keys(result?.data || {}).map((key) => {
+    const element = result?.data[key];
+    props[key] = element?.nodes || [];
   });
-  return { props: props || {}, revalidate: 10 * 60 * 1000 };
+
+  // menuItems, posts, comments
+  return { props: props, revalidate: 10 * 60 * 1000 };
 }
 
-export default function Home({ data }) {
-  useEffect(() => {
-    console.log(data);
-  });
+export default function Home(props) {
   return (
     // <a className="skip-link screen-reader-text" href="#main">
     //   Skip to content
@@ -562,10 +561,10 @@ export default function Home({ data }) {
               }}
             />
           </section>
-          {/* <Service data={service} /> */}
-          {/* <ProductCom data={productWaterproofing} />
-          <ProductsCom data={products} />
-          <Video /> */}
+          {/* <Service data={[]} />
+          <ProductCom data={productWaterproofing} />
+          <ProductsCom data={products} /> */}
+          <Video />
 
           <section className="section cam-ket" id="section_602094206">
             <div className="bg section-bg fill bg-fill  ">

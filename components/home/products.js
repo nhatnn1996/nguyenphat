@@ -20,8 +20,9 @@ export const ProductsCom = ({ data }) => {
               </div>
               <div className="row large-columns-5 medium-columns-3 small-columns-2 row-small">
                 {data.map((element) => {
+                  const { featuredImage, slug, title } = element;
                   return (
-                    <div className="col" key={element.slug}>
+                    <div className="col" key={slug}>
                       <div className="col-inner">
                         <div className="badge-container absolute left top z-1"></div>
                         <div className="product-small box has-hover box-normal box-text-bottom">
@@ -31,13 +32,11 @@ export const ProductsCom = ({ data }) => {
                                 <img
                                   width={433}
                                   height={577}
-                                  src={element.image}
-                                  data-src={element.image}
+                                  src={featuredImage.sourceUrl}
+                                  srcSet={featuredImage.srcSet}
                                   className="lazy-load attachment-original size-original"
-                                  alt=""
+                                  alt={title}
                                   loading="lazy"
-                                  srcSet=""
-                                  // data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview.png 433w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-225x300.png 225w"
                                   sizes="(max-width: 433px) 100vw, 433px"
                                 />{' '}
                               </a>

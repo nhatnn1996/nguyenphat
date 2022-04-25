@@ -58,23 +58,15 @@ const NavMenu = ({ items = [] }) => {
 export default NavMenu;
 
 const ItemLink = ({ item }) => {
-  const baseUrl = process.env.API_URL;
-  const { title, url } = item;
-  const slug = useMemo(() => {
-    return url
-      .replace(baseUrl, '')
-      .split('/')
-      .filter((item) => item)
-      .join('/');
-  }, [url]);
+  const { label, path } = item;
   const router = useRouter();
   const classLi =
-    (router.asPath.includes(slug) ? 'active ' : '') +
+    (router.asPath.includes(path) ? 'active ' : '') +
     'menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-18';
   return (
     <li id="menu-item-18" className={classLi}>
-      <Link href={slug} aria-current="page" className="nav-top-link">
-        {title.rendered}
+      <Link href={path} aria-current="page" className="nav-top-link">
+        {label}
       </Link>
     </li>
   );
