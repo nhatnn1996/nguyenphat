@@ -12,27 +12,58 @@ export const homeGQL = gql`
         path
       }
     }
-    posts {
+    posts(where: {categoryName: "Dịch Vụ"}) {
       nodes {
-        date
+        categories {
+          edges {
+            node {
+              id
+            }
+          }
+        }
         featuredImage {
           node {
+            fileSize
             slug
             sourceUrl
             srcSet
-            status
-            title
             uri
-            sizes
+            title
           }
         }
+        slug
+        title
+        postId
       }
     }
-    comments {
+    products {
       nodes {
-        date
-        content
-        type
+        image {
+          altText
+          fileSize
+          sizes
+          slug
+          sourceUrl
+          srcSet
+          title
+          uri
+        }
+        link
+        menuOrder
+        productCategories {
+          edges {
+            node {
+              id
+              slug
+              uri
+              name
+            }
+          }
+        }
+        sku
+        slug
+        status
+        name
       }
     }
   }

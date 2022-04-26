@@ -21,7 +21,7 @@ export const ProductCom = ({ data }) => {
               </div>
               <div className="row large-columns-5 medium-columns-3 small-columns-2 row-small">
                 {data.map((element) => {
-                  const { featuredImage, slug, title } = element;
+                  const { image, slug, title } = element;
                   return (
                     <div className="col" key={slug}>
                       <div className="col-inner">
@@ -33,12 +33,12 @@ export const ProductCom = ({ data }) => {
                                 <img
                                   width={433}
                                   height={577}
-                                  src={featuredImage.sourceUrl}
-                                  srcSet={featuredImage.srcSet}
+                                  src={image.sourceUrl}
+                                  srcSet={image.srcSet}
                                   className="lazy-load attachment-original size-original"
                                   alt={title}
                                   loading="lazy"
-                                  sizes="(max-width: 433px) 100vw, 433px"
+                                  sizes={image.sizes}
                                 />{' '}
                               </a>
                             </div>
