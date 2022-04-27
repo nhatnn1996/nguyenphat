@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 export const Service = ({ data }) => {
+  // console.log(data);
   return (
     <section className="section danh-muc" id="section_92421960">
       <div className="bg section-bg fill bg-fill  bg-loaded">
@@ -28,7 +29,8 @@ export const Service = ({ data }) => {
               </div>
               <div className="row large-columns-5 medium-columns-3 small-columns-2 row-small">
                 {data.map((element) => {
-                  const image = element.media_details?.sizes || {};
+                  const { featuredImage, slug, title } = element;
+                  const image = featuredImage.node || {};
                   return (
                     <div className="col" key={element.slug}>
                       <div className="col-inner">
@@ -36,17 +38,17 @@ export const Service = ({ data }) => {
                         <div className="product-small box has-hover box-normal box-text-bottom">
                           <div className="box-image">
                             <div className="image-zoom image-cover" style={{ paddingTop: '86%' }}>
-                              <Link href={'/dich-vu/' + element.slug}>
+                              <Link href={'/dich-vu/' + slug}>
                                 <img
                                   width={1000}
                                   height={750}
-                                  src={image.thumbnail?.source_url}
-                                  data-src={image.thumbnail?.source_url}
+                                  src={image.sourceUrl}
+                                  dataSrc={image.sourceUrl}
                                   className="lazy-load attachment-original size-original"
-                                  alt={element.title.rendered}
+                                  alt={title}
                                   loading="lazy"
-                                  srcSet=""
-                                  data-srcset={`${image.large?.source_url} 1000w, ${image.medium?.source_url} 300w, ${image.medium_large?.source_url} 768w, ${image.shop_single?.source_url} 600w`}
+                                  srcSet={image.srcSet}
+                                  data-srcset={image.srcSet}
                                   sizes="(max-width: 1000px) 100vw, 1000px"
                                 />
                               </Link>
@@ -57,7 +59,7 @@ export const Service = ({ data }) => {
                           <div className="box-text text-center">
                             <div className="title-wrapper">
                               <p className="name product-title woocommerce-loop-product__title">
-                                <Link href={'/dich-vu/' + element.slug}>{element.title.rendered}</Link>
+                                <Link href={'/dich-vu/' + slug}>{title}</Link>
                               </p>
                             </div>
                             <div className="price-wrapper">
