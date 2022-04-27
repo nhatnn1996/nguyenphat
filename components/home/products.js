@@ -33,12 +33,12 @@ export const ProductsCom = ({ data }) => {
                                 <img
                                   width={433}
                                   height={577}
-                                  src={image.sourceUrl}
-                                  srcSet={image.srcSet}
+                                  src={image?.sourceUrl}
+                                  srcSet={image?.srcSet}
                                   className="lazy-load attachment-original size-original"
                                   alt={title}
                                   loading="lazy"
-                                  sizes={image.sizes}
+                                  sizes={image?.sizes}
                                 />{' '}
                               </a>
                             </div>
