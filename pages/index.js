@@ -38,7 +38,7 @@ export default function Home(props) {
     <>
       <main id="main" className="">
         <div id="content" role="main" className="content-area">
-          {/* <Slider /> */}
+          <Slider />
           <section className="section dich-vu-san-pham" id="section_1421784380">
             <div className="bg section-bg fill bg-fill bg-loaded"></div>
             <div className="section-content relative">
