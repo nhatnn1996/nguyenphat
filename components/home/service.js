@@ -30,7 +30,7 @@ export const Service = ({ data }) => {
               <div className="row large-columns-5 medium-columns-3 small-columns-2 row-small">
                 {data.map((element) => {
                   const { featuredImage, slug, title } = element;
-                  const image = featuredImage.node || {};
+                  const image = featuredImage?.node || {};
                   return (
                     <div className="col" key={element.slug}>
                       <div className="col-inner">
@@ -42,13 +42,13 @@ export const Service = ({ data }) => {
                                 <img
                                   width={1000}
                                   height={750}
-                                  src={image.sourceUrl}
-                                  dataSrc={image.sourceUrl}
+                                  src={image?.sourceUrl}
+                                  dataSrc={image?.sourceUrl}
                                   className="lazy-load attachment-original size-original"
                                   alt={title}
                                   loading="lazy"
-                                  srcSet={image.srcSet}
-                                  data-srcset={image.srcSet}
+                                  srcSet={image?.srcSet}
+                                  dataSrcset={image?.srcSet}
                                   sizes="(max-width: 1000px) 100vw, 1000px"
                                 />
                               </Link>
