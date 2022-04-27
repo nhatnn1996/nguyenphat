@@ -16,17 +16,17 @@ export async function getStaticProps() {
   const news = category.nodes || [];
   const waterproofing = []; // không thấm nước
   const accessories = []; // phụ kiện
-
   // split the products list into waterproofing group and accessories group
-  products.forEach((element) => {
-    const listCategory = element.productCategories?.edges || [];
-    const item = listCategory.find((element) => element.node.slug === 'san-pham-chong-tham');
-    if (item) {
-      if (waterproofing.length < 8) waterproofing.push(element);
-    } else {
-      if (accessories.length < 8) accessories.push(element);
-    }
-  });
+  products &&
+    products.forEach((element) => {
+      const listCategory = element.productCategories?.edges || [];
+      const item = listCategory.find((element) => element.node.slug === 'san-pham-chong-tham');
+      if (item) {
+        if (waterproofing.length < 8) waterproofing.push(element);
+      } else {
+        if (accessories.length < 8) accessories.push(element);
+      }
+    });
 
   return { props: { menuItems, posts, waterproofing, accessories, news }, revalidate: 10 * 60 * 1000 };
 }
