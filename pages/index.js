@@ -14,7 +14,6 @@ export async function getStaticProps() {
   const { menuItems, posts, products } = props;
   const waterproofing = []; // không thấm nước
   const accessories = []; // phụ kiện
-  console.log(products, 'products');
   // split the products list into waterproofing group and accessories group
   products &&
     products.forEach((element) => {

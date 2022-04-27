@@ -10,16 +10,16 @@ const Product = () => {
             <div class="is-small">
               <nav class="woocommerce-breadcrumb breadcrumbs uppercase snip-nav">
                 <a href="https://nhaankhang.com" class="snip-a">
-                  Trang chủ
+                  Trang chủ 
                 </a>
                 <span class="divider">/</span>
-                Cửa hàng
+                 Cửa hàng 
               </nav>
             </div>
             <div class="category-filtering category-filter-row ">
               <a href="#" data-open="#shop-sidebar" data-pos="left" class="filter-button uppercase plain snip-a">
-                <i class="icon-equalizer"></i>
-                <strong>Lọc sản phẩm</strong>
+                <i class="icon-equalizer"> </i>
+                <strong> Lọc sản phẩm</strong>
               </a>
               <div class="inline-block"></div>
             </div>
