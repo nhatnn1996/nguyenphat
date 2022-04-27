@@ -43,12 +43,12 @@ export const Service = ({ data }) => {
                                   width={1000}
                                   height={750}
                                   src={image?.sourceUrl}
-                                  dataSrc={image?.sourceUrl}
+                                  datasrc={image?.sourceUrl}
                                   className="lazy-load attachment-original size-original"
                                   alt={title}
                                   loading="lazy"
                                   srcSet={image?.srcSet}
-                                  dataSrcset={image?.srcSet}
+                                  datasrcset={image?.srcSet}
                                   sizes="(max-width: 1000px) 100vw, 1000px"
                                 />
                               </Link>
