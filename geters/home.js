@@ -76,6 +76,11 @@ export const homeGQL = gql`
           featuredImage {
             node {
               id
+              slug
+              sourceUrl
+              srcSet
+              title
+              sizes
             }
           }
           date

@@ -5,15 +5,15 @@ import { homeGQL } from '@/geters/home';
 
 export async function getStaticProps() {
   const result = await apollo.query({ query: homeGQL });
-  const props = {};
+  const home = {};
   Object.keys(result?.data || {}).map((key) => {
     const element = result?.data[key];
-    props[key] = element?.nodes || [];
+    home[key] = element?.nodes || element?.posts || [];
   });
 
-  const { menuItems, posts, products, category } = props;
+  const { menuItems, posts, products, category } = home;
 
-  const news = category?.posts?.nodes || [];
+  const news = category.nodes || [];
   const waterproofing = []; // không thấm nước
   const accessories = []; // phụ kiện
 
@@ -28,12 +28,12 @@ export async function getStaticProps() {
     }
   });
 
-  return { props: { menuItems, posts, waterproofing, accessories, news, category }, revalidate: 10 * 60 * 1000 };
+  return { props: { menuItems, posts, waterproofing, accessories, news }, revalidate: 10 * 60 * 1000 };
 }
 
 export default function Home(props) {
-  const { posts, waterproofing, accessories, news, category } = props;
-  console.log(category);
+  const { posts, waterproofing, accessories, news } = props;
+  console.log(news);
   return (
     // <a className="skip-link screen-reader-text" href="#main">
     //   Skip to content
@@ -358,31 +358,31 @@ export default function Home(props) {
                       <div id="col-633674386" className="col medium-4 small-12 large-4">
                         <div className="col-inner">
                           <a
-                            href="tel:+090.848.5861"
+                            href="tel:+02837273679"
                             target="_self"
                             className="button alert is-large lowercase expand"
                             style={{ borderRadius: 99 }}
                           >
-                            <i className="icon-phone" /> <span>Hotline: 090.848.5861</span>
+                            <i className="icon-phone" /> <span>Hotline: 028.37.27.3679</span>
                           </a>
                         </div>
                       </div>
                       <div id="col-1854550985" className="col medium-4 small-12 large-4">
                         <div className="col-inner">
                           <a
-                            href="tel:+84972939830"
+                            href="tel:+02837273679"
                             target="_self"
                             className="button success is-large lowercase expand"
                             style={{ borderRadius: 99 }}
                           >
-                            <i className="icon-checkmark" /> <span>nhaankhang224@gmail.com</span>
+                            <i className="icon-checkmark" /> <span>chongthamnguyenphat@gmail.com</span>
                           </a>
                         </div>
                       </div>
                       <div id="col-1171345885" className="col medium-4 small-12 large-4">
                         <div className="col-inner">
                           <a
-                            href="#"
+                            href="https://m.me/chongthamnguyenphat"
                             target="_self"
                             className="button primary is-large lowercase expand"
                             style={{ borderRadius: 99 }}
@@ -697,16 +697,16 @@ export default function Home(props) {
         }}
       />
       <div className="tool-icon">
-        <a href="tel:0908485861" className="phone-icon">
+        <a href="tel:+02837273679" className="phone-icon">
           <span className="suntory-alo-ph-circle-fill" />
           <span className="suntory-alo-ph-img-circle">
             <i className="fa fa-phone" />
           </span>
         </a>
-        <a href="https://zalo.me/0908485861" className="mess-icon" target="_blank">
+        <a href="https://zalo.me/02837273679" className="mess-icon" target="_blank">
           <span className="suntory-alo-ph-circle-fill" />
           <span className="suntory-alo-ph-img-circle">
-            <i />
+            <img src="/icons/zalo.png" alt="" className="icon-center" />
           </span>
         </a>
       </div>{' '}
