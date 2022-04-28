@@ -2,7 +2,15 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 import { useRouter } from 'next/router';
 
-const NavMenu = ({ items = [] }) => {
+const NavMenu = () => {
+  const items = [
+    { label: 'Trang chủ', path: '/' },
+    { label: 'Giới thiệu', path: '/gioi-thieu' },
+    { label: 'Sản phẩm', path: '/san-pham' },
+    { label: 'Dịch vụ', path: '/dich-vu' },
+    { label: 'Dự án', path: '/du-an' },
+    { label: 'Tin Tức', path: '/lien-he' }
+  ];
   return (
     <div id="wide-nav" class="header-bottom wide-nav nav-dark hide-for-medium snipcss-io4AT">
       <div class="flex-row container">
@@ -16,7 +24,7 @@ const NavMenu = ({ items = [] }) => {
               class="hotline-nav menu-item menu-item-type-custom menu-item-object-custom menu-item-1658 snip-li"
             >
               <a href="tel:+84908485861" class="nav-top-link snip-a">
-                Hotline: 090 84 85 861
+                Hotline: 028 37 27 3679
               </a>
             </li>
             <li class="cart-item has-icon has-dropdown snip-li">

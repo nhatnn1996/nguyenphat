@@ -7,9 +7,7 @@ export default function Header({ menuItems }) {
       <div className="header-wrapper">
         <div id="masthead" className="header-main hide-for-sticky">
           <div className="header-inner flex-row container logo-left medium-logo-center" role="navigation">
-            {/* Logo */}
             <div id="logo" className="flex-col logo">
-              {/* Header logo */}
               <a
                 href="https://nhaankhang.com/"
                 title="Vật liệu chống thấm | Xử lý chống thấm | nhaankhang.com - Tổng đại lý nhập khẩu và Phân phối vật liệu chống thấm, xử lý chống thấm chuyên nghiệp tại thành phố Hồ Chí Minh"

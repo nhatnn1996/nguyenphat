@@ -77,6 +77,21 @@ export default function Footer() {
                     <strong>LIÊN HỆ</strong>
                   </span>
                 </p>
+                <iframe
+                  name="f1d940ed5b65b5"
+                  width="1000px"
+                  height="1000px"
+                  data-testid="fb:page Facebook Social Plugin"
+                  title="fb:page Facebook Social Plugin"
+                  frameborder="0"
+                  allowtransparency="true"
+                  allowfullscreen="true"
+                  scrolling="no"
+                  allow="encrypted-media"
+                  src="https://www.facebook.com/v2.7/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df271cb10fc84e2%26domain%3Dchongthamnguyenphat.com%26is_canvas%3Dfalse%26origin%3Dhttp%253A%252F%252Fchongthamnguyenphat.com%252Ff105389dd37a764%26relation%3Dparent.parent&amp;container_width=360&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FCh%25E1%25BB%2591ng-th%25E1%25BA%25A5m-Nguy%25C3%25AAn-Ph%25C3%25A1t-303207496543496%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false"
+                  // style="border: none; visibility: visible; width: 340px; height: 130px;"
+                  style={{ border: 'none', visibility: 'visible', width: 340, height: 130 }}
+                />
                 <div className="social-icons follow-icons full-width text-left">
                   <a
                     href="https://www.facebook.com/chongthamnguyenphat/"
@@ -192,7 +207,7 @@ export default function Footer() {
           </div>
           <div className="footer-primary pull-left">
             <div className="copyright-footer">
-              Copyright 2022 © <strong>UX Themes</strong>{' '}
+              Copyright 2022 © <strong>Nguyen Phat</strong>{' '}
             </div>
           </div>
         </div>
