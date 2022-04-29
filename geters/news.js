@@ -1,17 +1,6 @@
 import { gql } from '@apollo/client';
-export const homeGQL = gql`
-  query Home {
-    menuItems {
-      nodes {
-        id
-        description
-        label
-        url
-        title
-        order
-        path
-      }
-    }
+export const newsGQL = gql`
+  query News {
     posts(where: { categoryName: "" }) {
       nodes {
         categories {
@@ -31,40 +20,33 @@ export const homeGQL = gql`
             title
           }
         }
+        content
         slug
         title
         postId
+        date
       }
     }
-    products {
-      nodes {
-        image {
-          altText
+  }
+`;
+export const bynewsGQL = gql`
+  query ByNews($slug: String!) {
+    postBy(slug: $slug) {
+      featuredImage {
+        node {
           fileSize
-          sizes
           slug
           sourceUrl
           srcSet
-          title
           uri
+          title
         }
-        link
-        menuOrder
-        productCategories {
-          edges {
-            node {
-              id
-              slug
-              uri
-              name
-            }
-          }
-        }
-        sku
-        slug
-        status
-        name
       }
+      content
+      slug
+      title
+      postId
+      date
     }
   }
 `;

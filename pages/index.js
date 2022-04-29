@@ -4,19 +4,20 @@ import { apollo } from '@/api/index';
 import { homeGQL } from '@/geters/home';
 
 export async function getStaticProps() {
+  console.log('vaooooooooo');
   const result = await apollo.query({ query: homeGQL });
   const props = {};
   Object.keys(result?.data || {}).map((key) => {
     const element = result?.data[key];
     props[key] = element?.nodes || [];
   });
-
   const { menuItems, posts, products } = props;
+  
   const waterproofing = []; // không thấm nước
   const accessories = []; // phụ kiện
 
   // split the products list into waterproofing group and accessories group
-  products.forEach((element) => {
+  products?.forEach((element) => {
     const listCategory = element.productCategories?.edges || [];
     const item = listCategory.find((element) => element.node.slug === 'san-pham-chong-tham');
     if (item) {
@@ -25,8 +26,7 @@ export async function getStaticProps() {
       if (accessories.length < 8) accessories.push(element);
     }
   });
-
-  return { props: { menuItems, posts, waterproofing, accessories }, revalidate: 10 * 60 * 1000 };
+  return { props: {menuItems, posts, waterproofing, accessories }, revalidate: 10 * 60 * 1000 };
 }
 
 export default function Home(props) {
