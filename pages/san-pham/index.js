@@ -105,7 +105,7 @@ const Product = ({ products }) => {
                 ))}
               </div>
               {/* row */}
-              <div className="container">
+              {/* <div className="container">
                 <nav className="woocommerce-pagination">
                   <ul className="page-numbers nav-pagination links text-center">
                     <li>
@@ -125,7 +125,7 @@ const Product = ({ products }) => {
                     </li>
                   </ul>
                 </nav>
-              </div>
+              </div> */}
             </div>
             {/* shop container */}
           </div>

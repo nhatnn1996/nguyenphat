@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { apollo } from '@/api/index';
 import { bynewsGQL, newsGQL } from '@/geters/news';
 import InfoRight from '@/components/info-right';
@@ -20,6 +20,14 @@ export async function getStaticPaths() {
 }
 const NewsDetail = (props) => {
   const data = props?.postBy;
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const decription = document.getElementById('entry-content');
+      if (decription && decription) {
+        decription.innerHTML = data?.content;
+      }
+    }
+  }, []);
   return (
     <div>
       <div id="content" className="blog-wrapper blog-single page-wrapper">
@@ -54,7 +62,7 @@ const NewsDetail = (props) => {
                               className="post-1492 post type-post status-publish format-standard hentry category-khong-phan-loai"
                             >
                               <div className="article-inner ">
-                                <div className="entry-content single-page">{data?.content}</div>
+                                <div className="entry-content single-page" id="entry-content"></div>
                               </div>
                             </article>
                           </div>

@@ -1,5 +1,6 @@
 import { apollo } from '@/api/index';
-import React from 'react';
+import React, { useEffect } from 'react';
+import Script from 'next/script';
 import { productDetailGQL, productGQL } from '@/geters/product';
 
 export async function getStaticProps({ params }) {
@@ -18,12 +19,16 @@ export async function getStaticPaths() {
   };
 }
 const ProductDetail = ({ product }) => {
-  if (typeof window !== 'undefined') {
-    console.log('hahhaha');
-    console.log(product.shortDescription, 'product.shortDescription');
-    const list = document.getElementById('product-short-description');
-    list.innerHTML = product.shortDescription;
-  }
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const sortDescription = document.getElementById('product-short-description');
+      const decription = document.getElementById('accordion-inner');
+      if (sortDescription && decription) {
+        sortDescription.innerHTML = product.shortDescription;
+        decription.innerHTML = product.description;
+      }
+    }
+  }, []);
 
   return (
     <div className="shop-container">
@@ -216,8 +221,7 @@ const ProductDetail = ({ product }) => {
                     >
                       <style dangerouslySetInnerHTML={{ __html: '\n#gap-516168239 {\n  padding-top: 14px;\n}\n' }} />
                     </div>
-                    <div className="product-short-description">
-                      <p id="product-short-description"></p>
+                    <div className="product-short-description" id="product-short-description">
                       <div style={{ width: '480px' }} className="wp-video">
                         <div
                           id="mep_0"
@@ -240,10 +244,7 @@ const ProductDetail = ({ product }) => {
                                   src="https://nhaankhang.com/wp-content/uploads/2022/03/8238670221663919663.mp4?_=1"
                                   style={{ width: '480px', height: '854px' }}
                                 >
-                                  <source
-                                    type="video/mp4"
-                                    src={product.shortDescription.replace()}
-                                  />
+                                  <source type="video/mp4" src={product.shortDescription.replace()} />
                                   <a href="https://nhaankhang.com/wp-content/uploads/2022/03/8238670221663919663.mp4">
                                     https://nhaankhang.com/wp-content/uploads/2022/03/8238670221663919663.mp4
                                   </a>
@@ -387,9 +388,7 @@ const ProductDetail = ({ product }) => {
                         </button>
                         Mô tả{' '}
                       </a>
-                      <div className="accordion-inner" style={{ display: 'block' }}>
-                        {product.description}
-                      </div>
+                      <div className="accordion-inner" id="accordion-inner" style={{ display: 'block' }}></div>
                     </div>
                     <div className="accordion-item">
                       <a className="accordion-title plain" href="javascript:void();" aria-expanded="false">

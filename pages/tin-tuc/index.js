@@ -17,6 +17,17 @@ export async function getStaticProps() {
 
 const News = (props) => {
   const { posts } = props;
+
+  const returnInnerHtml = (html, slug) => {
+    setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        const sortDescription = document.getElementById(`from_the_blog_excerpt-${slug}`);
+        if (sortDescription) {
+          sortDescription.innerHTML = html;
+        }
+      }
+    }, 0);
+  };
   return (
     <div id="content" className="blog-wrapper blog-archive page-wrapper">
       <div className="row row-large ">
@@ -56,7 +67,9 @@ const News = (props) => {
                             <h5 className="post-title is-large ">{item.title}</h5>
                             <p>{moment(item.date).format('DD/MM/YYYY')}</p>
                             <div className="is-divider" />
-                            <p className="from_the_blog_excerpt">{item.content}</p>
+                            <p className="from_the_blog_excerpt" id={`from_the_blog_excerpt-${item.slug}`}>
+                              {returnInnerHtml(item.content, item.slug)}
+                            </p>
                             <p className="from_the_blog_comments uppercase is-xsmall">4 Comments </p>
                           </div>
                         </div>
