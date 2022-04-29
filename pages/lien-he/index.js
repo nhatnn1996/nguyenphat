@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 const Contact = () => {
   return (
     <div id="content" role="main" className="content-area">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { apollo } from '@/api/index';
 import { newsGQL } from '@/geters/news';

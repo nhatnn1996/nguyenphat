@@ -12,7 +12,7 @@ export const homeGQL = gql`
         path
       }
     }
-    posts(where: { categoryName: "" }) {
+    posts(where: { categoryName: "Dịch Vụ" }) {
       nodes {
         categories {
           edges {
@@ -64,6 +64,28 @@ export const homeGQL = gql`
         slug
         status
         name
+      }
+    }
+    category(id: "tin-tuc", idType: SLUG) {
+      id
+      posts(where: {orderby: {field: DATE, order: DESC}}) {
+        nodes {
+          content
+          slug
+          title
+          featuredImage {
+            node {
+              id
+              slug
+              sourceUrl
+              srcSet
+              title
+              sizes
+            }
+          }
+          date
+          excerpt
+        }
       }
     }
   }

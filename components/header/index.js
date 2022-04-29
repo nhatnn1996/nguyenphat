@@ -7,9 +7,7 @@ export default function Header({ menuItems,pages }) {
       <div className="header-wrapper">
         <div id="masthead" className="header-main hide-for-sticky">
           <div className="header-inner flex-row container logo-left medium-logo-center" role="navigation">
-            {/* Logo */}
             <div id="logo" className="flex-col logo">
-              {/* Header logo */}
               <a
                 href="https://nhaankhang.com/"
                 title="Vật liệu chống thấm | Xử lý chống thấm | nhaankhang.com - Tổng đại lý nhập khẩu và Phân phối vật liệu chống thấm, xử lý chống thấm chuyên nghiệp tại thành phố Hồ Chí Minh"
@@ -90,37 +88,7 @@ export default function Header({ menuItems,pages }) {
               </ul>
             </div>
             {/* Mobile Right Elements */}
-            <div className="flex-col show-for-medium flex-right">
-              <ul className="mobile-nav nav nav-right ">
-                <li className="cart-item has-icon">
-                  <a
-                    href="https://nhaankhang.com/gio-hang/"
-                    className="header-cart-link off-canvas-toggle nav-top-link is-small"
-                    data-open="#cart-popup"
-                    data-class="off-canvas-cart"
-                    title="Giỏ hàng"
-                    data-pos="right"
-                  >
-                    <span className="cart-icon image-icon">
-                      <strong>0</strong>
-                    </span>
-                  </a>
-                  {/* Cart Sidebar Popup */}
-                  <div id="cart-popup" className="mfp-hide widget_shopping_cart">
-                    <div className="cart-popup-inner inner-padding">
-                      <div className="cart-popup-title text-center">
-                        <h4 className="uppercase">Giỏ hàng</h4>
-                        <div className="is-divider" />
-                      </div>
-                      <div className="widget_shopping_cart_content">
-                        <p className="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong giỏ hàng.</p>
-                      </div>
-                      <div className="cart-sidebar-content relative" />
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <div className="flex-col show-for-medium flex-right"></div>
           </div>
         </div>
         <NavMenu items={menuItems} pages={pages} />

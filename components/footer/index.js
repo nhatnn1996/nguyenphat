@@ -6,8 +6,8 @@ export default function Footer() {
           <div
             className="is-border"
             style={{
-              borderColor: "rgb(219, 219, 219)",
-              borderWidth: "1 0px 0px 0px",
+              borderColor: 'rgb(219, 219, 219)',
+              borderWidth: '1 0px 0px 0px'
             }}
           ></div>
         </div>
@@ -16,175 +16,128 @@ export default function Footer() {
             <div id="col-66108098" className="col medium-3 small-6 large-3">
               <div className="col-inner">
                 <p>
-                  <strong>Chống thấm:</strong>
+                  <strong>VĂN PHÒNG GIAO DỊCH</strong>
                   <br />
-                  Thi công chống thấm các công trình nhà phố; nhà cao
-                  tầng,cầu,hầm,Metro….
-                  <br />
-                  – Cung Cấp Pu trương nở Sl668; Sl669; Kim bơm keo A-10; Máy
-                  bơm keo Sl500;
-                  <br />
-                  – kinh doanh vật liệu,thiết bị trong chống thấm.
-                  <br />– kinh doanh hóa chất xây dựng,Pu,Epoxy,hắc ín…
+                  <li>36/31F Đường số 4, Khu phố 6, Phường Hiệp Bình Phước, TP.Thủ Đức, TP.HCM</li>
                 </p>
                 <p>
                   <strong>
-                    Xây Dựng:
+                    ĐỊA CHỈ
                     <br />
                   </strong>
-                  – Xây dựng các công trình dân dụng, công nghiệp, giao thông và
-                  thủy lợi.
-                  <br />
-                  – Hoàn thiện công trình xây dựng,hoàn thiện công trình nhà cao
-                  tầng (CPC 517)
-                  <br />
-                  – Thiết kế nhà phố; nhà cao tầng, biệt thự,nhà xưởng….
-                  <br />
-                  -Xin phép xây dựng, Hoàn Công…..
+                  <li>201/60/11 Nguyễn Xí, Phường 26, Quận Bình Thạnh, TPHCM</li>
                 </p>
-                <div className="social-icons follow-icons full-width text-left">
-                  <a
-                    href="https://www.facebook.com/254300248069701/"
-                    target="_blank"
-                    data-label="Facebook"
-                    rel="noopener noreferrer nofollow"
-                    className="icon primary button circle facebook tooltip tooltipstered"
-                  >
-                    <i className="icon-facebook" />
-                  </a>
-                  <a
-                    href="mailto:#"
-                    data-label="E-mail"
-                    rel="nofollow"
-                    className="icon primary button circle email tooltip tooltipstered"
-                  >
-                    <i className="icon-envelop" />
-                  </a>
-                  <a
-                    href="tel:#"
-                    target="_blank"
-                    data-label="Phone"
-                    rel="noopener noreferrer nofollow"
-                    className="icon primary button circle phone tooltip tooltipstered"
-                  >
-                    <i className="icon-phone" />
-                  </a>
-                </div>
+              </div>
+            </div>
+            <div id="col-1420996765" className="col medium-3 small-12 large-3">
+              <div className="col-inner">
+                <p>
+                  <span style={{ fontSize: '90%' }}>
+                    <a href="#">
+                      <strong>
+                        <span style={{ color: '#000000' }}>THÔNG TIN</span>
+                      </strong>
+                    </a>
+                  </span>
+                </p>
+                <ul>
+                  <li>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ XÂY DỰNG NHÀ AN KHANG</li>
+                  <li>MST : 0311620687 , Ngày Cấp : 06-12-2013, Nơi Cấp : Sở kế Hoạch Và Đầu Tư TP.HCM.</li>
+                  <li>Số điện thoại : 028 37 27 3679</li>
+                  <li>Email : nhaankhang224@gmail.com</li>
+                </ul>
               </div>
             </div>
             <div id="col-2049541109" className="col medium-3 small-6 large-3">
               <div className="col-inner">
                 <p>
-                  <span style={{ fontSize: "90%", color: "#282828" }}>
+                  <span style={{ fontSize: '90%', color: '#282828' }}>
                     <strong>HƯỚNG DẪN</strong>
                   </span>
                 </p>
                 <ul>
                   <li className="bullet-arrow">
                     <a href="https://nhaankhang.com/">
-                      <span style={{ fontSize: "90%" }}>
-                        Tư <span style={{ fontSize: "100%" }}>vấn</span> chọn
-                        mẫu
+                      <span style={{ fontSize: '90%' }}>
+                        Tư <span style={{ fontSize: '100%' }}>vấn</span> chọn mẫu
                       </span>
                     </a>
                   </li>
                   <li className="bullet-arrow">
-                    <a href="https://nhaankhang.com/chinh-sach-bao-mat-thong-tin/">
-                      C
-                      <span style={{ fontSize: "90%" }}>
-                        hính Sách Bảo Mật Thông Tin
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <span style={{ fontSize: "90%" }}>
-                      <a href="https://nhaankhang.com/chinh-sach-thanh-toan/">
-                        Chính Sách Thanh Toán
-                      </a>
-                    </span>
-                  </li>
-                  <li className="bullet-arrow">
-                    <span style={{ fontSize: "100%" }}>
-                      <a href="https://nhaankhang.com/chinh-sach-bao-hanh-va-doi-tra/">
-                        Thỏa thuận - bảo hành
-                      </a>
-                    </span>
-                  </li>
-                  <li>
-                    <a href="https://nhaankhang.com/chinh-sach-giao-nhan-hang/">
-                      Chính Sách Giao Hàng - Nhận Hàng
-                    </a>
-                  </li>
-                  <li className="bullet-arrow">
-                    <a href="#">Đề nghị hợp tác</a>
+                    <a href="https://nhaankhang.com/chinh-sach-bao-mat-thong-tin/">Chính Sách Bảo Mật Thông Tin</a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div id="col-1420996765" className="col medium-3 small-12 large-3">
-              <div className="col-inner">
-                <p>
-                  <span style={{ fontSize: "90%" }}>
-                    <a href="#">
-                      <strong>
-                        <span style={{ color: "#000000" }}>LIÊN HỆ</span>
-                      </strong>
-                    </a>
-                  </span>
-                </p>
-                <ul>
-                  <li className="bullet-arrow">
-                    CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ XÂY DỰNG NHÀ AN KHANG
-                  </li>
-                  <li>
-                    MST : 0312575902 , Ngày Cấp : 06-12-2013, Nơi Cấp : Sở kế
-                    Hoạch Và Đầu Tư TP.HCM.
-                  </li>
-                  <li>224/11/7 Phạm Văn chí ,Phường 04,Quận 06 TP HCM</li>
-                  <li className="bullet-arrow">090.848.5861</li>
-                  <li className="bullet-arrow">
-                    Email : nhaankhang224@gmail.com
-                  </li>
-                </ul>
-                <p>
-                  <a href="http://online.gov.vn/Home/WebDetails/83142">
-                    <img
-                      className="aligncenter  wp-image-3686"
-                      src="https://nhaankhang.com/wp-content/uploads/2021/06/logoBCT.png"
-                      alt=""
-                      width={169}
-                      height={64}
-                    />
-                  </a>
-                </p>
-              </div>
-            </div>
+
             <div id="col-679972034" className="col medium-3 small-12 large-3">
-              <div className="col-inner">
+              <div className="col-inner list-social">
                 <p>
-                  <span style={{ fontSize: "90%", color: "#282828" }}>
-                    <strong>THỐNG KÊ</strong>
+                  <span style={{ fontSize: '90%', color: '#282828' }}>
+                    <strong>LIÊN HỆ</strong>
                   </span>
                 </p>
-                <ul className="sidebar-wrapper ul-reset">
-                  <li
-                    id="wp_statistics_widget-2"
-                    className="widget widget_wp_statistics_widget"
+                <iframe
+                  name="f1d940ed5b65b5"
+                  width="1000px"
+                  height="1000px"
+                  data-testid="fb:page Facebook Social Plugin"
+                  title="fb:page Facebook Social Plugin"
+                  frameborder="0"
+                  allowtransparency="true"
+                  allowfullscreen="true"
+                  scrolling="no"
+                  allow="encrypted-media"
+                  src="https://www.facebook.com/v2.7/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df271cb10fc84e2%26domain%3Dchongthamnguyenphat.com%26is_canvas%3Dfalse%26origin%3Dhttp%253A%252F%252Fchongthamnguyenphat.com%252Ff105389dd37a764%26relation%3Dparent.parent&amp;container_width=360&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FCh%25E1%25BB%2591ng-th%25E1%25BA%25A5m-Nguy%25C3%25AAn-Ph%25C3%25A1t-303207496543496%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false"
+                  // style="border: none; visibility: visible; width: 340px; height: 130px;"
+                  style={{ border: 'none', visibility: 'visible', width: 340, height: 130 }}
+                />
+                <div className="social-icons follow-icons full-width text-left">
+                  <a
+                    href="https://www.facebook.com/chongthamnguyenphat/"
+                    target="_blank"
+                    data-label="Facebook"
+                    rel="noopener noreferrer nofollow"
+                    className=" primary facebook tooltip tooltipstered"
                   >
-                    <h2 className="widgettitle" />
-                    <ul>
-                      <li>
-                        <label>Online Users: </label>1
-                      </li>
-                      <li>
-                        <label>Yesterday's Visitors: </label>74
-                      </li>
-                      <li>
-                        <label>Total Visits: </label>130.695
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+                    <img src="/icons/facebook.png" alt="" className="icon-footer" />
+                  </a>
+                  <a
+                    href="https://m.me/chongthamnguyenphat"
+                    target="_blank"
+                    data-label="Messenger"
+                    rel="noopener noreferrer nofollow"
+                    className="tooltip tooltipstered"
+                  >
+                    <img src="/icons/messenger.png" alt="" className="icon-footer" />
+                  </a>
+                  <a
+                    href="tel:+02837273679"
+                    target="_blank"
+                    data-label="Phone"
+                    rel="noopener noreferrer nofollow"
+                    className="tooltip tooltipstered"
+                  >
+                    <img src="/icons/phone.png" alt="" className="icon-footer" />
+                  </a>
+                  <a
+                    href="mailto:chongthamnguyenphat@gmail.com"
+                    data-label="E-mail"
+                    rel="nofollow"
+                    className="email tooltip tooltipstered"
+                  >
+                    <img src="/icons/email.png" alt="" className="icon-footer" />
+                  </a>
+                  <a
+                    href="https://zalo.me/02837273679"
+                    target="_blank"
+                    data-label="Zalo"
+                    rel="noopener noreferrer nofollow"
+                    className="tooltip tooltipstered"
+                  >
+                    <img src="/icons/zalo.png" alt="" className="icon-footer" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -192,7 +145,7 @@ export default function Footer() {
         <style
           dangerouslySetInnerHTML={{
             __html:
-              "\n#section_116701697 {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  background-color: rgb(242, 242, 242);\n}\n#section_116701697 .section-bg.bg-loaded {\n  background-image: url(https://nhaankhang.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n",
+              '\n#section_116701697 {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  background-color: rgb(242, 242, 242);\n}\n#section_116701697 .section-bg.bg-loaded {\n  background-image: url(https://nhaankhang.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n'
           }}
         />
       </section>
@@ -250,11 +203,11 @@ export default function Footer() {
                   <path d="M13.043 8.356c-0.46 0-0.873 0.138-1.24 0.413s-0.662 0.681-0.885 1.217c-0.223 0.536-0.334 1.112-0.334 1.727 0 0.568 0.119 0.99 0.358 1.265s0.619 0.413 1.141 0.413c0.508 0 1.096-0.131 1.765-0.393v1.327c-0.693 0.262-1.389 0.393-2.089 0.393-0.884 0-1.572-0.254-2.063-0.763s-0.736-1.229-0.736-2.161c0-0.892 0.181-1.712 0.543-2.462s0.846-1.32 1.452-1.709 1.302-0.584 2.089-0.584c0.435 0 0.822 0.038 1.159 0.115s0.7 0.217 1.086 0.421l-0.616 1.276c-0.369-0.201-0.673-0.333-0.914-0.398s-0.478-0.097-0.715-0.097zM19.524 12.842h-2.47l-0.898 1.776h-1.671l3.999-7.491h1.948l0.767 7.491h-1.551l-0.125-1.776zM19.446 11.515l-0.136-1.786c-0.035-0.445-0.052-0.876-0.052-1.291v-0.184c-0.153 0.408-0.343 0.84-0.569 1.296l-0.982 1.965h1.739zM27.049 12.413c0 0.711-0.257 1.273-0.773 1.686s-1.213 0.62-2.094 0.62c-0.769 0-1.389-0.153-1.859-0.46v-1.398c0.672 0.367 1.295 0.551 1.869 0.551 0.39 0 0.694-0.072 0.914-0.217s0.329-0.343 0.329-0.595c0-0.147-0.024-0.275-0.070-0.385s-0.114-0.214-0.201-0.309c-0.087-0.095-0.303-0.269-0.648-0.52-0.481-0.337-0.818-0.67-1.013-1s-0.293-0.685-0.293-1.066c0-0.439 0.108-0.831 0.324-1.176s0.523-0.614 0.922-0.806 0.857-0.288 1.376-0.288c0.755 0 1.446 0.168 2.073 0.505l-0.569 1.189c-0.543-0.252-1.044-0.378-1.504-0.378-0.289 0-0.525 0.077-0.71 0.23s-0.276 0.355-0.276 0.607c0 0.207 0.058 0.389 0.172 0.543s0.372 0.36 0.773 0.615c0.421 0.272 0.736 0.572 0.945 0.9s0.313 0.712 0.313 1.151zM33.969 14.618h-1.597l0.7-3.22h-2.46l-0.7 3.22h-1.592l1.613-7.46h1.597l-0.632 2.924h2.459l0.632-2.924h1.592l-1.613 7.46zM46.319 9.831c0 0.963-0.172 1.824-0.517 2.585s-0.816 1.334-1.415 1.722c-0.598 0.388-1.288 0.582-2.067 0.582-0.891 0-1.587-0.251-2.086-0.753s-0.749-1.198-0.749-2.090c0-0.902 0.172-1.731 0.517-2.488s0.82-1.338 1.425-1.743c0.605-0.405 1.306-0.607 2.099-0.607 0.888 0 1.575 0.245 2.063 0.735s0.73 1.176 0.73 2.056zM43.395 8.356c-0.421 0-0.808 0.155-1.159 0.467s-0.627 0.739-0.828 1.283-0.3 1.135-0.3 1.771c0 0.5 0.116 0.877 0.348 1.133s0.558 0.383 0.979 0.383 0.805-0.148 1.151-0.444c0.346-0.296 0.617-0.714 0.812-1.255s0.292-1.148 0.292-1.822c0-0.483-0.113-0.856-0.339-1.12-0.227-0.264-0.546-0.396-0.957-0.396zM53.427 14.618h-1.786l-1.859-5.644h-0.031l-0.021 0.163c-0.111 0.735-0.227 1.391-0.344 1.97l-0.757 3.511h-1.436l1.613-7.46h1.864l1.775 5.496h0.021c0.042-0.259 0.109-0.628 0.203-1.107s0.407-1.942 0.94-4.388h1.43l-1.613 7.461zM13.296 20.185c0 0.98-0.177 1.832-0.532 2.556s-0.868 1.274-1.539 1.652c-0.672 0.379-1.464 0.568-2.376 0.568h-2.449l1.678-7.68h2.15c0.977 0 1.733 0.25 2.267 0.751s0.801 1.219 0.801 2.154zM8.925 23.615c0.536 0 1.003-0.133 1.401-0.399s0.71-0.657 0.934-1.174c0.225-0.517 0.337-1.108 0.337-1.773 0-0.54-0.131-0.95-0.394-1.232s-0.64-0.423-1.132-0.423h-0.624l-1.097 5.001h0.575zM18.64 24.96h-4.436l1.678-7.68h4.442l-0.293 1.334h-2.78l-0.364 1.686h2.59l-0.299 1.334h-2.59l-0.435 1.98h2.78l-0.293 1.345zM20.509 24.96l1.678-7.68h1.661l-1.39 6.335h2.78l-0.294 1.345h-4.436zM26.547 24.96l1.694-7.68h1.656l-1.694 7.68h-1.656zM33.021 23.389c0.282-0.774 0.481-1.27 0.597-1.487l2.346-4.623h1.716l-4.061 7.68h-1.814l-0.689-7.68h1.602l0.277 4.623c0.015 0.157 0.022 0.39 0.022 0.699-0.007 0.361-0.018 0.623-0.033 0.788h0.038zM41.678 24.96h-4.437l1.678-7.68h4.442l-0.293 1.334h-2.78l-0.364 1.686h2.59l-0.299 1.334h-2.59l-0.435 1.98h2.78l-0.293 1.345zM45.849 22.013l-0.646 2.947h-1.656l1.678-7.68h1.949c0.858 0 1.502 0.179 1.933 0.536s0.646 0.881 0.646 1.571c0 0.554-0.15 1.029-0.451 1.426s-0.733 0.692-1.298 0.885l1.417 3.263h-1.803l-1.124-2.947h-0.646zM46.137 20.689h0.424c0.474 0 0.843-0.1 1.108-0.3s0.396-0.504 0.396-0.914c0-0.287-0.086-0.502-0.258-0.646s-0.442-0.216-0.812-0.216h-0.402l-0.456 2.076zM53.712 20.39l2.031-3.11h1.857l-3.355 4.744-0.646 2.936h-1.645l0.646-2.936-1.281-4.744h1.694l0.7 3.11z" />
                 </svg>
               </div>
-            </div>{" "}
+            </div>{' '}
           </div>
           <div className="footer-primary pull-left">
             <div className="copyright-footer">
-              Copyright 2022 © <strong>UX Themes</strong>{" "}
+              Copyright 2022 © <strong>Nguyen Phat</strong>{' '}
             </div>
           </div>
         </div>
@@ -266,7 +219,6 @@ export default function Footer() {
       >
         <i className="icon-angle-up" />
       </a>
-      
     </footer>
   );
 }

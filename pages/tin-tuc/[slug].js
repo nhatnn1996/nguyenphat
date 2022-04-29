@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 import { apollo } from '@/api/index';
 import { bynewsGQL, newsGQL } from '@/geters/news';
 import InfoRight from '@/components/info-right';
