@@ -10,21 +10,22 @@
     "@jridgewell/trace-mapping" "^0.3.0"
 
 "@apollo/client@^3.5.10":
-  "integrity" "sha512-tL3iSpFe9Oldq7gYikZK1dcYxp1c01nlSwtsMz75382HcI6fvQXyFXUCJTTK3wgO2/ckaBvRGw7VqjFREdVoRw=="
-  "resolved" "https://registry.npmjs.org/@apollo/client/-/client-3.5.10.tgz"
-  "version" "3.5.10"
+  "integrity" "sha512-2+UZoe6fCI3qG9lz8Kdt5ranEllRk8ewpt3ma6fWMjbpt7AP9sprnnoG7n6UmBcOpUTOvAAcaxBf8nByRcXn7g=="
+  "resolved" "https://registry.npmjs.org/@apollo/client/-/client-3.6.0.tgz"
+  "version" "3.6.0"
   dependencies:
-    "@graphql-typed-document-node/core" "^3.0.0"
+    "@graphql-typed-document-node/core" "^3.1.1"
     "@wry/context" "^0.6.0"
     "@wry/equality" "^0.5.0"
     "@wry/trie" "^0.3.0"
-    "graphql-tag" "^2.12.3"
+    "graphql-tag" "^2.12.6"
     "hoist-non-react-statics" "^3.3.2"
     "optimism" "^0.16.1"
     "prop-types" "^15.7.2"
     "symbol-observable" "^4.0.0"
-    "ts-invariant" "^0.9.4"
+    "ts-invariant" "^0.10.0"
     "tslib" "^2.3.0"
+    "use-sync-external-store" "^1.0.0"
     "zen-observable-ts" "^1.2.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@7.12.11":
@@ -303,7 +304,7 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
-"@graphql-typed-document-node/core@^3.0.0":
+"@graphql-typed-document-node/core@^3.1.1":
   "integrity" "sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg=="
   "resolved" "https://registry.npmjs.org/@graphql-typed-document-node/core/-/core-3.1.1.tgz"
   "version" "3.1.1"
@@ -1859,7 +1860,7 @@
   "resolved" "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.9.tgz"
   "version" "4.2.9"
 
-"graphql-tag@^2.12.3":
+"graphql-tag@^2.12.6":
   "integrity" "sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg=="
   "resolved" "https://registry.npmjs.org/graphql-tag/-/graphql-tag-2.12.6.tgz"
   "version" "2.12.6"
@@ -2948,7 +2949,7 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.8.3.tgz"
   "version" "0.8.3"
 
-"react@^16.11.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0-0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16.8 || ^17.0.0 || ^18.0.0", "react@17.0.2":
+"react@^16.11.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0-0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16.8 || ^17.0.0 || ^18.0.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -3434,10 +3435,10 @@
   dependencies:
     "punycode" "^2.1.0"
 
-"ts-invariant@^0.9.4":
-  "integrity" "sha512-63jtX/ZSwnUNi/WhXjnK8kz4cHHpYS60AnmA6ixz17l7E12a5puCWFlNpkne5Rl0J8TBPVHpGjsj4fxs8ObVLQ=="
-  "resolved" "https://registry.npmjs.org/ts-invariant/-/ts-invariant-0.9.4.tgz"
-  "version" "0.9.4"
+"ts-invariant@^0.10.0":
+  "integrity" "sha512-dOmY3naALBtNyK+nrVGzD8DVxSJ9OIHragItZ3XvxGORNAZL6uszgQYaD3PW+TPh2NWNsOpuQUxznuvTkmcdqw=="
+  "resolved" "https://registry.npmjs.org/ts-invariant/-/ts-invariant-0.10.1.tgz"
+  "version" "0.10.1"
   dependencies:
     "tslib" "^2.1.0"
 
@@ -3523,6 +3524,11 @@
   "version" "1.5.1"
   dependencies:
     "object-assign" "^4.1.1"
+
+"use-sync-external-store@^1.0.0":
+  "integrity" "sha512-SEnieB2FPKEVne66NpXPd1Np4R1lTNKfjuy3XdIoPQKYBAFdzbzSZlSn1KJZUiihQLQC5Znot4SBz1EOTBwQAQ=="
+  "resolved" "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.1.0.tgz"
+  "version" "1.1.0"
 
 "util-deprecate@^1.0.1", "util-deprecate@^1.0.2":
   "integrity" "sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8="

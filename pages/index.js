@@ -5,6 +5,7 @@ import { homeGQL } from '@/geters/home';
 import { Testimomial } from '@/components/home/testimonial';
 
 export async function getStaticProps() {
+  console.log('vaooooooooo');
   const result = await apollo.query({ query: homeGQL });
   const home = {};
   Object.keys(result?.data || {}).map((key) => {

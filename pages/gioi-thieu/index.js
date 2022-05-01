@@ -1,5 +1,5 @@
 import React from 'react';
-const News = () => {
+const Introduce = () => {
   return (
     <div id="content" className="content-area page-wrapper" role="main">
       <div className="row row-main">
@@ -116,4 +116,4 @@ const News = () => {
     </div>
   );
 };
-export default News;
+export default Introduce;

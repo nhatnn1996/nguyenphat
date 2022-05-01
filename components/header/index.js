@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import NavMenu from '../layouts/top-menu';
 
-export default function Header({ menuItems }) {
+export default function Header({ menuItems,pages }) {
   return (
     <header id="header" className="header has-sticky sticky-jump">
       <div className="header-wrapper">
@@ -91,7 +91,7 @@ export default function Header({ menuItems }) {
             <div className="flex-col show-for-medium flex-right"></div>
           </div>
         </div>
-        <NavMenu items={menuItems} />
+        <NavMenu items={menuItems} pages={pages} />
         <div className="header-bg-container fill">
           <div className="header-bg-image fill" />
           <div className="header-bg-color fill" />

@@ -9,7 +9,8 @@ const NavMenu = () => {
     { label: 'Sản phẩm', path: '/san-pham' },
     { label: 'Dịch vụ', path: '/dich-vu' },
     { label: 'Dự án', path: '/du-an' },
-    { label: 'Tin Tức', path: '/lien-he' }
+    { label: 'Tin Tức', path: '/tin-tuc' },
+    { label: 'Liên hệ', path: '/lien-he' }
   ];
   return (
     <div id="wide-nav" className="header-bottom wide-nav nav-dark hide-for-medium snipcss-io4AT">
@@ -84,7 +85,6 @@ const NavMenu = () => {
   );
 };
 export default NavMenu;
-
 const ItemLink = ({ item }) => {
   const { label, path } = item;
   const router = useRouter();
