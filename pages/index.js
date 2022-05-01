@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Service, ProductCom, ProductsCom, Video, Slider, NewsCom } from '@/components/home/index';
 import { apollo } from '@/api/index';
 import { homeGQL } from '@/geters/home';
+import { Testimomial } from '@/components/home/testimonial';
 
 export async function getStaticProps() {
   const result = await apollo.query({ query: homeGQL });
@@ -33,7 +34,7 @@ export async function getStaticProps() {
 
 export default function Home(props) {
   const { posts, waterproofing, accessories, news } = props;
-  console.log(news);
+  // console.log(news);
   return (
     // <a className="skip-link screen-reader-text" href="#main">
     //   Skip to content
@@ -42,7 +43,7 @@ export default function Home(props) {
       <main id="main" className="">
         <div id="content" role="main" className="content-area">
           <Slider />
-          <section className="section dich-vu-san-pham" id="section_1421784380">
+          <section className="section dich-vu-san-pham">
             <div className="bg section-bg fill bg-fill bg-loaded"></div>
             <div className="section-content relative">
               <div className="row" id="row-1180294481">
@@ -406,296 +407,10 @@ export default function Home(props) {
               }}
             />
           </section>
-          <section className="section nhan-xet-khach-hang" id="section_1137954622">
-            <div className="bg section-bg fill bg-fill  "></div>
-            <div className="section-content relative">
-              <div className="row" id="row-1275458088">
-                <div id="col-461308424" className="col small-12 large-12">
-                  <div className="col-inner">
-                    <div className="tieu-de">
-                      <h2 style={{ textAlign: 'center' }}>
-                        <span style={{ color: 'black' }}>KHÁCH HÀNG ĐÁNH GIÁ</span>
-                      </h2>
-                    </div>
-                    <p style={{ textAlign: 'center' }}>
-                      <span style={{ color: 'black' }}>
-                        Những lời nhận xét của khách hàng là động lực để chúng tôi nâng cao chất lượng dịch vụ hơn và
-                        làm hài lòng khách hàng hơn nữa!
-                        <br />
-                      </span>
-                    </p>
-                    <div className="slider-wrapper relative" id="slider-560785480">
-                      <div
-                        className="slider slider-nav-simple slider-nav-normal slider-nav-dark slider-nav-outside slider-style-normal is-draggable flickity-enabled"
-                        data-flickity-options='{
-      "cellAlign": "center",
-      "imagesLoaded": true,
-      "lazyLoad": 1,
-      "freeScroll": false,
-      "wrapAround": true,
-      "autoPlay": 6000,
-      "pauseAutoPlayOnHover" : true,
-      "prevNextButtons": true,
-      "contain" : true,
-      "adaptiveHeight" : true,
-      "dragThreshold" : 10,
-      "percentPosition": true,
-      "pageDots": false,
-      "rightToLeft": false,
-      "draggable": true,
-      "selectedAttraction": 0.1,
-      "parallax" : 0,
-      "friction": 0.6        }'
-                        tabIndex={0}
-                      >
-                        <div
-                          className="flickity-viewport"
-                          style={{
-                            height: '137.281px',
-                            touchAction: 'pan-y'
-                          }}
-                        >
-                          <div
-                            className="flickity-slider"
-                            style={{
-                              left: 0,
-                              transform: 'translateX(0.81%)'
-                            }}
-                          >
-                            <div
-                              className="row row-small is-selected"
-                              id="row-1594302299"
-                              aria-selected="true"
-                              style={{ position: 'absolute', left: '0%' }}
-                            >
-                              <div id="col-324587744" className="col medium-6 small-12 large-6">
-                                <div className="col-inner">
-                                  <div className="icon-box featured-box icon-box-left text-left">
-                                    <div className="icon-box-img" style={{ width: 69 }}>
-                                      <div className="icon">
-                                        <div className="icon-inner">
-                                          <img
-                                            width={150}
-                                            height={156}
-                                            src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20150%20156%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
-                                            data-src="https://nhaankhang.com/wp-content/uploads/2018/03/ho-quang-dung.jpg"
-                                            className="lazy-load attachment-medium size-medium"
-                                            alt=""
-                                            loading="lazy"
-                                          />{' '}
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="icon-box-text last-reset">
-                                      <div className="star-rating" />
-                                      <p>
-                                        Là khách hàng lâu năm của công ty, tôi rất hài lòng về sản phẩm và dịch vụ chống
-                                        thấm của Nhà An Khang
-                                      </p>
-                                      <p>
-                                        <span style={{ color: '#000000' }}>
-                                          <strong className="testimonial-name test_name">anh Hồ Quang Tuấn</strong>{' '}
-                                        </span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div id="col-843134349" className="col medium-6 small-12 large-6">
-                                <div className="col-inner">
-                                  <div className="icon-box featured-box icon-box-left text-left">
-                                    <div className="icon-box-img" style={{ width: 69 }}>
-                                      <div className="icon">
-                                        <div className="icon-inner">
-                                          <img
-                                            width={150}
-                                            height={151}
-                                            src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20150%20151%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
-                                            data-src="https://nhaankhang.com/wp-content/uploads/2018/03/nguyen-khanh.jpg"
-                                            className="lazy-load attachment-medium size-medium"
-                                            alt=""
-                                            loading="lazy"
-                                          />{' '}
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="icon-box-text last-reset">
-                                      <div className="star-rating" />
-                                      <p>
-                                        Thời buổi kinh doanh bây giờ tìm được một công ty làm ăn có tâm như công ty Nhà
-                                        An Khang không hề dễ dàng, công trình của tôi làm luôn có chế độ bảo hành rất
-                                        tôt. Tôi rất tin tưởng công ty, chúc công ty ngày càng phát triển
-                                      </p>
-                                      <p>
-                                        <span style={{ color: '#000000' }}>
-                                          <strong className="testimonial-name test_name">anh Nguyễn Thế Hoàng</strong>{' '}
-                                        </span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              className="row row-small"
-                              id="row-1252985475"
-                              aria-selected="false"
-                              style={{
-                                position: 'absolute',
-                                left: '-98.39%'
-                              }}
-                            >
-                              <div id="col-83483219" className="col medium-6 small-12 large-6">
-                                <div className="col-inner">
-                                  <div className="icon-box featured-box icon-box-left text-left">
-                                    <div className="icon-box-img" style={{ width: 69 }}>
-                                      <div className="icon">
-                                        <div className="icon-inner">
-                                          <img
-                                            width={300}
-                                            height={300}
-                                            src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20300%20300%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
-                                            data-src="https://nhaankhang.com/wp-content/uploads/2018/03/11416133_875379979189369_4096461508040968695_n-300x300.jpg"
-                                            className="lazy-load attachment-medium size-medium"
-                                            alt=""
-                                            loading="lazy"
-                                            srcSet=""
-                                            data-srcset="https://nhaankhang.com/wp-content/uploads/2018/03/11416133_875379979189369_4096461508040968695_n-300x300.jpg 300w, https://nhaankhang.com/wp-content/uploads/2018/03/11416133_875379979189369_4096461508040968695_n-150x150.jpg 150w, https://nhaankhang.com/wp-content/uploads/2018/03/11416133_875379979189369_4096461508040968695_n-768x768.jpg 768w, https://nhaankhang.com/wp-content/uploads/2018/03/11416133_875379979189369_4096461508040968695_n.jpg 960w"
-                                            sizes="(max-width: 300px) 100vw, 300px"
-                                          />{' '}
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="icon-box-text last-reset">
-                                      <div className="star-rating" />
-                                      <p>
-                                        Tôi là thầu xây dựng, công trình tôi làm đều qua khâu chống thấm. Máy móc, phụ
-                                        kiện hỗ trợ chống thấm tôi mua của Nhà An Khang và chất lượng rất ok. Rất vui vì
-                                        được hợp tác với công ty.
-                                      </p>
-                                      <p>
-                                        <span style={{ color: '#000000' }}>
-                                          <strong className="testimonial-name test_name">anh Nguyễn Văn Thao</strong>{' '}
-                                        </span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div id="col-36967764" className="col medium-6 small-12 large-6">
-                                <div className="col-inner">
-                                  <div className="icon-box featured-box icon-box-left text-left">
-                                    <div className="icon-box-img" style={{ width: 69 }}>
-                                      <div className="icon">
-                                        <div className="icon-inner">
-                                          <img
-                                            width={150}
-                                            height={156}
-                                            src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20150%20156%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
-                                            data-src="https://nhaankhang.com/wp-content/uploads/2018/03/34.jpg"
-                                            className="lazy-load attachment-medium size-medium"
-                                            alt=""
-                                            loading="lazy"
-                                          />{' '}
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="icon-box-text last-reset">
-                                      <div className="star-rating" />
-                                      <p>
-                                        Tôi mới mua keo chống thấm ở đây, dịch vụ chăm sóc khách hàng rất tốt, tư vấn
-                                        tận tâm. Sản phẩm xài cũng rất chất lượng, thời gian bảo hành lâu nên tôi cũng
-                                        yên tâm.
-                                      </p>
-                                      <p>
-                                        <span style={{ color: '#000000' }}>
-                                          <strong className="testimonial-name test_name">anh Lê Văn Hóa</strong>{' '}
-                                        </span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <button
-                          className="flickity-button flickity-prev-next-button previous"
-                          type="button"
-                          aria-label="Previous"
-                        >
-                          <svg className="flickity-button-icon" viewBox="0 0 100 100">
-                            <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" className="arrow" />
-                          </svg>
-                        </button>
-                        <button
-                          className="flickity-button flickity-prev-next-button next"
-                          type="button"
-                          aria-label="Next"
-                        >
-                          <svg className="flickity-button-icon" viewBox="0 0 100 100">
-                            <path
-                              d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
-                              className="arrow"
-                              transform="translate(100, 100) rotate(180) "
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                      <div className="loading-spin dark large centered" style={{ display: 'none' }} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <style
-              dangerouslySetInnerHTML={{
-                __html:
-                  '\n#section_1137954622 {\n  padding-top: 41px;\n  padding-bottom: 41px;\n}\n#section_1137954622 .section-bg.bg-loaded {\n  background-image: url(https://nhaankhang.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n'
-              }}
-            />
-          </section>
+          <Testimomial />
           <NewsCom data={news} />
         </div>
       </main>
-      <div id="main-menu" className="mobile-sidebar no-scrollbar mfp-hide">
-        <div className="sidebar-menu no-scrollbar text-center">
-          <ul className="nav nav-sidebar nav-vertical nav-uppercase nav-anim">
-            <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-18">
-              <a href="https://nhaankhang.com/" aria-current="page">
-                Trang chủ
-              </a>
-            </li>
-            <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2777">
-              <a href="https://nhaankhang.com/gioi-thieu/">Giới thiệu</a>
-            </li>
-            <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2771">
-              <a href="https://nhaankhang.com/cua-hang/">Sản phẩm</a>
-            </li>
-            <li className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-3196">
-              <a href="https://nhaankhang.com/danh-muc/xu-ly-ro-ri-nuoc/phu-kien-ho-tro/">Phụ kiện hỗ trợ</a>
-            </li>
-            <li className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-3194">
-              <a href="https://nhaankhang.com/danh-muc/tai-lieu-thi-cong-thi-cong-chong-tham/">Dịch vụ Thi công</a>
-            </li>
-            <li className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3294">
-              <a href="https://nhaankhang.com/chuyen-muc/tin-tuc/">Tin tức</a>
-            </li>
-            <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-27">
-              <a href="https://nhaankhang.com/lien-he/">Liên hệ</a>
-            </li>
-            <li className="hotline-nav menu-item menu-item-type-custom menu-item-object-custom menu-item-1658">
-              <a href="tel:+84908485861">Hotline: 090 84 85 861</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <style
-        dangerouslySetInnerHTML={{
-          __html:
-            '\n            * input, textarea {\n\n                -webkit-touch-callout: none;\n                -webkit-user-select: none;\n                -khtml-user-select: none;\n                -moz-user-select: none;\n                -ms-user-select: none;\n                user-select: none;\n            }\n        '
-        }}
-      />
       <div className="tool-icon">
         <a href="tel:+02837273679" className="phone-icon">
           <span className="suntory-alo-ph-circle-fill" />

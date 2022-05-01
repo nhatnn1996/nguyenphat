@@ -82,7 +82,7 @@ const Contact = () => {
                     width="100%"
                     height={350}
                     frameBorder={0}
-                    allowFullScreen="allowfullscreen"
+                    allowFullScreen="allowFullScreen"
                   />
                 </p>
               </div>

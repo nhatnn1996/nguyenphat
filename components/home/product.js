@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export const ProductCom = ({ data }) => {
   return (
-    <section className="section danh-muc" id="section_1912716512">
+    <section className="section danh-muc">
       <div className="bg section-bg fill bg-fill  bg-loaded">
         <div className="section-bg-overlay absolute fill" />
         <div className="is-border" style={{ borderWidth: '1 0px 0px 0px' }}></div>

@@ -9,14 +9,14 @@ export default function Header({ menuItems }) {
           <div className="header-inner flex-row container logo-left medium-logo-center" role="navigation">
             <div id="logo" className="flex-col logo">
               <a
-                href="https://nhaankhang.com/"
+                href="/"
                 title="Vật liệu chống thấm | Xử lý chống thấm | nhaankhang.com - Tổng đại lý nhập khẩu và Phân phối vật liệu chống thấm, xử lý chống thấm chuyên nghiệp tại thành phố Hồ Chí Minh"
                 rel="home"
               >
                 <img
                   width={211}
                   height={95}
-                  src="https://nhaankhang.com/wp-content/uploads/2021/11/logo-nha-an-khang-moi-06.jpg"
+                  src="/icons/logo.png"
                   className="header_logo header-logo"
                   alt="Vật liệu chống thấm | Xử lý chống thấm | nhaankhang.com"
                 />

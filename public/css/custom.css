@@ -43,3 +43,86 @@ strong {
   transform: translate(-50%, -50%);
   width: 30px;
 }
+
+.nhan-xet-khach-hang .button-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: white;
+  left: 100%;
+  z-index: 2;
+  margin-top: 0;
+  cursor: pointer;
+}
+.nhan-xet-khach-hang .button-left {
+  top: 0;
+  height: 100%;
+  background: white;
+  right: 100%;
+  z-index: 2;
+  margin-top: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+.nhan-xet-khach-hang .button-left:after,
+.nhan-xet-khach-hang .button-right:after {
+  content: '' !important;
+  width: 30px;
+  height: 30px;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.nhan-xet-khach-hang .button-right:after {
+  background-image: url('/images/icons/right.svg');
+  /* transform: translateX(200%); */
+}
+.nhan-xet-khach-hang .button-left:after {
+  background-image: url('/images/icons/left.svg');
+  /* transform: translateX(-200%); */
+}
+
+.nhan-xet-khach-hang .icon-box .icon-inner {
+  position: relative;
+  width: 69px;
+  height: 69px;
+  padding-top: 0;
+}
+
+.nhan-xet-khach-hang .icon-box img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  padding: 0;
+}
+
+.why-choose-us .icon-box-img img {
+  padding-top: 0;
+}
+
+.header-main {
+  background: #072953;
+}
+
+.icon-menu:before {
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .button-left,
+  .button-right {
+    display: none;
+  }
+  .icon-box-text.last-reset {
+    padding: 0 !important;
+  }
+  .social-icons {
+    text-align: center;
+    margin-top: 1rem;
+  }
+}

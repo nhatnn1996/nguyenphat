@@ -20,13 +20,13 @@ export default function Footer() {
                   <br />
                   <li>36/31F Đường số 4, Khu phố 6, Phường Hiệp Bình Phước, TP.Thủ Đức, TP.HCM</li>
                 </p>
-                <p>
+                <div>
                   <strong>
                     ĐỊA CHỈ
                     <br />
                   </strong>
                   <li>201/60/11 Nguyễn Xí, Phường 26, Quận Bình Thạnh, TPHCM</li>
-                </p>
+                </div>
               </div>
             </div>
             <div id="col-1420996765" className="col medium-3 small-12 large-3">
@@ -83,9 +83,9 @@ export default function Footer() {
                   height="1000px"
                   data-testid="fb:page Facebook Social Plugin"
                   title="fb:page Facebook Social Plugin"
-                  frameborder="0"
+                  frameBorder="0"
                   allowtransparency="true"
-                  allowfullscreen="true"
+                  allowFullScreen={true}
                   scrolling="no"
                   allow="encrypted-media"
                   src="https://www.facebook.com/v2.7/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df271cb10fc84e2%26domain%3Dchongthamnguyenphat.com%26is_canvas%3Dfalse%26origin%3Dhttp%253A%252F%252Fchongthamnguyenphat.com%252Ff105389dd37a764%26relation%3Dparent.parent&amp;container_width=360&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FCh%25E1%25BB%2591ng-th%25E1%25BA%25A5m-Nguy%25C3%25AAn-Ph%25C3%25A1t-303207496543496%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false"

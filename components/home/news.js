@@ -1,5 +1,5 @@
 export const NewsCom = ({ data = [] }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <section className="section tin-tuc" id="section_801061950">
       <div className="bg section-bg fill bg-fill  bg-loaded">
@@ -30,7 +30,7 @@ export const NewsCom = ({ data = [] }) => {
               </div>
             </div>
           </div>
-          <div id="col-1735218718" className="col cot3 hide-for-small medium-3 small-12 large-3">
+          <div id="col-1735218718" className="col cot3 hide-for-small medium-3 small-12 large-3 why-choose-us">
             <div className="col-inner">
               <div className="tinh-nang-vuot-troi">Vì sao chọn chúng tôi</div>
               <div className="icon-box featured-box icon-box-left text-left">
@@ -40,10 +40,9 @@ export const NewsCom = ({ data = [] }) => {
                       <img
                         width={100}
                         height={100}
-                        src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
-                        data-src="https://nhaankhang.com/wp-content/uploads/2018/03/web-design-1.png"
+                        src="/images/import.png"
                         className="lazy-load attachment-medium size-medium"
-                        alt=""
+                        alt="nguyenphat import picture"
                         loading="lazy"
                       />{' '}
                     </div>
@@ -65,10 +64,9 @@ export const NewsCom = ({ data = [] }) => {
                       <img
                         width={100}
                         height={100}
-                        src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
-                        data-src="https://nhaankhang.com/wp-content/uploads/2018/03/Local-seo.png"
+                        src="/images/rentail.png"
                         className="lazy-load attachment-medium size-medium"
-                        alt=""
+                        alt="nguyenphat sỉ lẻ"
                         loading="lazy"
                       />{' '}
                     </div>
@@ -90,12 +88,11 @@ export const NewsCom = ({ data = [] }) => {
                       <img
                         width={100}
                         height={100}
-                        src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
-                        data-src="https://nhaankhang.com/wp-content/uploads/2018/03/pair-ads.png"
+                        src="/images/genuine.png"
                         className="lazy-load attachment-medium size-medium"
-                        alt=""
+                        alt="nguyenphat chính hảng"
                         loading="lazy"
-                      />{' '}
+                      />
                     </div>
                   </div>
                 </div>
