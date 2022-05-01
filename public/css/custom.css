@@ -53,6 +53,9 @@ strong {
   z-index: 2;
   margin-top: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .nhan-xet-khach-hang .button-left {
   top: 0;
@@ -63,6 +66,9 @@ strong {
   margin-top: 0;
   position: absolute;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nhan-xet-khach-hang .button-left:after,
@@ -77,6 +83,7 @@ strong {
 
 .nhan-xet-khach-hang .button-right:after {
   background-image: url('/images/icons/right.svg');
+
   /* transform: translateX(200%); */
 }
 .nhan-xet-khach-hang .button-left:after {
@@ -116,7 +123,7 @@ strong {
 @media only screen and (max-width: 600px) {
   .button-left,
   .button-right {
-    display: none;
+    display: none !important;
   }
   .icon-box-text.last-reset {
     padding: 0 !important;
@@ -141,9 +148,23 @@ strong {
 .nav-spacing-large .hotline-nav a {
   background: white;
 }
-.dich-vu-san-pham {
+.dich-vu-san-pham,
+.san-pham-chong-tham {
   background-image: url('/images/bg-home-why.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.tieu-de-2 span {
+  color: white;
+}
+.why-choose-us .col-inner {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.shadown {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.rounded{
+  border-radius: 4px;
 }

@@ -85,8 +85,9 @@ export default NavMenu;
 const ItemLink = ({ item }) => {
   const { label, path } = item;
   const router = useRouter();
+  console.log(path === '/', router.pathname === path);
   const classLi =
-    (router.asPath.includes(path) ? 'active ' : '') +
+    (path === '/' ? (router.pathname === path ? 'active ' : '') : router.asPath.includes(path) ? 'active ' : '') +
     'menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-18';
   return (
     <li id="menu-item-18" className={classLi}>

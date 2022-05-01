@@ -11,10 +11,10 @@ export const NewsCom = ({ data = [] }) => {
             <div className="col-inner">
               <div className="row row1-cot1" id="row-436134977">
                 <div id="col-1756564835" className="col medium-7 small-12 large-12">
-                  <div className="col-inner">
-                    <div className="tieu-de-2">
+                  <div className="col-inner shadown rounded">
+                    <div className="tieu-de-2 rounded">
                       <h2>
-                        <span style={{ color: '#000000' }}>Kiến thức</span>
+                        <span>Kiến thức</span>
                       </h2>
                     </div>
                     <div className=" wrap-items-news large-columns-1 medium-columns-1 small-columns-1 row-small">
@@ -23,7 +23,7 @@ export const NewsCom = ({ data = [] }) => {
                       ))}
                     </div>
                     <p style={{ textAlign: 'center' }}>
-                      <a href="https://nhaankhang.com/chuyen-muc/kien-thuc-website/"> + Xem thêm</a>
+                      <a href="/"> + Xem thêm</a>
                     </p>
                   </div>
                 </div>
@@ -36,7 +36,7 @@ export const NewsCom = ({ data = [] }) => {
               <div className="icon-box featured-box icon-box-left text-left">
                 <div className="icon-box-img" style={{ width: 35 }}>
                   <div className="icon">
-                    <div className="icon-inner">
+                    <div className="icon-inner shadown rounded">
                       <img
                         width={100}
                         height={100}
