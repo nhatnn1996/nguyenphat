@@ -12,13 +12,6 @@ export const ProductCom = ({ data }) => {
           <div id="col-1622567022" className="col small-12 large-12">
             <div className="col-inner">
               <h2 style={{ textAlign: 'center' }}>SẢN PHẨM CHỐNG THẤM</h2>
-              <div id="gap-490136710" className="gap-element clearfix" style={{ display: 'block', height: 'auto' }}>
-                <style
-                  dangerouslySetInnerHTML={{
-                    __html: '\n#gap-490136710 {\n  padding-top: 10px;\n}\n'
-                  }}
-                />
-              </div>
               <div className="row large-columns-5 medium-columns-3 small-columns-2 row-small">
                 {data.map((element) => {
                   const { image, slug, title } = element;
@@ -67,12 +60,6 @@ export const ProductCom = ({ data }) => {
           </div>
         </div>
       </div>
-      <style
-        dangerouslySetInnerHTML={{
-          __html:
-            '\n#section_1912716512 {\n  padding-top: 30px;\n  padding-bottom: 30px;\n}\n#section_1912716512 .section-bg-overlay {\n  background-color: rgb(255, 255, 255);\n}\n'
-        }}
-      />
     </section>
   );
 };

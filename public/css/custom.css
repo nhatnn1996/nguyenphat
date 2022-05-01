@@ -137,3 +137,13 @@ strong {
   overflow-x: scroll;
   background: white;
 } */
+
+.nav-spacing-large .hotline-nav a {
+  background: white;
+}
+.dich-vu-san-pham {
+  background-image: url('/images/bg-home-why.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}

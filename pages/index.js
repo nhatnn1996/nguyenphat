@@ -153,28 +153,6 @@ export default function Home(props) {
                         <p>&nbsp;</p>
                       </div>
                     </div>
-                    <div
-                      id="gap-1931254594"
-                      className="gap-element clearfix"
-                      style={{ display: 'block', height: 'auto' }}
-                    >
-                      <style
-                        dangerouslySetInnerHTML={{
-                          __html: '\n#gap-1931254594 {\n  padding-top: 30px;\n}\n'
-                        }}
-                      />
-                    </div>
-                    <div
-                      id="gap-197808505"
-                      className="gap-element clearfix"
-                      style={{ display: 'block', height: 'auto' }}
-                    >
-                      <style
-                        dangerouslySetInnerHTML={{
-                          __html: '\n#gap-197808505 {\n  padding-top: 30px;\n}\n'
-                        }}
-                      />
-                    </div>
                   </div>
                 </div>
                 <div id="col-1864456353" className="col hide-for-small medium-3 small-12 large-3">
