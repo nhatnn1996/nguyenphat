@@ -1,7 +1,10 @@
 import { gql } from '@apollo/client';
 export const productGQL = gql`
-  query Product {
-    products {
+  query Product($after: String, $search: String) {
+    products(
+      after: $after
+      first: 4
+      where: {orderby: {field: DATE}, search: $search}){
       nodes {
         image {
           altText

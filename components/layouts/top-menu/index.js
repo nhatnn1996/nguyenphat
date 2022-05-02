@@ -9,7 +9,7 @@ const NavMenu = ({ items }) => {
           <div className="flex-col hide-for-medium flex-left">
             <ul className="nav header-nav header-bottom-nav nav-left nav-size-large nav-spacing-large snip-ul">
               {items.map((element, index) => (
-                <ItemLink key={element} item={element} />
+                <ItemLink key={index} item={element} />
               ))}
               <li
                 id="menu-item-1658"
@@ -85,7 +85,6 @@ export default NavMenu;
 const ItemLink = ({ item }) => {
   const { label, path } = item;
   const router = useRouter();
-  console.log(path === '/', router.pathname === path);
   const classLi =
     (path === '/' ? (router.pathname === path ? 'active ' : '') : router.asPath.includes(path) ? 'active ' : '') +
     'menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-18';

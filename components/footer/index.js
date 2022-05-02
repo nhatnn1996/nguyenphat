@@ -15,11 +15,11 @@ export default function Footer() {
           <div className="row row-small" id="row-548748463">
             <div id="col-66108098" className="col medium-3 small-6 large-3">
               <div className="col-inner">
-                <p>
+                <div>
                   <strong>VĂN PHÒNG GIAO DỊCH</strong>
                   <br />
                   <li>36/31F Đường số 4, Khu phố 6, Phường Hiệp Bình Phước, TP.Thủ Đức, TP.HCM</li>
-                </p>
+                </div>
                 <div>
                   <strong>
                     ĐỊA CHỈ

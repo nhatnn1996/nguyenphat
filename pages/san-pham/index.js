@@ -76,7 +76,7 @@ const Product = ({ products }) => {
                                 className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
                                 alt={item.image.title}
                                 loading="lazy"
-                                srcset={item.image.srcSet}
+                                srcSet={item.image.srcSet}
                                 data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png 100w"
                                 sizes="(max-width: 300px) 100vw, 300px"
                               />
@@ -215,7 +215,7 @@ const Product = ({ products }) => {
                         className="lazy-load attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail"
                         alt=""
                         loading="lazy"
-                        srcSet
+                        srcSet=""
                         data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-100x100.png 100w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-300x300.png 300w"
                         sizes="(max-width: 100px) 100vw, 100px"
                       />{' '}
@@ -234,7 +234,7 @@ const Product = ({ products }) => {
                         className="lazy-load attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail"
                         alt=""
                         loading="lazy"
-                        srcSet
+                        srcSet=""
                         data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-100x100.png 100w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-300x300.png 300w"
                         sizes="(max-width: 100px) 100vw, 100px"
                       />{' '}
@@ -253,7 +253,7 @@ const Product = ({ products }) => {
                         className="lazy-load attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail"
                         alt=""
                         loading="lazy"
-                        srcSet
+                        srcSet=""
                         data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png 100w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-300x300.png 300w"
                         sizes="(max-width: 100px) 100vw, 100px"
                       />{' '}
@@ -272,7 +272,7 @@ const Product = ({ products }) => {
                         className="lazy-load attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail"
                         alt=""
                         loading="lazy"
-                        srcSet
+                        srcSet=""
                         data-srcset="https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-100x100.jpg 100w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-300x300.jpg 300w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-150x150.jpg 150w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-768x768.jpg 768w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-600x600.jpg 600w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1.jpg 800w"
                         sizes="(max-width: 100px) 100vw, 100px"
                       />{' '}
@@ -291,7 +291,7 @@ const Product = ({ products }) => {
                         className="lazy-load attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail"
                         alt=""
                         loading="lazy"
-                        srcSet
+                        srcSet=""
                         data-srcset="https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-100x100.jpg 100w, https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-150x150.jpg 150w, https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-300x300.jpg 300w"
                         sizes="(max-width: 100px) 100vw, 100px"
                       />{' '}
