@@ -102,12 +102,21 @@ export const productDetailGQL = gql`
       link
       menuOrder
       productCategories {
-        edges {
-          node {
-            id
-            slug
-            uri
-            name
+        nodes {
+          products {
+            nodes {
+              name
+              id
+              slug
+              image {
+              sourceUrl
+              srcSet
+              title
+              uri
+              sizes
+              link
+            }
+            }
           }
         }
       }

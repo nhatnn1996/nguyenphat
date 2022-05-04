@@ -30,6 +30,14 @@
 .icon-angle-down {
   transition: all 0.5s;
 }
-.col-inner-news{
-    cursor: pointer;
+.col-inner-news {
+  cursor: pointer;
+}
+.flickity-viewport {
+  overflow: visible;
+}
+.row-box-shadow-1 .col-inner {
+  box-shadow: unset;
+  border: 1px solid rgb(221, 221, 221);
+  min-height: 330px;
 }

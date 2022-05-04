@@ -1,6 +1,8 @@
 import { apollo } from '@/api/index';
 import React, { useEffect } from 'react';
 import { productDetailGQL, productGQL } from '@/geters/product';
+import Link from 'next/link';
+import Slider from 'react-slick';
 
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: productGQL });
@@ -16,17 +18,19 @@ export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: productDetailGQL, variables: { slug: params.slug } });
 
   const { product } = result?.data;
-  return { props: { product }, revalidate: 10 * 60 * 1000 };
+  console.log(product, 'product');
+  const productCategories = product?.productCategories?.nodes[0]?.products;
+  return { props: { product, productCategories }, revalidate: 10 * 60 * 1000 };
 }
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product, productCategories }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const sortDescription = document.getElementById('product-short-description');
       const decription = document.getElementById('accordion-inner');
       if (sortDescription && decription) {
-        sortDescription.innerHTML = product.shortDescription;
-        decription.innerHTML = product.description || "<p>Không có mô tả</p>";
+        sortDescription.innerHTML = product?.shortDescription;
+        decription.innerHTML = product?.description || '<p>Không có mô tả</p>';
       }
     }
     var coll = document.getElementsByClassName('collapsible-product');
@@ -63,7 +67,51 @@ const ProductDetail = ({ product }) => {
       });
     }
   }, []);
+  function NextArrow(props) {
+    const { onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className="flickity-button flickity-prev-next-button next"
+        type="button"
+        aria-label="Next"
+      >
+        <svg className="flickity-button-icon" viewBox="0 0 100 100">
+          <path
+            d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+            className="arrow"
+            transform="translate(100, 100) rotate(180) "
+          />
+        </svg>
+      </button>
+    );
+  }
+  function PrevArrow(props) {
+    const { onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className="flickity-button flickity-prev-next-button previous"
+        type="button"
+        aria-label="Previous"
+      >
+        <svg className="flickity-button-icon" viewBox="0 0 100 100">
+          <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" className="arrow" />
+        </svg>
+      </button>
+    );
+  }
 
+  const nextButton = () => {};
+  var settings = {
+    // arrows: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
+  };
   return (
     <div className="shop-container">
       <div className="container">
@@ -154,10 +202,7 @@ const ProductDetail = ({ product }) => {
                         tabIndex={0}
                       >
                         <div className="flickity-viewport" style={{ height: '524.133px', touchAction: 'pan-y' }}>
-                          <div
-                            className="flickity-slider"
-                            style={{ left: '0px', transform: 'translateX(0%)', display: 'flex', alignItems: 'center' }}
-                          >
+                          <div className="flickity-slider" style={{ display: 'flex', alignItems: 'center' }}>
                             <div
                               data-thumb="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
                               className="woocommerce-product-gallery__image slide first is-selected"
@@ -709,6 +754,7 @@ const ProductDetail = ({ product }) => {
               />
             </div>
           </div>
+
           <section className="section sp-lien-quan" id="section_1300839607">
             <div className="bg section-bg fill bg-fill bg-loaded">
               <div className="is-border" style={{ borderWidth: '1 0px 0px 0px' }}></div>
@@ -732,281 +778,60 @@ const ProductDetail = ({ product }) => {
                       <div className="flickity-viewport" style={{ height: '345.641px', touchAction: 'pan-y' }}>
                         <div
                           className="flickity-slider"
-                          style={{ left: '0px', transform: 'translateX(-120%)', display: 'flex', alignItems: 'center' }}
+                          style={{
+                            left: '0px',
+                            // transform: 'translateX(-120%)',
+                            display: 'flex',
+                            alignItems: 'center'
+                          }}
                         >
-                          <div
-                            className="col is-selected"
-                            aria-selected="true"
-                            style={{ position: 'absolute', left: '120%' }}
-                          >
-                            <div className="col-inner">
-                              <div className="badge-container absolute left top z-1"></div>
-                              <div className="product-small box has-hover box-normal box-text-bottom">
-                                <div className="box-image">
-                                  <div className="image-cover" style={{ paddingTop: '100%' }}>
-                                    <a href="https://nhaankhang.com/san-pham/chong-tham-pha-xi-mang-ak-seal/">
-                                      <img
-                                        width={300}
-                                        height={300}
-                                        src="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-300x300.png"
-                                        data-src="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-300x300.png"
-                                        className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
-                                        alt=""
-                                        loading="lazy"
-                                        srcSet="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-100x100.png 100w"
-                                        data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-100x100.png 100w"
-                                        sizes="(max-width: 300px) 100vw, 300px"
-                                      />{' '}
-                                    </a>
+                          <Slider {...settings}>
+                            {productCategories?.nodes?.map((item) => (
+                              <div className="col is-selected" aria-selected="true" style={{ minWidth: '248px' }}>
+                                <div className="col-inner">
+                                  <div className="badge-container absolute left top z-1"></div>
+                                  <div className="product-small box has-hover box-normal box-text-bottom">
+                                    <div className="box-image">
+                                      <div className="image-cover" style={{ paddingTop: '100%' }}>
+                                        <Link href={`/san-pham/${item.slug}`}>
+                                          <img
+                                            width={300}
+                                            height={300}
+                                            src={item.image.sourceUrl}
+                                            data-src="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-300x300.png"
+                                            className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
+                                            alt=""
+                                            loading="lazy"
+                                            srcSet={item.image.srcSet}
+                                            data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397559486_b260035510fc46d53f243313ce3f98fe-removebg-preview-100x100.png 100w"
+                                            sizes="(max-width: 300px) 100vw, 300px"
+                                          />
+                                        </Link>
+                                      </div>
+                                      <div className="image-tools top right show-on-hover"></div>
+                                      <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>
+                                    </div>
+                                    <div className="box-text text-center">
+                                      <div className="title-wrapper">
+                                        <p className="name product-title woocommerce-loop-product__title">
+                                          <Link href={`/san-pham/${item.slug}`}>{item.name}</Link>
+                                        </p>
+                                      </div>
+                                      <div className="price-wrapper">
+                                        <span className="price">
+                                          <span className="rrp-price">Giá cũ: </span>
+                                          <span className="amount">Giá: Liên hệ</span>
+                                        </span>
+                                      </div>{' '}
+                                    </div>
                                   </div>
-                                  <div className="image-tools top right show-on-hover"></div>
-                                  <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="title-wrapper">
-                                    <p className="name product-title woocommerce-loop-product__title">
-                                      <a href="https://nhaankhang.com/san-pham/chong-tham-pha-xi-mang-ak-seal/">
-                                        Chống thấm pha xi măng AK-Seal
-                                      </a>
-                                    </p>
-                                  </div>
-                                  <div className="price-wrapper">
-                                    <span className="price">
-                                      <span className="rrp-price">Giá cũ: </span>
-                                      <span className="amount">Giá: Liên hệ</span>
-                                    </span>
-                                  </div>{' '}
                                 </div>
                               </div>
-                            </div>
-                          </div>
-                          <div
-                            className="col is-selected"
-                            aria-selected="true"
-                            style={{ position: 'absolute', left: '140%' }}
-                          >
-                            <div className="col-inner">
-                              <div className="badge-container absolute left top z-1"></div>
-                              <div className="product-small box has-hover box-normal box-text-bottom">
-                                <div className="box-image">
-                                  <div className="image-cover" style={{ paddingTop: '100%' }}>
-                                    <a href="https://nhaankhang.com/san-pham/chong-tham-acrylic-ak-800/">
-                                      <img
-                                        width={300}
-                                        height={300}
-                                        src="https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-300x300.png"
-                                        data-src="https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-300x300.png"
-                                        className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
-                                        alt=""
-                                        loading="lazy"
-                                        srcSet="https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-100x100.png 100w"
-                                        data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238395209744_a0a7a8d2bab5da407b5bf221ca25c36b__1_-removebg-preview-1-100x100.png 100w"
-                                        sizes="(max-width: 300px) 100vw, 300px"
-                                      />{' '}
-                                    </a>
-                                  </div>
-                                  <div className="image-tools top right show-on-hover"></div>
-                                  <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="title-wrapper">
-                                    <p className="name product-title woocommerce-loop-product__title">
-                                      <a href="https://nhaankhang.com/san-pham/chong-tham-acrylic-ak-800/">
-                                        Chống Thấm Acrylic AK-800
-                                      </a>
-                                    </p>
-                                  </div>
-                                  <div className="price-wrapper">
-                                    <span className="price">
-                                      <span className="rrp-price">Giá cũ: </span>
-                                      <span className="amount">Giá: Liên hệ</span>
-                                    </span>
-                                  </div>{' '}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className="col is-selected"
-                            aria-selected="true"
-                            style={{ position: 'absolute', left: '160%' }}
-                          >
-                            <div className="col-inner">
-                              <div className="badge-container absolute left top z-1"></div>
-                              <div className="product-small box has-hover box-normal box-text-bottom">
-                                <div className="box-image">
-                                  <div className="image-cover" style={{ paddingTop: '100%' }}>
-                                    <a href="https://nhaankhang.com/san-pham/ak-pu1000-chong-tham-polyurethane-lo-thien/">
-                                      <img
-                                        width={300}
-                                        height={300}
-                                        src="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-300x300.png"
-                                        data-src="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-300x300.png"
-                                        className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
-                                        alt=""
-                                        loading="lazy"
-                                        srcSet="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png 100w"
-                                        data-srcset="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png 100w"
-                                        sizes="(max-width: 300px) 100vw, 300px"
-                                      />{' '}
-                                    </a>
-                                  </div>
-                                  <div className="image-tools top right show-on-hover"></div>
-                                  <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="title-wrapper">
-                                    <p className="name product-title woocommerce-loop-product__title">
-                                      <a href="https://nhaankhang.com/san-pham/ak-pu1000-chong-tham-polyurethane-lo-thien/">
-                                        AK- PU1000 (Chống thấm Polyurethane Gốc Nước)
-                                      </a>
-                                    </p>
-                                  </div>
-                                  <div className="price-wrapper">
-                                    <span className="price">
-                                      <span className="rrp-price">Giá cũ: </span>
-                                      <span className="amount">Giá: Liên hệ</span>
-                                    </span>
-                                  </div>{' '}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className="col is-selected"
-                            aria-selected="true"
-                            style={{ position: 'absolute', left: '180%' }}
-                          >
-                            <div className="col-inner">
-                              <div className="badge-container absolute left top z-1"></div>
-                              <div className="product-small box has-hover box-normal box-text-bottom">
-                                <div className="box-image">
-                                  <div className="image-cover" style={{ paddingTop: '100%' }}>
-                                    <a href="https://nhaankhang.com/san-pham/thanh-chen-khe-backer-rod/">
-                                      <img
-                                        width={300}
-                                        height={300}
-                                        src="https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-300x300.jpg"
-                                        data-src="https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-300x300.jpg"
-                                        className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
-                                        alt=""
-                                        loading="lazy"
-                                        srcSet="https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-300x300.jpg 300w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-150x150.jpg 150w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-768x768.jpg 768w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-600x600.jpg 600w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-100x100.jpg 100w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1.jpg 800w"
-                                        data-srcset="https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-300x300.jpg 300w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-150x150.jpg 150w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-768x768.jpg 768w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-600x600.jpg 600w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1-100x100.jpg 100w, https://nhaankhang.com/wp-content/uploads/2021/09/xop-chen-khe-backer-rod-1.jpg 800w"
-                                        sizes="(max-width: 300px) 100vw, 300px"
-                                      />{' '}
-                                    </a>
-                                  </div>
-                                  <div className="image-tools top right show-on-hover"></div>
-                                  <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="title-wrapper">
-                                    <p className="name product-title woocommerce-loop-product__title">
-                                      <a href="https://nhaankhang.com/san-pham/thanh-chen-khe-backer-rod/">
-                                        Backer rod Thanh Chèn Khe
-                                      </a>
-                                    </p>
-                                  </div>
-                                  <div className="price-wrapper">
-                                    <span className="price">
-                                      <span className="rrp-price">Giá cũ: </span>
-                                      <span className="amount">Giá: Liên hệ</span>
-                                    </span>
-                                  </div>{' '}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            className="col is-selected"
-                            aria-selected="true"
-                            style={{ position: 'absolute', left: '200%' }}
-                          >
-                            <div className="col-inner">
-                              <div className="badge-container absolute left top z-1"></div>
-                              <div className="product-small box has-hover box-normal box-text-bottom">
-                                <div className="box-image">
-                                  <div className="image-cover" style={{ paddingTop: '100%' }}>
-                                    <a href="https://nhaankhang.com/san-pham/chai-xit-chong-tham-ak-plex/">
-                                      <img
-                                        width={300}
-                                        height={300}
-                                        src="https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-300x300.jpg"
-                                        data-src="https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-300x300.jpg"
-                                        className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
-                                        alt=""
-                                        loading="lazy"
-                                        srcSet="https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-300x300.jpg 300w, https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-150x150.jpg 150w, https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-100x100.jpg 100w"
-                                        data-srcset="https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-300x300.jpg 300w, https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-150x150.jpg 150w, https://nhaankhang.com/wp-content/uploads/2021/04/7104da314b0bb955e01a-100x100.jpg 100w"
-                                        sizes="(max-width: 300px) 100vw, 300px"
-                                      />{' '}
-                                    </a>
-                                  </div>
-                                  <div className="image-tools top right show-on-hover"></div>
-                                  <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="title-wrapper">
-                                    <p className="name product-title woocommerce-loop-product__title">
-                                      <a href="https://nhaankhang.com/san-pham/chai-xit-chong-tham-ak-plex/">
-                                        Chai xịt chống thấm AK-Plex
-                                      </a>
-                                    </p>
-                                  </div>
-                                  <div className="price-wrapper">
-                                    <span className="price">
-                                      <span className="rrp-price">Giá cũ: </span>
-                                      <span className="amount">Giá: Liên hệ</span>
-                                    </span>
-                                  </div>{' '}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col" aria-selected="false" style={{ position: 'absolute', left: '100%' }}>
-                            <div className="col-inner">
-                              <div className="badge-container absolute left top z-1"></div>
-                              <div className="product-small box has-hover box-normal box-text-bottom">
-                                <div className="box-image">
-                                  <div className="image-cover" style={{ paddingTop: '100%' }}>
-                                    <a href="https://nhaankhang.com/san-pham/epoxy-ak-1401/">
-                                      <img
-                                        width={300}
-                                        height={300}
-                                        src="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20300%20300%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3C%2Fsvg%3E"
-                                        data-src="https://nhaankhang.com/wp-content/uploads/2020/03/AK-1401-300x300.jpg"
-                                        className="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                        alt=""
-                                        loading="lazy"
-                                        srcSet=""
-                                        data-srcset="https://nhaankhang.com/wp-content/uploads/2020/03/AK-1401-300x300.jpg 300w, https://nhaankhang.com/wp-content/uploads/2020/03/AK-1401-150x150.jpg 150w, https://nhaankhang.com/wp-content/uploads/2020/03/AK-1401-100x100.jpg 100w"
-                                        sizes="(max-width: 300px) 100vw, 300px"
-                                      />{' '}
-                                    </a>
-                                  </div>
-                                  <div className="image-tools top right show-on-hover"></div>
-                                  <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="title-wrapper">
-                                    <p className="name product-title woocommerce-loop-product__title">
-                                      <a href="https://nhaankhang.com/san-pham/epoxy-ak-1401/">Epoxy AK-1401</a>
-                                    </p>
-                                  </div>
-                                  <div className="price-wrapper">
-                                    <span className="price">
-                                      <span className="rrp-price">Giá cũ: </span>
-                                      <span className="amount">Giá: Liên hệ</span>
-                                    </span>
-                                  </div>{' '}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                            ))}
+                          </Slider>
                         </div>
                       </div>
-                      <button
+                      {/* <button
                         className="flickity-button flickity-prev-next-button previous"
                         type="button"
                         aria-label="Previous"
@@ -1027,7 +852,7 @@ const ProductDetail = ({ product }) => {
                             transform="translate(100, 100) rotate(180) "
                           />
                         </svg>
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
@@ -1040,6 +865,7 @@ const ProductDetail = ({ product }) => {
               }}
             />
           </section>
+
           <div id="product-sidebar" className="mfp-hide">
             <div className="sidebar-inner">
               <div className="hide-for-off-canvas" style={{ width: '100%' }}>
