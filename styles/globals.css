@@ -30,3 +30,6 @@
 .icon-angle-down {
   transition: all 0.5s;
 }
+.col-inner-news{
+    cursor: pointer;
+}

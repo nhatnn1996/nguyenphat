@@ -40,8 +40,8 @@ const News = (props) => {
           >
             {posts.map((item) => {
               return (
-                <div className="col post-item">
-                  <div className="col-inner">
+                <div className="col post-item post-item-news">
+                  <div className="col-inner col-inner-news">
                     <Link href={`/tin-tuc/${item.slug}`} className="plain">
                       <div className="box box-text-bottom box-blog-post has-hover">
                         <div className="box-image">

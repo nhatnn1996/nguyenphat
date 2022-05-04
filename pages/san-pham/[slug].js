@@ -26,7 +26,7 @@ const ProductDetail = ({ product }) => {
       const decription = document.getElementById('accordion-inner');
       if (sortDescription && decription) {
         sortDescription.innerHTML = product.shortDescription;
-        decription.innerHTML = product.description;
+        decription.innerHTML = product.description || "<p>Không có mô tả</p>";
       }
     }
     var coll = document.getElementsByClassName('collapsible-product');
