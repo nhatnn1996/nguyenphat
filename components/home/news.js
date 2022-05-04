@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const NewsCom = ({ data = [] }) => {
   // console.log(data);
   return (
@@ -12,19 +14,22 @@ export const NewsCom = ({ data = [] }) => {
               <div className="row row1-cot1" id="row-436134977">
                 <div id="col-1756564835" className="col medium-7 small-12 large-12">
                   <div className="col-inner shadown rounded">
-                    <div className="tieu-de-2 rounded">
+                    <div className="tieu-de-2 rounded flex">
                       <h2>
                         <span>Kiến thức</span>
                       </h2>
+                      <Link href="/san-pham" passHref>
+                        <div className="more-poduct">
+                          <i className="fa fa-angle-double-right" aria-hidden="true"></i>{' '}
+                          <span style={{ marginLeft: '10px' }}>Xem thêm</span>
+                        </div>
+                      </Link>
                     </div>
                     <div className=" wrap-items-news large-columns-1 medium-columns-1 small-columns-1 row-small">
                       {data.map((element) => (
                         <PostItem data={element} key={element.slug} />
                       ))}
                     </div>
-                    <p style={{ textAlign: 'center' }}>
-                      <a href="/"> + Xem thêm</a>
-                    </p>
                   </div>
                 </div>
               </div>

@@ -24,10 +24,6 @@ function MyApp({ Component, pageProps }) {
   const { menuItems } = pageProps;
   return (
     <ApolloProvider client={apolloClient}>
-      {/* <body
-        data-rsssl="1"
-        className="home page-template page-template-page-blank page-template-page-blank-php page page-id-2 theme-flatsome woocommerce-js lightbox"
-      > */}
       <HeadSEO />
       <div id="wrapper">
         <Header menuItems={menuItems} />

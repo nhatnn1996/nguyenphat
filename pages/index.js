@@ -5,7 +5,6 @@ import { homeGQL } from '@/geters/home';
 import { Testimomial } from '@/components/home/testimonial';
 
 export async function getStaticProps() {
-  console.log('vaooooooooo');
   const result = await apollo.query({ query: homeGQL });
   const home = {};
   Object.keys(result?.data || {}).map((key) => {
@@ -267,7 +266,7 @@ export default function Home(props) {
                 <div id="col-2132052730" className="col hide-for-small medium-3 small-6 large-3">
                   <div className="col-inner"></div>
                 </div>
-                <div id="col-1155753117" className="col medium-3 small-6 large-3">
+                <div id="col-1155753117" className="col medium-3 small-6 large-3 text-center">
                   <div className="col-inner">
                     <a
                       href="#"
@@ -279,7 +278,7 @@ export default function Home(props) {
                     </a>
                   </div>
                 </div>
-                <div id="col-764486781" className="col medium-3 small-6 large-3">
+                {/* <div id="col-764486781" className="col medium-3 small-6 large-3">
                   <div className="col-inner">
                     <a
                       href="#"
@@ -290,7 +289,7 @@ export default function Home(props) {
                       <i className="icon-gift" /> <span>Đăng ký làm đại lý</span>
                     </a>
                   </div>
-                </div>
+                </div> */}
                 <div id="col-2099641717" className="col hide-for-small medium-3 small-6 large-3">
                   <div className="col-inner"></div>
                 </div>

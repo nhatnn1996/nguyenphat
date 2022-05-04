@@ -1,10 +1,7 @@
 import { gql } from '@apollo/client';
 export const productGQL = gql`
   query Product($after: String, $search: String) {
-    products(
-      after: $after
-      first: 4
-      where: {orderby: {field: DATE}, search: $search}){
+    products(after: $after, first: 4, where: { orderby: { field: DATE }, search: $search }) {
       nodes {
         image {
           altText
@@ -25,12 +22,73 @@ export const productGQL = gql`
         status
         name
       }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+    productCategories {
+      nodes {
+        count
+        id
+        name
+        slug
+      }
     }
   }
 `;
+
+export const categoriesGQL = gql`
+  query Product($slug: ID!, $after: String) {
+    productCategories {
+      nodes {
+        count
+        id
+        name
+        slug
+      }
+    }
+    productCategory(id: $slug, idType: SLUG) {
+      id
+      name
+      slug
+      products(after: $after, first: 2, where: { orderby: { field: DATE } }) {
+        nodes {
+          image {
+            altText
+            fileSize
+            sizes
+            slug
+            sourceUrl
+            srcSet
+            title
+            uri
+          }
+          shortDescription
+          link
+          menuOrder
+          id
+          sku
+          slug
+          status
+          name
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
+          hasPreviousPage
+        }
+      }
+    }
+  }
+`;
+
 export const productDetailGQL = gql`
-  query Product($_id: ID!) {
-    product(id: $_id) {
+  query Product($slug: ID!) {
+    product(id: $slug, idType: SLUG) {
       image {
         altText
         fileSize
@@ -73,6 +131,19 @@ export const productDetailGQL = gql`
       slug
       status
       name
+    }
+  }
+`;
+
+export const allCategories = gql`
+  query allCategories {
+    productCategories {
+      nodes {
+        count
+        id
+        name
+        slug
+      }
     }
   }
 `;
