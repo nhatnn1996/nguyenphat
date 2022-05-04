@@ -1,12 +1,17 @@
 import { apollo } from '@/api/index';
 import React, { useEffect } from 'react';
-import Script from 'next/script';
-import { productDetailGQL, productGQL } from '@/geters/product';
+import { productDetailGQL, productGQL, productByCategoryGQL } from '@/geters/product';
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: productDetailGQL, variables: { _id: params.id } });
   const { product } = result?.data;
-  return { props: { product }, revalidate: 10 * 60 * 1000 };
+    const productCategory = await apollo.query({
+      query: productByCategoryGQL,
+      variables: { _id: product.productCategories.edges[0].node.id }
+    });
+    const { products } = productCategory.data.productCategory;
+    console.log(products,'products');
+  return { props: { product, products }, revalidate: 10 * 60 * 1000 };
 }
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: productGQL });
@@ -19,6 +24,7 @@ export async function getStaticPaths() {
   };
 }
 const ProductDetail = ({ product }) => {
+  console.log(product,'product');
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const sortDescription = document.getElementById('product-short-description');

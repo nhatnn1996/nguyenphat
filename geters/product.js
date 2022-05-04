@@ -73,3 +73,16 @@ export const productDetailGQL = gql`
     }
   }
 `;
+export const productByCategoryGQL = gql`
+  query Product($_id: ID!) {
+    productCategory(id: $_id) {
+      name
+      slug
+      products {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+`;
