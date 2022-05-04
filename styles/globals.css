@@ -41,3 +41,40 @@
   border: 1px solid rgb(221, 221, 221);
   min-height: 330px;
 }
+.product_list_widget li {
+  cursor: pointer;
+}
+.product_list_widget .product-title {
+  color: #0082c8;
+}
+.product_list_widget .product-title:hover {
+  color: black;
+}
+.zoom-popup {
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 11;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.zoom-popup img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  margin-top: 50px;
+}
+.close-zoom {
+  right: 0;
+  position: absolute;
+  margin: 25px 25px 0 0;
+  z-index: 111111;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+.close-zoom::before {
+  content: '\2715';
+  
+}

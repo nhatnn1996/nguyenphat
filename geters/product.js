@@ -109,13 +109,13 @@ export const productDetailGQL = gql`
               id
               slug
               image {
-              sourceUrl
-              srcSet
-              title
-              uri
-              sizes
-              link
-            }
+                sourceUrl
+                srcSet
+                title
+                uri
+                sizes
+                link
+              }
             }
           }
         }
@@ -165,6 +165,26 @@ export const allCategories = gql`
         id
         name
         slug
+      }
+    }
+  }
+`;
+
+export const productsNewGQL = gql`
+  query NewProduct {
+    products(first: 6) {
+      edges {
+        node {
+          id
+          name
+          slug
+          image {
+            sourceUrl
+            srcSet
+            title
+            uri
+          }
+        }
       }
     }
   }
