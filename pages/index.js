@@ -23,9 +23,9 @@ export async function getStaticProps() {
       const listCategory = element.productCategories?.edges || [];
       const item = listCategory.find((element) => element.node.slug === 'san-pham-chong-tham');
       if (item) {
-        if (waterproofing.length < 8) waterproofing.push(element);
+        if (waterproofing.length < 10) waterproofing.push(element);
       } else {
-        if (accessories.length < 8) accessories.push(element);
+        if (accessories.length < 10) accessories.push(element);
       }
     });
 
@@ -34,11 +34,7 @@ export async function getStaticProps() {
 
 export default function Home(props) {
   const { posts, waterproofing, accessories, news } = props;
-  // console.log(news);
   return (
-    // <a className="skip-link screen-reader-text" href="#main">
-    //   Skip to content
-    // </a>
     <>
       <main id="main" className="">
         <div id="content" role="main" className="content-area">
@@ -262,38 +258,6 @@ export default function Home(props) {
                   </div>
                 </div>
               </div>
-              <div className="row" id="row-2062644196">
-                <div id="col-2132052730" className="col hide-for-small medium-3 small-6 large-3">
-                  <div className="col-inner"></div>
-                </div>
-                <div id="col-1155753117" className="col medium-3 small-6 large-3 text-center">
-                  <div className="col-inner">
-                    <a
-                      href="#"
-                      target="_self"
-                      className="button alert is-large lowercase expand"
-                      style={{ borderRadius: 4 }}
-                    >
-                      <i className="icon-star" /> <span>Tư vấn bán hàng</span>
-                    </a>
-                  </div>
-                </div>
-                {/* <div id="col-764486781" className="col medium-3 small-6 large-3">
-                  <div className="col-inner">
-                    <a
-                      href="#"
-                      target="_self"
-                      className="button success is-large lowercase expand"
-                      style={{ borderRadius: 4 }}
-                    >
-                      <i className="icon-gift" /> <span>Đăng ký làm đại lý</span>
-                    </a>
-                  </div>
-                </div> */}
-                <div id="col-2099641717" className="col hide-for-small medium-3 small-6 large-3">
-                  <div className="col-inner"></div>
-                </div>
-              </div>
             </div>
             <style
               dangerouslySetInnerHTML={{
@@ -306,7 +270,7 @@ export default function Home(props) {
           <ProductsCom data={accessories} />
           <Video />
 
-          <section className="section cam-ket" id="section_602094206">
+          <section className="section cam-ket">
             <div className="bg section-bg fill bg-fill  ">
               <div className="section-bg-overlay absolute fill" />
             </div>
@@ -333,7 +297,7 @@ export default function Home(props) {
                 </div>
                 <div id="col-13678866" className="col medium-10 small-12 large-10">
                   <div className="col-inner">
-                    <div className="row" id="row-821149920">
+                    <div className="row justify-center" id="row-821149920">
                       <div id="col-633674386" className="col medium-4 small-12 large-4">
                         <div className="col-inner">
                           <a
@@ -343,18 +307,6 @@ export default function Home(props) {
                             style={{ borderRadius: 99 }}
                           >
                             <i className="icon-phone" /> <span>Hotline: 028.37.27.3679</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div id="col-1854550985" className="col medium-4 small-12 large-4">
-                        <div className="col-inner">
-                          <a
-                            href="tel:+02837273679"
-                            target="_self"
-                            className="button success is-large lowercase expand"
-                            style={{ borderRadius: 99 }}
-                          >
-                            <i className="icon-checkmark" /> <span>chongthamnguyenphat@gmail.com</span>
                           </a>
                         </div>
                       </div>
@@ -378,12 +330,6 @@ export default function Home(props) {
                 </div>
               </div>
             </div>
-            <style
-              dangerouslySetInnerHTML={{
-                __html:
-                  '\n#section_602094206 {\n  padding-top: 35px;\n  padding-bottom: 35px;\n  background-color: rgb(0, 145, 209);\n}\n#section_602094206 .section-bg-overlay {\n  background-color: rgba(0, 0, 0, 0.77);\n}\n#section_602094206 .section-bg.bg-loaded {\n  background-image: url(https://nhaankhang.com/wp-content/uploads/2018/03/slider-img3-1.jpg);\n}\n'
-              }}
-            />
           </section>
           <Testimomial />
           <NewsCom data={news} />

@@ -115,6 +115,9 @@ strong {
 
 .header-main {
   background: #072953;
+  padding: 10px 0px;
+  height: auto !important;
+  min-height: 95px;
 }
 
 .icon-menu:before {
@@ -223,6 +226,14 @@ strong {
 
 .danh-muc h2 {
   margin: 1rem 0;
+}
+
+.cam-ket {
+  background: url('/images/bg-testimonial.jpg');
+  background-size: cover;
+  background-position: bottom;
+  padding: 3rem 0;
+  background-attachment: fixed;
 }
 
 @media only screen and (max-width: 600px) {
