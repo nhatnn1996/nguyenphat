@@ -13,7 +13,6 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }) {
-  console.log('product');
   const result = await apollo.query({ query: productDetailGQL, variables: { slug: params.slug } });
 
   const { product } = result?.data;
@@ -29,6 +28,39 @@ const ProductDetail = ({ product }) => {
         sortDescription.innerHTML = product.shortDescription;
         decription.innerHTML = product.description;
       }
+    }
+    var coll = document.getElementsByClassName('collapsible-product');
+    var tagI = document.getElementsByClassName('icon-angle-down');
+    var i;
+    for (i = 0; i < coll.length; i++) {
+      var contentButton = coll[0].nextElementSibling;
+      if (contentButton.style.display === 'block') {
+        contentButton.style.display = 'none';
+        if (tagI) {
+          tagI[0].style.transform = 'rotate(0deg)';
+        }
+      } else {
+        contentButton.style.display = 'block';
+        if (tagI) {
+          tagI[0].style.transform = 'rotate(180deg)';
+        }
+      }
+      coll[i].addEventListener('click', function () {
+        this.classList.toggle('active');
+        var content = this.nextElementSibling;
+        var tagI = this.getElementsByClassName('icon-angle-down');
+        if (content.style.display === 'block') {
+          content.style.display = 'none';
+          if (tagI) {
+            tagI[0].style.transform = 'rotate(0deg)';
+          }
+        } else {
+          content.style.display = 'block';
+          if (tagI) {
+            tagI[0].style.transform = 'rotate(180deg)';
+          }
+        }
+      });
     }
   }, []);
 
@@ -246,7 +278,7 @@ const ProductDetail = ({ product }) => {
                                   src="https://nhaankhang.com/wp-content/uploads/2022/03/8238670221663919663.mp4?_=1"
                                   style={{ width: '480px', height: '854px' }}
                                 >
-                                  <source type="video/mp4" src={product.shortDescription.replace()} />
+                                  {/* <source type="video/mp4" src={product.shortDescription.replace()} /> */}
                                   <a href="https://nhaankhang.com/wp-content/uploads/2022/03/8238670221663919663.mp4">
                                     https://nhaankhang.com/wp-content/uploads/2022/03/8238670221663919663.mp4
                                   </a>
@@ -382,158 +414,150 @@ const ProductDetail = ({ product }) => {
             <div id="col-1754419614" className="col medium-8 small-12 large-8">
               <div className="col-inner">
                 <div className="product-page-accordian">
-                  <div className="accordion" rel={1}>
-                    <div className="accordion-item">
-                      <a className="accordion-title plain active" href="javascript:void();" aria-expanded="false">
-                        <button className="toggle">
-                          <i className="icon-angle-down" />
-                        </button>
-                        Mô tả{' '}
-                      </a>
-                      <div className="accordion-inner" id="accordion-inner" style={{ display: 'block' }}></div>
-                    </div>
-                    <div className="accordion-item">
-                      <a className="accordion-title plain" href="javascript:void();" aria-expanded="false">
-                        <button className="toggle">
-                          <i className="icon-angle-down" />
-                        </button>
-                        Đánh giá (0){' '}
-                      </a>
-                      <div className="accordion-inner" style={{ display: 'none' }}>
-                        <div id="reviews" className="woocommerce-Reviews row">
-                          <div id="comments" className="col large-12">
-                            <h3 className="woocommerce-Reviews-title normal">Đánh giá </h3>
-                            <p className="woocommerce-noreviews">Chưa có đánh giá nào.</p>
-                          </div>
-                          <div id="review_form_wrapper" className="large-12 col">
-                            <div id="review_form" className="col-inner">
-                              <div className="review-form-inner has-border">
-                                <div id="respond" className="comment-respond">
-                                  <h3 id="reply-title" className="comment-reply-title">
-                                    Hãy là người đầu tiên nhận xét “AK- PU1000 (Chống thấm Polyurethane Gốc Nước)”{' '}
-                                    <small>
-                                      <a
-                                        rel="nofollow"
-                                        id="cancel-comment-reply-link"
-                                        href="/san-pham/ak-pu1000-chong-tham-polyurethane-lo-thien/#respond"
-                                        style={{ display: 'none' }}
-                                      >
-                                        Hủy
-                                      </a>
-                                    </small>
-                                  </h3>
-                                  <form
-                                    action="https://nhaankhang.com/wp-comments-post.php"
-                                    method="post"
-                                    id="commentform"
-                                    className="comment-form"
-                                    noValidate
-                                  >
-                                    <div className="comment-form-rating">
-                                      <label htmlFor="rating">
-                                        Đánh giá của bạn&nbsp;<span className="required">*</span>
-                                      </label>
-                                      <p className="stars">
+                  <button type="button" className="collapsible-product active">
+                    <i className="icon-angle-down" />
+                    Mô tả
+                  </button>
+                  <div className="content-collapsible-product">
+                    <div id="accordion-inner" className="accordion-inner" style={{ display: 'block' }}></div>
+                  </div>
+                  <button type="button" className="collapsible-product">
+                    <i className="icon-angle-down" />
+                    Đánh giá
+                  </button>
+                  <div className="content-collapsible-product">
+                    <div className="accordion-inner" style={{ display: 'block' }}>
+                      <div id="reviews" className="woocommerce-Reviews row">
+                        <div id="comments" className="col large-12">
+                          <h3 className="woocommerce-Reviews-title normal">Đánh giá </h3>
+                          <p className="woocommerce-noreviews">Chưa có đánh giá nào.</p>
+                        </div>
+                        <div id="review_form_wrapper" className="large-12 col">
+                          <div id="review_form" className="col-inner">
+                            <div className="review-form-inner has-border">
+                              <div id="respond" className="comment-respond">
+                                <h3 id="reply-title" className="comment-reply-title">
+                                  Hãy là người đầu tiên nhận xét {product?.name}
+                                  <small>
+                                    <a
+                                      rel="nofollow"
+                                      id="cancel-comment-reply-link"
+                                      href="/san-pham/ak-pu1000-chong-tham-polyurethane-lo-thien/#respond"
+                                      style={{ display: 'none' }}
+                                    >
+                                      Hủy
+                                    </a>
+                                  </small>
+                                </h3>
+                                <form
+                                  action="https://nhaankhang.com/wp-comments-post.php"
+                                  method="post"
+                                  id="commentform"
+                                  className="comment-form"
+                                  noValidate
+                                >
+                                  <div className="comment-form-rating">
+                                    <label htmlFor="rating">
+                                      Đánh giá của bạn&nbsp;<span className="required">*</span>
+                                    </label>
+                                    <p className="stars">
+                                      {' '}
+                                      <span>
                                         {' '}
-                                        <span>
-                                          {' '}
-                                          <a className="star-1" href="#">
-                                            1
-                                          </a>{' '}
-                                          <a className="star-2" href="#">
-                                            2
-                                          </a>{' '}
-                                          <a className="star-3" href="#">
-                                            3
-                                          </a>{' '}
-                                          <a className="star-4" href="#">
-                                            4
-                                          </a>{' '}
-                                          <a className="star-5" href="#">
-                                            5
-                                          </a>{' '}
-                                        </span>{' '}
-                                      </p>
-                                      <select name="rating" id="rating" required style={{ display: 'none' }}>
-                                        <option value>Xếp hạng…</option>
-                                        <option value={5}>Rất tốt</option>
-                                        <option value={4}>Tốt</option>
-                                        <option value={3}>Trung bình</option>
-                                        <option value={2}>Không tệ</option>
-                                        <option value={1}>Rất tệ</option>
-                                      </select>
-                                    </div>
-                                    <p className="comment-form-comment">
-                                      <label htmlFor="comment">
-                                        Nhận xét của bạn&nbsp;<span className="required">*</span>
-                                      </label>
-                                      <textarea
-                                        id="comment"
-                                        name="comment"
-                                        cols={45}
-                                        rows={8}
-                                        required
-                                        defaultValue={''}
-                                      />
+                                        <a className="star-1" href="#">
+                                          1
+                                        </a>{' '}
+                                        <a className="star-2" href="#">
+                                          2
+                                        </a>{' '}
+                                        <a className="star-3" href="#">
+                                          3
+                                        </a>{' '}
+                                        <a className="star-4" href="#">
+                                          4
+                                        </a>{' '}
+                                        <a className="star-5" href="#">
+                                          5
+                                        </a>{' '}
+                                      </span>{' '}
                                     </p>
-                                    <p className="comment-form-author">
-                                      <label htmlFor="author">
-                                        Tên&nbsp;<span className="required">*</span>
-                                      </label>
-                                      <input id="author" name="author" type="text" defaultValue size={30} required />
-                                    </p>
-                                    <p className="comment-form-email">
-                                      <label htmlFor="email">
-                                        Email&nbsp;<span className="required">*</span>
-                                      </label>
-                                      <input id="email" name="email" type="email" defaultValue size={30} required />
-                                    </p>
-                                    <p className="comment-form-cookies-consent">
-                                      <input
-                                        id="wp-comment-cookies-consent"
-                                        name="wp-comment-cookies-consent"
-                                        type="checkbox"
-                                        defaultValue="yes"
-                                      />{' '}
-                                      <label htmlFor="wp-comment-cookies-consent">
-                                        Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế
-                                        tiếp của tôi.
-                                      </label>
-                                    </p>
-                                    <p className="form-submit">
-                                      <input
-                                        name="submit"
-                                        type="submit"
-                                        id="submit"
-                                        className="submit"
-                                        defaultValue="Gửi đi"
-                                      />{' '}
-                                      <input
-                                        type="hidden"
-                                        name="comment_post_ID"
-                                        defaultValue={3697}
-                                        id="comment_post_ID"
-                                      />
-                                      <input type="hidden" name="comment_parent" id="comment_parent" defaultValue={0} />
-                                    </p>
-                                  </form>{' '}
-                                </div>
-                                {/* #respond */}
+                                    <select name="rating" id="rating" required style={{ display: 'none' }}>
+                                      <option value>Xếp hạng…</option>
+                                      <option value={5}>Rất tốt</option>
+                                      <option value={4}>Tốt</option>
+                                      <option value={3}>Trung bình</option>
+                                      <option value={2}>Không tệ</option>
+                                      <option value={1}>Rất tệ</option>
+                                    </select>
+                                  </div>
+                                  <p className="comment-form-comment">
+                                    <label htmlFor="comment">
+                                      Nhận xét của bạn&nbsp;<span className="required">*</span>
+                                    </label>
+                                    <textarea
+                                      id="comment"
+                                      name="comment"
+                                      cols={45}
+                                      rows={8}
+                                      required
+                                      defaultValue={''}
+                                    />
+                                  </p>
+                                  <p className="comment-form-author">
+                                    <label htmlFor="author">
+                                      Tên&nbsp;<span className="required">*</span>
+                                    </label>
+                                    <input id="author" name="author" type="text" defaultValue="" size={30} required />
+                                  </p>
+                                  <p className="comment-form-email">
+                                    <label htmlFor="email">
+                                      Email&nbsp;<span className="required">*</span>
+                                    </label>
+                                    <input id="email" name="email" type="email" defaultValue="" size={30} required />
+                                  </p>
+                                  <p className="comment-form-cookies-consent">
+                                    <input
+                                      id="wp-comment-cookies-consent"
+                                      name="wp-comment-cookies-consent"
+                                      type="checkbox"
+                                      defaultValue="yes"
+                                    />{' '}
+                                    <label htmlFor="wp-comment-cookies-consent">
+                                      Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế
+                                      tiếp của tôi.
+                                    </label>
+                                  </p>
+                                  <p className="form-submit">
+                                    <input
+                                      name="submit"
+                                      type="submit"
+                                      id="submit"
+                                      className="submit"
+                                      defaultValue="Gửi đi"
+                                    />{' '}
+                                    <input
+                                      type="hidden"
+                                      name="comment_post_ID"
+                                      defaultValue={3697}
+                                      id="comment_post_ID"
+                                    />
+                                    <input type="hidden" name="comment_parent" id="comment_parent" defaultValue={0} />
+                                  </p>
+                                </form>{' '}
                               </div>
+                              {/* #respond */}
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="accordion-item">
-                      <a className="accordion-title plain" href="javascript:void();">
-                        <button className="toggle">
-                          <i className="icon-angle-down" />
-                        </button>
-                        Hướng dẫn thanh toán{' '}
-                      </a>
-                      <div className="accordion-inner"></div>
-                    </div>
+                  </div>
+                  <button type="button" className="collapsible-product">
+                    <i className="icon-angle-down" />
+                    Hướng dẫn thanh toán
+                  </button>
+                  <div className="content-collapsible-product">
+                    <p></p>
                   </div>
                 </div>
               </div>

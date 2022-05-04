@@ -1,0 +1,32 @@
+.collapsible-product {
+  cursor: pointer;
+  padding: 5px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  font-weight: unset;
+  outline: none;
+  font-size: 110%;
+  text-transform: unset;
+  color: black;
+  border-top: 1px solid #ddd;
+  margin: unset;
+}
+.collapsible-product i {
+  font-size: 1.8em;
+  margin-right: 15px;
+}
+.product-page-accordian .active {
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+  border-color: #0082c8;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.content-collapsible-product {
+  display: none;
+  overflow: hidden;
+}
+
+.icon-angle-down {
+  transition: all 0.5s;
+}
