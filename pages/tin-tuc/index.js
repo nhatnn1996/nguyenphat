@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { apollo } from '@/api/index';
-import { newsGQL } from '@/geters/news';
+import { newsGQL, newNewsGQL } from '@/geters/news';
 import moment from 'moment';
 import InfoRight from '@/components/info-right';
+import { productsNewGQL } from '@/geters/product';
 export async function getStaticProps() {
   const result = await apollo.query({ query: newsGQL });
   const props = {};
@@ -12,18 +13,24 @@ export async function getStaticProps() {
     props[key] = element?.nodes || [];
   });
   const { posts } = props;
-  return { props: { posts }, revalidate: 10 * 60 * 1000 };
+  const newProducts = await apollo.query({ query: productsNewGQL });
+  const newProds = newProducts?.data?.products?.edges;
+
+  const newNews = await apollo.query({ query: newNewsGQL });
+  const newNewsData = newNews?.data?.posts?.nodes;
+
+  return { props: { posts, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
 }
 
 const News = (props) => {
-  const { posts } = props;
+  const { posts, newProds, newNewsData } = props;
 
   const returnInnerHtml = (html, slug) => {
     setTimeout(() => {
       if (typeof window !== 'undefined') {
         const sortDescription = document.getElementById(`from_the_blog_excerpt-${slug}`);
         if (sortDescription) {
-          sortDescription.innerHTML = html;
+          sortDescription.innerHTML = html.slice(0, 200) + ' [...]';
         }
       }
     }, 0);
@@ -36,7 +43,7 @@ const News = (props) => {
             id="row-1938324069"
             className="row large-columns-3 medium-columns- small-columns-1 row-masonry"
             data-packery-options='{"itemSelector": ".col", "gutter": 0, "presentageWidth" : true}'
-            style={{ position: 'relative', height: '2397.84px' }}
+            style={{ position: 'relative', display: 'flex' }}
           >
             {posts.map((item) => {
               return (
@@ -51,12 +58,10 @@ const News = (props) => {
                                 width={221}
                                 height={300}
                                 src={item.featuredImage?.node?.sourceUrl}
-                                // data-src={item.sourceUrl}
                                 className="attachment-medium size-medium wp-post-image lazy-load-active"
                                 alt={item.title}
                                 loading="lazy"
                                 srcSet={item.featuredImage?.node?.srcSet}
-                                // data-srcset={item.sourceUrl}
                                 sizes="(max-width: 221px) 100vw, 221px"
                               />
                             </div>
@@ -70,7 +75,7 @@ const News = (props) => {
                             <p className="from_the_blog_excerpt" id={`from_the_blog_excerpt-${item.slug}`}>
                               {returnInnerHtml(item.content, item.slug)}
                             </p>
-                            <p className="from_the_blog_comments uppercase is-xsmall">4 Comments </p>
+                            {/* <p className="from_the_blog_comments uppercase is-xsmall">4 Comments </p> */}
                           </div>
                         </div>
                         <div className="badge absolute top post-date badge-square">
@@ -88,7 +93,7 @@ const News = (props) => {
             })}
           </div>
         </div>
-        <InfoRight />
+        <InfoRight newProds={newProds} newNewsData={newNewsData} />
       </div>
     </div>
   );

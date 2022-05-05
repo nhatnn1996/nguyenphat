@@ -88,6 +88,7 @@ const Product = ({ products, productCategories }) => {
               <div className="products row row-small large-columns-4 medium-columns-3 small-columns-2 has-equal-box-heights">
                 {nodes.map((item) => (
                   <motion.div
+                    
                     key={item.id}
                     variants={variants} // Pass the variant object into Framer Motion
                     initial="hidden" // Set the initial state to variants.hidden
@@ -96,9 +97,9 @@ const Product = ({ products, productCategories }) => {
                     transition={{ type: 'ease-in-out', duration: 0.3 }} // Set the transition to linear
                     className="product-small col has-hover product type-product post-3697 status-publish first instock product_cat-xu-ly-ro-ri-nuoc product_cat-sp-chong-tham-test product_tag-chong-tham-san-mai product_tag-chong-tham-san-thuong product_tag-keo-chong-tham-lo-thien product_tag-pu-goc-nuoc product_tag-pu-he-nuoc has-post-thumbnail shipping-taxable product-type-simple"
                   >
-                    <div className="col-inner">
+                    <div className="col-inner" style={{ cursor: 'poiter' }}>
                       <div className="badge-container absolute left top z-1"></div>
-                      <div className="product-small box ">
+                      <div className="product-small box">
                         <div className="box-image">
                           <div className="image-none">
                             <Link href={`/san-pham/${item.slug}`}>

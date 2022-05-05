@@ -29,6 +29,27 @@ export const newsGQL = gql`
     }
   }
 `;
+export const newNewsGQL = gql`
+  query News {
+    posts(first: 10) {
+    nodes {
+      featuredImage {
+        node {
+          sourceUrl
+          uri
+          title
+          srcSet
+        }
+      }
+      slug
+      title
+      uri
+      date
+      content
+    }
+  }
+  }
+`;
 export const bynewsGQL = gql`
   query ByNews($slug: String!) {
     postBy(slug: $slug) {
