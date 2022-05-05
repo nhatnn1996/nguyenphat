@@ -5,6 +5,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { useRef } from 'react';
 
+const testimonials = [
+  { img: '/images/customer-1.jpeg', name: 'chị Hồ Thị Ngọc Thảo ' },
+  { img: '/images/customer-2.jpeg', name: 'anh Đặng Tuấn Vũ' },
+  { img: '/images/customer-3.png', name: 'anh Nguyễn Ngọc Nhất ' },
+  { img: '/images/customer-4.jpeg', name: 'chị Trần Thị Kim Oanh ' }
+];
+
 export const Testimomial = ({ data }) => {
   const slideRef = useRef({});
   return (
@@ -37,43 +44,45 @@ export const Testimomial = ({ data }) => {
                   }}
                   loop
                 >
-                  {[1, 2, 3].map((element) => (
-                    <SwiperSlide key={element}>
-                      <div>
-                        <div className="col-inner">
-                          <div className="icon-box featured-box icon-box-left text-left">
-                            <div className="icon-box-img" style={{ width: 70, height: 70 }}>
-                              <div className="icon">
-                                <div className="icon-inner">
-                                  <img
-                                    width={69}
-                                    height={69}
-                                    src="https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/269703051_2157214457750670_4429844516692349408_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ZDvIP6qd1eAAX_kOvsG&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT8Y4UUAiBSfvnhTC8VfA4iMaJHgs-pFmJ5-7K2aLoGwvA&oe=62712B26"
-                                    data-src="https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/269703051_2157214457750670_4429844516692349408_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ZDvIP6qd1eAAX_kOvsG&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT8Y4UUAiBSfvnhTC8VfA4iMaJHgs-pFmJ5-7K2aLoGwvA&oe=62712B26"
-                                    className="lazy-load attachment-medium size-medium"
-                                    alt=""
-                                    loading="lazy"
-                                  />{' '}
+                  {[1, 2, 3, 4].map((element, index) => {
+                    const item = testimonials[index];
+                    return (
+                      <SwiperSlide key={element}>
+                        <div>
+                          <div className="col-inner">
+                            <div className="icon-box featured-box icon-box-left text-left">
+                              <div className="icon-box-img" style={{ width: 70, height: 70 }}>
+                                <div className="icon">
+                                  <div className="icon-inner">
+                                    <img
+                                      width={69}
+                                      height={69}
+                                      src={item?.img}
+                                      className="lazy-load attachment-medium size-medium"
+                                      alt="Danh gia cua khach hang"
+                                      loading="lazy"
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className="icon-box-text last-reset">
-                              <div className="star-rating" />
-                              <p>
-                                Là khách hàng lâu năm của công ty, tôi rất hài lòng về sản phẩm và dịch vụ chống thấm
-                                của Nhà An Khang
-                              </p>
-                              <p>
-                                <span style={{ color: '#000000' }}>
-                                  <strong className="testimonial-name test_name">anh Hồ Quang Tuấn</strong>{' '}
-                                </span>
-                              </p>
+                              <div className="icon-box-text last-reset">
+                                <div className="star-rating" />
+                                <p>
+                                  Là khách hàng lâu năm của công ty, tôi rất hài lòng về sản phẩm và dịch vụ chống thấm
+                                  của Nhà An Khang
+                                </p>
+                                <p>
+                                  <span style={{ color: '#000000' }}>
+                                    <strong className="testimonial-name test_name">{item?.name}</strong>
+                                  </span>
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
                 <div className="arrow">
                   <div

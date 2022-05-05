@@ -36,7 +36,7 @@ export const homeGQL = gql`
         postId
       }
     }
-    products {
+    products(first: 1000) {
       nodes {
         image {
           altText
