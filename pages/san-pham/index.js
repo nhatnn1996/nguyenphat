@@ -42,17 +42,17 @@ const Product = ({ products, productCategories }) => {
   return (
     <div className="mt-3">
       <div className="shop-page-title category-page-title page-title snipcss-HrhkE container">
+        {/* <div className="is-small mt-2" style={{ marginTop: '20px' }}>
+          <nav className="woocommerce-breadcrumb breadcrumbs uppercase snip-nav">
+            <a href="https://nhaankhang.com" className="snip-a">
+              Trang chủ
+            </a>
+            <span className="divider">/</span>
+            Sản phẩm
+          </nav>
+        </div> */}
         <div className="page-title-inner flex-row  medium-flex-wrap ">
           <div className="flex-col flex-grow medium-text-center">
-            <div className="is-small mt-2">
-              <nav className="woocommerce-breadcrumb breadcrumbs uppercase snip-nav">
-                <a href="https://nhaankhang.com" className="snip-a">
-                  Trang chủ
-                </a>
-                <span className="divider">/</span>
-                Cửa hàng
-              </nav>
-            </div>
             {/* <div className="category-filtering category-filter-row mt-2">
               <a href="#" data-open="#shop-sidebar" data-pos="left" className="filter-button uppercase plain snip-a">
                 <i className="icon-equalizer"> </i>
@@ -88,7 +88,6 @@ const Product = ({ products, productCategories }) => {
               <div className="products row row-small large-columns-4 medium-columns-3 small-columns-2 has-equal-box-heights">
                 {nodes.map((item) => (
                   <motion.div
-                    
                     key={item.id}
                     variants={variants} // Pass the variant object into Framer Motion
                     initial="hidden" // Set the initial state to variants.hidden

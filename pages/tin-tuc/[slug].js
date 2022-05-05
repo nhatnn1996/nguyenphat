@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { apollo } from '@/api/index';
-import { bynewsGQL, newsGQL } from '@/geters/news';
+import { bynewsGQL, newsGQL, newNewsGQL } from '@/geters/news';
 import { productsNewGQL } from '@/geters/product';
 import InfoRight from '@/components/info-right';
 
@@ -9,7 +9,10 @@ export async function getStaticProps({ params }) {
   const { postBy } = result?.data;
   const newProducts = await apollo.query({ query: productsNewGQL });
   const newProds = newProducts?.data?.products?.edges;
-  return { props: { postBy, newProds }, revalidate: 10 * 60 * 1000 };
+
+  const newNews = await apollo.query({ query: newNewsGQL });
+  const newNewsData = newNews?.data?.posts?.nodes;
+  return { props: { postBy, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
 }
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: newsGQL });
@@ -21,7 +24,7 @@ export async function getStaticPaths() {
     fallback: true
   };
 }
-const NewsDetail = ({ postBy, newProds }) => {
+const NewsDetail = ({ postBy, newProds, newNewsData }) => {
   const data = postBy;
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -224,7 +227,7 @@ const NewsDetail = ({ postBy, newProds }) => {
               </div>
             </div>
           </div>
-          <InfoRight newProds={newProds} />
+          <InfoRight newProds={newProds} newNewsData={newNewsData} />
         </div>
       </div>
     </div>

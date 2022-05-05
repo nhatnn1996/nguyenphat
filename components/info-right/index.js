@@ -148,17 +148,13 @@ const InfoRight = ({ newProds, newNewsData }) => {
                     <div className="tieu-de">Sản phẩm mới nhất</div>
                     <ul className="product_list_widget">
                       {newProds.map((item) => (
-                        <li
-                          style={{
-                            margin: '10px 0px',
-                            boxShadow: '0 1px 3px -2px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%)'
-                          }}
-                        >
-                          <a
-                            href="https://nhaankhang.com/san-pham/chong-tham-pha-xi-mang-ak-seal/"
-                            title="Chống thấm pha xi măng AK-Seal"
+                        <Link href={`/san-pham/${item.node.slug}`} title="Chống thấm pha xi măng AK-Seal">
+                          <li
+                            style={{
+                              margin: '10px 0px',
+                              boxShadow: '0 1px 3px -2px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%)'
+                            }}
                           >
-                            <br />
                             <img
                               width={100}
                               height={100}
@@ -168,13 +164,13 @@ const InfoRight = ({ newProds, newNewsData }) => {
                               loading="lazy"
                               srcSet={item.node.image.srcSet}
                               sizes="(max-width: 100px) 100vw, 100px"
-                            />{' '}
+                            />
+
                             <span className="product-title">{item.node.name}</span>
                             <br />
-                          </a>
-                          <br />
-                          <span className="amount">Giá: Liên hệ</span>
-                        </li>
+                            <span className="amount">Giá: Liên hệ</span>
+                          </li>
+                        </Link>
                       ))}
                     </ul>
                   </div>
