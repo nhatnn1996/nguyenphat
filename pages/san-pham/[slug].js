@@ -71,6 +71,13 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
       });
     }
   }, []);
+  useEffect(() => {
+    document.addEventListener('keydown', (evt) => {
+      if (evt.key === 'Escape') {
+        setZoomProduct(false);
+      }
+    });
+  }, []);
   function NextArrow(props) {
     const { onClick } = props;
     return (
@@ -126,7 +133,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
           <div className="zoom-popup">
             <img src={imageZoom}></img>
           </div>
-          <p onClick={() => setZoomProduct(false)} className="close-zoom">{" "}</p>
+          <p onClick={() => setZoomProduct(false)} className="close-zoom">
+            {' '}
+          </p>
         </>
       )}
       <div className="shop-container">
