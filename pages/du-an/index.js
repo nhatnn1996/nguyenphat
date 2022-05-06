@@ -6,7 +6,7 @@ import moment from 'moment';
 import InfoRight from '@/components/info-right';
 import { productsNewGQL } from '@/geters/product';
 export async function getStaticProps() {
-  const result = await apollo.query({ query: newsGQL, variables: { categoryName: 'Tin tức' } });
+  const result = await apollo.query({ query: newsGQL, variables: { categoryName: 'Dự án' } });
   const props = {};
   Object.keys(result?.data || {}).map((key) => {
     const element = result?.data[key];
@@ -47,7 +47,7 @@ const News = ({ posts, newProds, newNewsData }) => {
               return (
                 <div className="col post-item post-item-news">
                   <div className="col-inner col-inner-news">
-                    <Link href={`/tin-tuc/${item.slug}`} className="plain">
+                    <Link href={`/du-an/${item.slug}`} className="plain">
                       <div className="box box-text-bottom box-blog-post has-hover">
                         <div className="box-image">
                           {item.featuredImage?.node?.sourceUrl && (

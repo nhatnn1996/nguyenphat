@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 const InfoRight = ({ newProds, newNewsData }) => {
-  console.log(newNewsData, 'newNewsData');
   return (
     <div className="post-sidebar large-3 col">
       <div id="secondary" className="widget-area " role="complementary">

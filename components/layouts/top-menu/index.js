@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const NavMenu = ({ items }) => {
   const [value, setValue] = useState('');
@@ -18,6 +18,23 @@ const NavMenu = ({ items }) => {
       onSearch();
     }
   };
+  useEffect(() => {
+    window.onscroll = function () {
+      myFunction();
+    };
+
+    var header = document.getElementById('wide-nav');
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+      console.log('gahahhaha');
+      if (window.pageYOffset > sticky) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    }
+  }, []);
   return (
     <>
       <div id="wide-nav" className="header-bottom wide-nav nav-dark hide-for-medium snipcss-io4AT">

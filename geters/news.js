@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 export const searchNewsGQL = gql`
-  query News ($search: String) {
+  query News($search: String) {
     posts(where: { search: $search }) {
       nodes {
         categories {
@@ -30,8 +30,8 @@ export const searchNewsGQL = gql`
   }
 `;
 export const newsGQL = gql`
-  query News {
-    posts(where: { categoryName: "" }) {
+  query News($categoryName: String) {
+    posts(where: { categoryName: $categoryName }) {
       nodes {
         categories {
           edges {
@@ -62,22 +62,22 @@ export const newsGQL = gql`
 export const newNewsGQL = gql`
   query News {
     posts(first: 10) {
-    nodes {
-      featuredImage {
-        node {
-          sourceUrl
-          uri
-          title
-          srcSet
+      nodes {
+        featuredImage {
+          node {
+            sourceUrl
+            uri
+            title
+            srcSet
+          }
         }
+        slug
+        title
+        uri
+        date
+        content
       }
-      slug
-      title
-      uri
-      date
-      content
     }
-  }
   }
 `;
 export const bynewsGQL = gql`
