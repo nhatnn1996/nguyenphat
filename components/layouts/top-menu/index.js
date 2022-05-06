@@ -1,7 +1,23 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 
 const NavMenu = ({ items }) => {
+  const [value, setValue] = useState('');
+  const history = useRouter();
+  const onSearch = () => {
+    if (value !== '' && value !== null) {
+      history.push(`/search/${value}`);
+    }
+  };
+  const getValue = (e) => {
+    setValue(e.target.value);
+  };
+  const onEnterSearch = (event) => {
+    if (event.key === 'Enter') {
+      onSearch();
+    }
+  };
   return (
     <>
       <div id="wide-nav" className="header-bottom wide-nav nav-dark hide-for-medium snipcss-io4AT">
@@ -44,32 +60,31 @@ const NavMenu = ({ items }) => {
               <li className="header-search-form search-form html relative has-icon snip-li">
                 <div className="header-search-form-wrapper">
                   <div className="searchform-wrapper ux-search-box relative form-flat is-normal">
-                    <form role="search" method="get" className="searchform" action="https://nhaankhang.com/">
-                      <div className="flex-row relative">
-                        <div className="flex-col flex-grow">
-                          <label className="screen-reader-text" htmlFor="woocommerce-product-search-field-0">
-                            Tìm kiếm:
-                          </label>
-                          <input
-                            type="search"
-                            id="woocommerce-product-search-field-0"
-                            className="search-field mb-0"
-                            placeholder="Bạn cần tìm gì..."
-                            name="s"
-                          />
-                          <input type="hidden" name="post_type" />
-                        </div>
-                        <div className="flex-col">
-                          <button
-                            type="submit"
-                            className="ux-search-submit submit-button secondary button icon mb-0 snip-button"
-                          >
-                            <i className="icon-search"></i>
-                          </button>
-                        </div>
+                    <div className="flex-row relative">
+                      <div className="flex-col flex-grow">
+                        <label className="screen-reader-text" htmlFor="woocommerce-product-search-field-0">
+                          Tìm kiếm:
+                        </label>
+                        <input
+                          type="search"
+                          id="woocommerce-product-search-field-0"
+                          className="search-field mb-0"
+                          placeholder="Bạn cần tìm gì..."
+                          onChange={(e) => getValue(e)}
+                          onKeyDown={(e) => onEnterSearch(e)}
+                        />
                       </div>
-                      <div className="live-search-results text-left z-top"></div>
-                    </form>
+                      <div className="flex-col">
+                        <button
+                          onClick={onSearch}
+                          type="submit"
+                          className="ux-search-submit submit-button secondary button icon mb-0 snip-button"
+                        >
+                          <i className="icon-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="live-search-results text-left z-top"></div>
                   </div>
                 </div>
               </li>

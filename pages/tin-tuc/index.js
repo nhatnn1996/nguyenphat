@@ -22,9 +22,7 @@ export async function getStaticProps() {
   return { props: { posts, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
 }
 
-const News = (props) => {
-  const { posts, newProds, newNewsData } = props;
-
+const News = ({ posts, newProds, newNewsData }) => {
   const returnInnerHtml = (html, slug) => {
     setTimeout(() => {
       if (typeof window !== 'undefined') {

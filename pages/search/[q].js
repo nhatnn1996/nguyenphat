@@ -1,84 +1,54 @@
-import React, { useState } from 'react';
 import { apollo } from '@/api/index';
-import { productGQL } from '@/geters/product';
-import Link from 'next/link';
+import React from 'react';
+import { searchProductGQL } from '@/geters/product';
+import { searchNewsGQL } from '@/geters/news';
 import { motion } from 'framer-motion';
-import { CategoryComp } from '@/components/partials';
+import Link from 'next/link';
 
-const variants = {
-  hidden: { opacity: 0, x: 0, y: -10 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: 0 }
-};
+export async function getServerSideProps(context) {
+  const { q } = context.params;
 
-export async function getStaticProps() {
-  const result = await apollo.query({ query: productGQL });
-  const data = {};
-  Object.keys(result?.data || {}).map((key) => {
-    const element = result?.data[key];
-    data[key] = element;
+  const products = await apollo.query({
+    query: searchProductGQL,
+    variables: { search: q }
   });
-  return { props: data, revalidate: 10 * 60 * 1000 };
+  const news = await apollo.query({
+    query: searchNewsGQL,
+    variables: { search: q }
+  });
+  const newSearch = news?.data?.posts?.nodes;
+  const productSearch = products?.data?.products;
+  return {
+    props: { productSearch, newSearch, q }
+  };
 }
-const Product = ({ products, productCategories }) => {
-  const [data, setData] = useState(products);
-  const [loading, setLoading] = useState(false);
-  const { nodes, pageInfo } = data;
 
-  const updateProduct = async () => {
-    const newProducts = await apollo.query({
-      query: productGQL,
-      variables: { after: data.pageInfo.endCursor }
-    });
-    const contentProducts = newProducts.data.products;
-    setData({ nodes: [...data.nodes, ...contentProducts.nodes], pageInfo: contentProducts.pageInfo });
-    setLoading(false);
+const ProductDetail = ({ productSearch, newSearch, q }) => {
+  const variants = {
+    hidden: { opacity: 0, x: 0, y: -10 },
+    enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: 0, y: 0 }
   };
-  const loadMore = async () => {
-    setLoading(true);
-    queueMicrotask(updateProduct);
+  const returnInnerHtml = (html, slug) => {
+    setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        const sortDescription = document.getElementById(`from_the_blog_excerpt-${slug}`);
+        if (sortDescription) {
+          sortDescription.innerHTML = html.slice(0, 200) + ' [...]';
+        }
+      }
+    }, 0);
   };
-
   return (
     <div className="mt-3">
       <div className="shop-page-title category-page-title page-title snipcss-HrhkE container">
-        {/* <div className="is-small mt-2" style={{ marginTop: '20px' }}>
-          <nav className="woocommerce-breadcrumb breadcrumbs uppercase snip-nav">
-            <a href="https://nhaankhang.com" className="snip-a">
-              Trang chủ
-            </a>
-            <span className="divider">/</span>
-            Sản phẩm
-          </nav>
-        </div> */}
+        <div className="is-small mt-2" style={{ marginTop: '20px' }}>
+          <span>Tìm kiếm với từ khoá </span>
+          <span className="font-bold">{q}</span>
+        </div>
         <div className="page-title-inner flex-row  medium-flex-wrap ">
           <div className="flex-col flex-grow medium-text-center">
-            {/* <div className="category-filtering category-filter-row mt-2">
-              <a href="#" data-open="#shop-sidebar" data-pos="left" className="filter-button uppercase plain snip-a">
-                <i className="icon-equalizer"> </i>
-                <strong> Lọc sản phẩm</strong>
-              </a>
-              <div className="inline-block"></div>
-            </div> */}
-          </div>
-          <div className="flex-col medium-text-center">
-            <div className="category-tab">
-              <CategoryComp data={productCategories.nodes} />
-            </div>
-            {/* <p className="woocommerce-result-count hide-for-medium snip-p">Showing 1–50 of 53 results</p> */}
-            {/* <form className="woocommerce-ordering" method="get">
-              <select name="orderby" className="orderby" aria-label="Đơn hàng của cửa hàng">
-                <option value="menu_order" selected="selected">
-                  Thứ tự mặc định
-                </option>
-                <option value="popularity">Thứ tự theo mức độ phổ biến</option>
-                <option value="rating">Thứ tự theo điểm đánh giá</option>
-                <option value="date">Mới nhất</option>
-                <option value="price">Thứ tự theo giá: thấp đến cao</option>
-                <option value="price-desc">Thứ tự theo giá: cao xuống thấp</option>
-              </select>
-              <input type="hidden" name="paged" value="1" />
-            </form> */}
+            <span className="font-bold">Sản phẩm</span>
           </div>
         </div>
         <div className="row category-page-row">
@@ -86,7 +56,7 @@ const Product = ({ products, productCategories }) => {
             <div className="shop-container">
               <div className="woocommerce-notices-wrapper" />
               <div className="products row row-small large-columns-4 medium-columns-3 small-columns-2 has-equal-box-heights">
-                {nodes.map((item) => (
+                {productSearch.nodes.map((item) => (
                   <motion.div
                     key={item.id}
                     variants={variants} // Pass the variant object into Framer Motion
@@ -138,7 +108,7 @@ const Product = ({ products, productCategories }) => {
                   </motion.div>
                 ))}
               </div>
-              {pageInfo.hasNextPage && (
+              {/* {pageInfo.hasNextPage && (
                 <div className="mt-5 text-center">
                   {loading && (
                     <div className="lds-ripple">
@@ -152,37 +122,69 @@ const Product = ({ products, productCategories }) => {
                     </button>
                   )}
                 </div>
-              )}
-
-              {/* row */}
-              {/* <div className="container">
-                <nav className="woocommerce-pagination">
-                  <ul className="page-numbers nav-pagination links text-center">
-                    <li>
-                      <span aria-current="page" className="page-number current">
-                        1
-                      </span>
-                    </li>
-                    <li>
-                      <a className="page-number" href="https://nhaankhang.com/cua-hang/page/2/">
-                        2
-                      </a>
-                    </li>
-                    <li>
-                      <a className="next page-number" href="https://nhaankhang.com/cua-hang/page/2/">
-                        <i className="icon-angle-right" />
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div> */}
+              )} */}
             </div>
-            {/* shop container */}
           </div>
+        </div>
+        <div className="page-title-inner flex-row  medium-flex-wrap mb-20">
+          <div className="flex-col flex-grow medium-text-center">
+            <span className="font-bold">Tin tức</span>
+          </div>
+        </div>
+        <div
+          id="row-1938324069"
+          className="row large-columns-3 medium-columns- small-columns-1 row-masonry"
+          data-packery-options='{"itemSelector": ".col", "gutter": 0, "presentageWidth" : true}'
+          style={{ position: 'relative', display: 'flex' }}
+        >
+          {newSearch.map((item) => {
+            return (
+              <div className="col post-item post-item-news">
+                <div className="col-inner col-inner-news">
+                  <Link href={`/tin-tuc/${item.slug}`} className="plain">
+                    <div className="box box-text-bottom box-blog-post has-hover">
+                      <div className="box-image">
+                        {item.featuredImage?.node?.sourceUrl && (
+                          <div className="image-cover" style={{ paddingTop: '56%' }}>
+                            <img
+                              width={221}
+                              height={300}
+                              src={item.featuredImage?.node?.sourceUrl}
+                              className="attachment-medium size-medium wp-post-image lazy-load-active"
+                              alt={item.title}
+                              loading="lazy"
+                              srcSet={item.featuredImage?.node?.srcSet}
+                              sizes="(max-width: 221px) 100vw, 221px"
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <div className="box-text text-left">
+                        <div className="box-text-inner blog-post-inner">
+                          <h5 className="post-title is-large ">{item.title}</h5>
+                          {/* <p>{moment(item.date).format('DD/MM/YYYY')}</p> */}
+                          <div className="is-divider" />
+                          <p className="from_the_blog_excerpt" id={`from_the_blog_excerpt-${item.slug}`}>
+                            {returnInnerHtml(item.content, item.slug)}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="badge absolute top post-date badge-square">
+                        <div className="badge-inner">
+                          <span className="post-date-day">22</span>
+                          <br />
+                          <span className="post-date-month is-xsmall">Th10</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 };
-export default Product;
-
+export default ProductDetail;

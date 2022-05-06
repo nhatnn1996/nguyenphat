@@ -1,4 +1,45 @@
 import { gql } from '@apollo/client';
+
+export const searchProductGQL = gql`
+  query Product($search: String) {
+    products(where: { search: $search }) {
+      nodes {
+        image {
+          altText
+          fileSize
+          sizes
+          slug
+          sourceUrl
+          srcSet
+          title
+          uri
+        }
+        shortDescription
+        link
+        menuOrder
+        id
+        sku
+        slug
+        status
+        name
+      }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+    productCategories {
+      nodes {
+        count
+        id
+        name
+        slug
+      }
+    }
+  }
+`;
 export const productGQL = gql`
   query Product($after: String, $search: String) {
     products(after: $after, first: 4, where: { orderby: { field: DATE }, search: $search }) {
