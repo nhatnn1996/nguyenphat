@@ -22,7 +22,7 @@ export const ProductCom = ({ data }) => {
                         <div className="product-small box has-hover box-normal box-text-bottom">
                           <div className="box-image">
                             <div className="image-zoom image-cover" style={{ paddingTop: '86%' }}>
-                              <a href="https://nhaankhang.com/san-pham/chong-tham-pha-xi-mang-ak-seal/">
+                              <Link href={'/san-pham/' + element.slug}>
                                 <img
                                   width={433}
                                   height={577}
@@ -32,8 +32,8 @@ export const ProductCom = ({ data }) => {
                                   alt={title}
                                   loading="lazy"
                                   sizes={image?.sizes}
-                                />{' '}
-                              </a>
+                                />
+                              </Link>
                             </div>
                             <div className="image-tools top right show-on-hover"></div>
                             <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>

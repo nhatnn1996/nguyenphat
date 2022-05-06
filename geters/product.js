@@ -42,7 +42,7 @@ export const searchProductGQL = gql`
 `;
 export const productGQL = gql`
   query Product($after: String, $search: String) {
-    products(after: $after, first: 4, where: { orderby: { field: DATE }, search: $search }) {
+    products(after: $after, first: 8, where: { orderby: { field: DATE }, search: $search }) {
       nodes {
         image {
           altText

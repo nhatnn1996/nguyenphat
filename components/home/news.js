@@ -18,7 +18,7 @@ export const NewsCom = ({ data = [] }) => {
                       <h2>
                         <span>Kiến thức</span>
                       </h2>
-                      <Link href="/san-pham" passHref>
+                      <Link href="/tin-tuc" passHref>
                         <div className="more-poduct">
                           <i className="fa fa-angle-double-right" aria-hidden="true"></i>{' '}
                           <span style={{ marginLeft: '10px' }}>Xem thêm</span>
@@ -132,7 +132,7 @@ const PostItem = ({ data }) => {
     <div className="items-news">
       <div className="col post-item">
         <div className="col-inner">
-          <a href="" className="plain">
+          <Link href={`tin-tuc/${slug}`} className="plain">
             <div className="box box-vertical box-text-middle box-blog-post has-hover">
               <div className="box-image" style={{ width: '20%' }}>
                 <div className="image-overlay-add image-cover" style={{ paddingTop: '95%' }}>
@@ -164,7 +164,7 @@ const PostItem = ({ data }) => {
                 </div>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

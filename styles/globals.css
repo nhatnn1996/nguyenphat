@@ -82,5 +82,8 @@
   font-weight: bold;
 }
 .mb-20 {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+}
+.my-15 {
+  margin: 0 15px;
 }

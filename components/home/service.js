@@ -38,7 +38,7 @@ export const Service = ({ data }) => {
                         <div className="product-small box has-hover box-normal box-text-bottom">
                           <div className="box-image">
                             <div className="image-zoom image-cover" style={{ paddingTop: '86%' }}>
-                              <Link href={'/dich-vu/' + slug}>
+                              <Link href={'/tin-tuc/' + slug}>
                                 <img
                                   width={1000}
                                   height={750}
