@@ -17,8 +17,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: productDetailGQL, variables: { slug: params.slug } });
   const { product } = result?.data;
+  if (!product)
+    return {
+      redirect: {
+        destination: '/san-pham'
+      }
+    };
   const productCategories = product?.productCategories?.nodes[0]?.products;
-
   const newProducts = await apollo.query({ query: productsNewGQL });
 
   const newProds = newProducts?.data?.products?.edges;

@@ -27,7 +27,6 @@ const NavMenu = ({ items }) => {
     var sticky = header.offsetTop;
 
     function myFunction() {
-      console.log('gahahhaha');
       if (window.pageYOffset > sticky) {
         header.classList.add('sticky');
       } else {

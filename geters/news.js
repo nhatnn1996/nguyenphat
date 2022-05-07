@@ -50,6 +50,7 @@ export const newsGQL = gql`
             title
           }
         }
+        excerpt
         content
         slug
         title
@@ -61,7 +62,7 @@ export const newsGQL = gql`
 `;
 export const newNewsGQL = gql`
   query News {
-    posts(first: 10) {
+    posts(first: 4) {
       nodes {
         featuredImage {
           node {

@@ -3,10 +3,17 @@ import { apollo } from '@/api/index';
 import { bynewsGQL, newsGQL, newNewsGQL } from '@/geters/news';
 import { productsNewGQL } from '@/geters/product';
 import InfoRight from '@/components/info-right';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
   const { postBy } = result?.data;
+  if (!postBy)
+    return {
+      redirect: {
+        destination: '/tin-tuc'
+      }
+    };
   const newProducts = await apollo.query({ query: productsNewGQL });
   const newProds = newProducts?.data?.products?.edges;
 
@@ -26,6 +33,8 @@ export async function getStaticPaths() {
 }
 const NewsDetail = ({ postBy, newProds, newNewsData }) => {
   const data = postBy;
+  const router = useRouter();
+  return null;
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const decription = document.getElementById('entry-content');

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const NewsCom = ({ data = [] }) => {
-  // console.log(data);
+ 
   return (
     <section className="section tin-tuc" id="section_801061950">
       <div className="bg section-bg fill bg-fill  bg-loaded">

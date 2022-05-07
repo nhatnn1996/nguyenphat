@@ -10,7 +10,6 @@ export async function getStaticProps({ params }) {
       variables: { _id: product.productCategories.edges[0].node.id }
     });
     const { products } = productCategory.data.productCategory;
-    console.log(products,'products');
   return { props: { product, products }, revalidate: 10 * 60 * 1000 };
 }
 export async function getStaticPaths() {

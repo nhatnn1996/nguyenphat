@@ -70,9 +70,11 @@ const News = ({ posts, newProds, newNewsData }) => {
                             <h5 className="post-title is-large ">{item.title}</h5>
                             <p>{moment(item.date).format('DD/MM/YYYY')}</p>
                             <div className="is-divider" />
-                            <p className="from_the_blog_excerpt" id={`from_the_blog_excerpt-${item.slug}`}>
-                              {returnInnerHtml(item.content, item.slug)}
-                            </p>
+                            <p
+                              className="from_the_blog_excerpt"
+                              id={`from_the_blog_excerpt-${item.slug}`}
+                              dangerouslySetInnerHTML={{ __html: item.excerpt }}
+                            ></p>
                             {/* <p className="from_the_blog_comments uppercase is-xsmall">4 Comments </p> */}
                           </div>
                         </div>
