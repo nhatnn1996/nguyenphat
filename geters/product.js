@@ -171,6 +171,7 @@ export const productDetailGQL = gql`
           sourceUrl
         }
       }
+      id
       sku
       slug
       status
