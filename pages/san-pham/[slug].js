@@ -26,6 +26,7 @@ export async function getStaticProps({ params }) {
 }
 
 const ProductDetail = ({ product, productCategories, newProds }) => {
+  console.log(product, 'product');
   const [isZoom, setZoomProduct] = useState(false);
   const [imageZoom, setImageZoom] = useState(null);
   useEffect(() => {
@@ -112,6 +113,40 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
       </button>
     );
   }
+  function NextArrowPreview(props) {
+    const { onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className="flickity-button flickity-prev-next-button next"
+        type="button"
+        aria-label="Next"
+      >
+        <svg className="flickity-button-icon" viewBox="0 0 100 100">
+          <path
+            d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+            className="arrow-product"
+            transform="translate(100, 100) rotate(180) "
+          />
+        </svg>
+      </button>
+    );
+  }
+  function PrevArrowPreview(props) {
+    const { onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className="flickity-button flickity-prev-next-button previous"
+        type="button"
+        aria-label="Previous"
+      >
+        <svg className="flickity-button-icon arrow-product" viewBox="0 0 100 100">
+          <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" className="arrow" />
+        </svg>
+      </button>
+    );
+  }
 
   const zoomProduct = (img) => {
     setZoomProduct(true);
@@ -125,6 +160,15 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
+  };
+  var settingsPreview = {
+    arrows: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <NextArrowPreview />,
+    prevArrow: <PrevArrowPreview />
   };
   return (
     <div>
@@ -228,76 +272,34 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                         >
                           <div className="flickity-viewport" style={{ height: '524.133px', touchAction: 'pan-y' }}>
                             <div className="flickity-slider" style={{ display: 'flex', alignItems: 'center' }}>
-                              <div
-                                data-thumb="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
-                                className="woocommerce-product-gallery__image slide first is-selected"
-                                aria-selected="true"
-                                style={{ position: 'absolute', left: '0%' }}
-                              >
-                                <a href="#">
-                                  <img
-                                    width={433}
-                                    height={577}
-                                    src={product?.image?.sourceUrl}
-                                    className="lazy-load skip-lazy"
-                                    alt={product?.image?.title}
-                                    loading="lazy"
-                                    title="z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview"
-                                    data-caption={product?.image?.title}
-                                    data-large_image_width={433}
-                                    data-large_image_height={577}
-                                    srcSet={product?.image?.srcSet}
-                                    sizes={product?.image?.sizes}
-                                  />{' '}
-                                </a>
-                              </div>
-                              <div
-                                data-thumb="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
-                                className="woocommerce-product-gallery__image slide"
-                                aria-selected="false"
-                                style={{ position: 'absolute', left: '100%' }}
-                              >
-                                <a href="#">
-                                  <img
-                                    width={433}
-                                    height={577}
-                                    src={product?.image?.sourceUrl}
-                                    className="lazy-load skip-lazy"
-                                    alt={product?.image?.title}
-                                    loading="lazy"
-                                    title="z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview"
-                                    data-caption={product?.image?.title}
-                                    data-large_image_width={433}
-                                    data-large_image_height={577}
-                                    srcSet={product?.image?.srcSet}
-                                    sizes={product?.image?.sizes}
-                                  />
-                                </a>
-                              </div>
+                              <Slider {...settingsPreview}>
+                                {product?.galleryImages?.nodes.map((item) => (
+                                  <div
+                                    data-thumb="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
+                                    className=""
+                                    // aria-selected="true"
+                                    style={{ position: 'absolute', left: '0%' }}
+                                  >
+                                    <a href="#">
+                                      <img
+                                        width={433}
+                                        height={577}
+                                        src={item?.sourceUrl}
+                                        className="lazy-load skip-lazy"
+                                        alt={item?.title}
+                                        loading="lazy"
+                                        title="z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview"
+                                        data-caption={item?.title}
+                                        data-large_image_width={433}
+                                        data-large_image_height={577}
+                                        srcSet={item?.srcSet}
+                                      />
+                                    </a>
+                                  </div>
+                                ))}
+                              </Slider>
                             </div>
                           </div>
-                          <button
-                            className="flickity-button flickity-prev-next-button previous"
-                            type="button"
-                            aria-label="Previous"
-                          >
-                            <svg className="flickity-button-icon" viewBox="0 0 100 100">
-                              <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" className="arrow" />
-                            </svg>
-                          </button>
-                          <button
-                            className="flickity-button flickity-prev-next-button next"
-                            type="button"
-                            aria-label="Next"
-                          >
-                            <svg className="flickity-button-icon" viewBox="0 0 100 100">
-                              <path
-                                d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
-                                className="arrow"
-                                transform="translate(100, 100) rotate(180) "
-                              />
-                            </svg>
-                          </button>
                         </figure>
                         <div className="loading-spin centered dark" style={{ display: 'none' }} />
                         <div className="absolute bottom left right">
