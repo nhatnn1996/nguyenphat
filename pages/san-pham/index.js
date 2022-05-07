@@ -82,7 +82,7 @@ const Product = ({ products, productCategories }) => {
                     animate="enter" // Animated state to variants.enter
                     exit="exit" // Exit state (used later) to variants.exit
                     transition={{ type: 'ease-in-out', duration: 0.3 }} // Set the transition to linear
-                    className="product-small col has-hover product type-product post-3697 status-publish first instock product_cat-xu-ly-ro-ri-nuoc product_cat-sp-chong-tham-test product_tag-chong-tham-san-mai product_tag-chong-tham-san-thuong product_tag-keo-chong-tham-lo-thien product_tag-pu-goc-nuoc product_tag-pu-he-nuoc has-post-thumbnail shipping-taxable product-type-simple"
+                    className="product-small col has-hover product type-product post-3697 status-publish first instock product_cat-xu-ly-ro-ri-nuoc product_cat-sp-chong-tham-test product_tag-chong-tham-san-mai product_tag-chong-tham-san-thuong product_tag-keo-chong-tham-lo-thien product_tag-pu-goc-nuoc product_tag-pu-he-nuoc has-post-thumbnail shipping-taxable product-type-simple cursor-pointer"
                   >
                     <div className="col-inner" style={{ cursor: 'poiter' }}>
                       <div className="badge-container absolute left top z-1"></div>

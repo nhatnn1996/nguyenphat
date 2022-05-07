@@ -21,7 +21,7 @@ export const ProductCom = ({ data }) => {
                         <div className="badge-container absolute left top z-1"></div>
                         <div className="product-small box has-hover box-normal box-text-bottom" style={{height: "300px"}}>
                           <div className="box-image">
-                            <div className="image-zoom image-cover" style={{ paddingTop: '86%' }}>
+                            <div className="image-zoom image-cover cursor-pointer" style={{ paddingTop: '86%' }}>
                               <Link href={'/san-pham/' + element.slug}>
                                 <img
                                   width={433}

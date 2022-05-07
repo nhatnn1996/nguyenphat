@@ -19,7 +19,7 @@ export const NewsCom = ({ data = [] }) => {
                         <span>Kiến thức</span>
                       </h2>
                       <Link href="/tin-tuc" passHref>
-                        <div className="more-poduct">
+                        <div className="more-poduct cursor-pointer">
                           <i className="fa fa-angle-double-right" aria-hidden="true"></i>{' '}
                           <span style={{ marginLeft: '10px' }}>Xem thêm</span>
                         </div>
@@ -129,7 +129,7 @@ const PostItem = ({ data }) => {
   const { slug, excerpt, title, featuredImage } = data;
   const image = featuredImage?.node || {};
   return (
-    <div className="items-news">
+    <div className="items-news cursor-pointer">
       <div className="col post-item">
         <div className="col-inner">
           <Link href={`tin-tuc/${slug}`} className="plain">
