@@ -38,7 +38,6 @@ export const Testimomial = ({ data }) => {
                 <Swiper
                   spaceBetween={40}
                   slidesPerView={2}
-                  onSlideChange={() => console.log('slide change')}
                   onSwiper={(swiper) => {
                     slideRef.current = swiper;
                   }}

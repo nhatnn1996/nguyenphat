@@ -198,21 +198,9 @@ strong {
 .categories-list {
   display: flex;
   gap: 20px;
+  margin-left: auto;
 }
-.categories-list > div {
-  padding: 6px 10px;
-  border-radius: 4px;
-  background: #ededed;
-  color: #0000007d;
-  transition: 0.3s ease-in-out;
-  cursor: pointer;
-  font-weight: bold;
-}
-.categories-list > div:hover,
-.categories-list > div.active {
-  background: #0082c7;
-  color: white;
-}
+
 .flex {
   display: flex;
 }

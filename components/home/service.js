@@ -36,7 +36,7 @@ export const Service = ({ data }) => {
                         <div className="badge-container absolute left top z-1"></div>
                         <div className="product-small box has-hover box-normal box-text-bottom">
                           <div className="box-image">
-                            <div className="image-zoom image-cover" style={{ paddingTop: '86%' }}>
+                            <div className="image-zoom image-cover cursor-pointer" style={{ paddingTop: '86%' }}>
                               <Link href={'/tin-tuc/' + slug}>
                                 <img
                                   width={1000}

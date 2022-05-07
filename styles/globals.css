@@ -108,3 +108,6 @@
 svg > .arrow {
   fill: #0082c8 !important; 
 }
+.cursor-pointer{
+  cursor: pointer;
+}

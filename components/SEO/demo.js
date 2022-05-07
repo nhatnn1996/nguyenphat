@@ -31,7 +31,6 @@ jQuery(function($) {
 		var url = $(this).attr('href');
 		var domain = $(this).prop('href', url).prop('hostname');
 		$('.truesource').each(function() {
-			console.log($(this).attr('attr-domain'));
 			if(domain == $(this).attr('attr-domain')) {
 				var html = $(this).html();
 				thi.append(html).addClass('verifield-link');

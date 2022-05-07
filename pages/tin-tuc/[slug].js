@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { apollo } from '@/api/index';
-import { bynewsGQL, newsGQL, newNewsGQL } from '@/geters/news';
+import { bynewsGQL, newsGQL, newNewsGQL, getNewsbyCategory } from '@/geters/news';
 import { productsNewGQL } from '@/geters/product';
 import InfoRight from '@/components/info-right';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
   const { postBy } = result?.data;
+  if (!postBy) return { notfound: true };
+
   const newProducts = await apollo.query({ query: productsNewGQL });
   const newProds = newProducts?.data?.products?.edges;
 
@@ -15,8 +18,8 @@ export async function getStaticProps({ params }) {
   return { props: { postBy, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
 }
 export async function getStaticPaths() {
-  const { data } = await apollo.query({ query: newsGQL });
-  const paths = data.posts.nodes.map((element) => ({
+  const { data } = await apollo.query({ query: getNewsbyCategory, variables: { slug: 'tin-tuc' } });
+  const paths = data.category?.posts?.nodes.map((element) => ({
     params: { ...element, slug: element.slug }
   }));
   return {
@@ -25,15 +28,9 @@ export async function getStaticPaths() {
   };
 }
 const NewsDetail = ({ postBy, newProds, newNewsData }) => {
+  if (!postBy) return null;
   const data = postBy;
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const decription = document.getElementById('entry-content');
-      if (decription && decription) {
-        decription.innerHTML = data?.content;
-      }
-    }
-  }, []);
+
   return (
     <div>
       <div id="content" className="blog-wrapper blog-single page-wrapper">
@@ -68,7 +65,11 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                               className="post-1492 post type-post status-publish format-standard hentry category-khong-phan-loai"
                             >
                               <div className="article-inner ">
-                                <div className="entry-content single-page" id="entry-content"></div>
+                                <div
+                                  className="entry-content single-page"
+                                  id="entry-content"
+                                  dangerouslySetInnerHTML={{ __html: data?.content }}
+                                ></div>
                               </div>
                             </article>
                           </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { apollo } from '@/api/index';
-import { productGQL } from '@/geters/product';
+import { allCategories, categoriesGQL, PaginationGQL } from '@/geters/categories-page';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CategoryComp } from '@/components/partials';
@@ -11,26 +11,41 @@ const variants = {
   exit: { opacity: 0, x: 0, y: 0 }
 };
 
-export async function getStaticProps() {
-  const result = await apollo.query({ query: productGQL });
+export async function getStaticPaths() {
+  const { data } = await apollo.query({ query: allCategories });
+  const paths = data?.productCategories?.nodes?.map((element) => ({
+    params: { slug: element.slug }
+  }));
+  return {
+    paths: paths,
+    fallback: true
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const result = await apollo.query({ query: categoriesGQL, variables: { slug: params.slug } });
   const data = {};
   Object.keys(result?.data || {}).map((key) => {
     const element = result?.data[key];
     data[key] = element;
   });
+  data.slug = params.slug;
+  if (!data.productCategory) return { notfound: true };
+
   return { props: data, revalidate: 10 * 60 * 1000 };
 }
-const Product = ({ products, productCategories }) => {
-  const [data, setData] = useState(products);
+const Product = ({ productCategories, productCategory, slug }) => {
+  if (!productCategory) return null;
+  const [data, setData] = useState(productCategory.products);
   const [loading, setLoading] = useState(false);
   const { nodes, pageInfo } = data;
 
   const updateProduct = async () => {
     const newProducts = await apollo.query({
-      query: productGQL,
-      variables: { after: data.pageInfo.endCursor }
+      query: PaginationGQL,
+      variables: { after: data.pageInfo.endCursor, slug }
     });
-    const contentProducts = newProducts.data.products;
+    const contentProducts = newProducts.data.productCategory?.products;
     setData({ nodes: [...data.nodes, ...contentProducts.nodes], pageInfo: contentProducts.pageInfo });
     setLoading(false);
   };
@@ -39,28 +54,12 @@ const Product = ({ products, productCategories }) => {
     queueMicrotask(updateProduct);
   };
 
-  const getProductByCategory = async () => {
-    const slug = 'san-pham-chong-tham';
-    const newProducts = await apollo.query({
-      query: productGQL,
-      variables: { after: data.pageInfo.endCursor, slug }
-    });
-    const contentProducts = newProducts.data.products;
-    setData(contentProducts);
-    setLoading(false);
-  };
-
-  const changeCategory = async () => {
-    setLoading(true);
-    queueMicrotask(getProductByCategory);
-  };
-
   return (
     <div className="mt-3">
       <div className="shop-page-title category-page-title page-title snipcss-HrhkE container">
-        <div className="is-small mt-2 flex items-center" style={{ marginTop: '20px' }}>
+        <div className="is-small flex mt-2" style={{ marginTop: '20px' }}>
           <nav className="woocommerce-breadcrumb breadcrumbs uppercase snip-nav">
-            <a href="/" className="snip-a">
+            <a href="https://nhaankhang.com" className="snip-a">
               Trang chủ
             </a>
             <span className="divider">/</span>
@@ -68,7 +67,6 @@ const Product = ({ products, productCategories }) => {
           </nav>
           <CategoryComp data={productCategories.nodes} />
         </div>
-
         <div className="row category-page-row">
           <div className="col large-12">
             <div className="shop-container">
@@ -82,9 +80,9 @@ const Product = ({ products, productCategories }) => {
                     animate="enter" // Animated state to variants.enter
                     exit="exit" // Exit state (used later) to variants.exit
                     transition={{ type: 'ease-in-out', duration: 0.3 }} // Set the transition to linear
-                    className="product-small col has-hover product type-product post-3697 status-publish first instock product_cat-xu-ly-ro-ri-nuoc product_cat-sp-chong-tham-test product_tag-chong-tham-san-mai product_tag-chong-tham-san-thuong product_tag-keo-chong-tham-lo-thien product_tag-pu-goc-nuoc product_tag-pu-he-nuoc has-post-thumbnail shipping-taxable product-type-simple cursor-pointer"
+                    className="cursor-pointer product-small col has-hover product type-product post-3697 status-publish first instock product_cat-xu-ly-ro-ri-nuoc product_cat-sp-chong-tham-test product_tag-chong-tham-san-mai product_tag-chong-tham-san-thuong product_tag-keo-chong-tham-lo-thien product_tag-pu-goc-nuoc product_tag-pu-he-nuoc has-post-thumbnail shipping-taxable product-type-simple"
                   >
-                    <div className="col-inner" style={{ cursor: 'poiter' }}>
+                    <div className="col-inner">
                       <div className="badge-container absolute left top z-1"></div>
                       <div className="product-small box">
                         <div className="box-image">

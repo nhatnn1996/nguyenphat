@@ -50,6 +50,7 @@ export const newsGQL = gql`
             title
           }
         }
+        excerpt
         content
         slug
         title
@@ -61,7 +62,7 @@ export const newsGQL = gql`
 `;
 export const newNewsGQL = gql`
   query News {
-    posts(first: 10) {
+    posts(first: 4) {
       nodes {
         featuredImage {
           node {
@@ -98,6 +99,20 @@ export const bynewsGQL = gql`
       title
       postId
       date
+    }
+  }
+`;
+
+export const getNewsbyCategory = gql`
+  query news($slug: ID!) {
+    category(id: $slug, idType: SLUG) {
+      id
+      posts {
+        nodes {
+          id
+          slug
+        }
+      }
     }
   }
 `;

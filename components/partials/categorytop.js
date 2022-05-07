@@ -1,19 +1,25 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export const CategoryComp = ({ data = [] }) => {
+export const CategoryComp = ({ data }) => {
   const router = useRouter();
+  const categories = [{ slug: 'tat-ca', name: 'Tất cả danh mục' }, ...data];
+  const onChange = (value) => {
+    const slug = value.target.value;
+    if (slug === 'tat-ca') router.push('/san-pham');
+    else router.push('/san-pham/danh-muc/' + slug);
+  };
+
   return (
-    <div className="categories-list">
-      {data.map((element, index) => {
-        return (
-          <Link href={'/san-pham/danh-muc/' + element.slug} passHref>
-            <div key={index} className={router.query.slug === element.slug ? 'active' : ''}>
-              <span>{element.name}</span>
-            </div>
-          </Link>
-        );
-      })}
+    <div className="categories-list  ml-auto">
+      <select name="" id="" className="mb-0" onChange={onChange} defaultValue={router.query.slug}>
+        {categories.map((element, index) => {
+          return (
+            <option key={element.slug} value={element.slug}>
+              {element.name}
+            </option>
+          );
+        })}
+      </select>
     </div>
   );
 };
