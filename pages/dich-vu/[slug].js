@@ -30,14 +30,6 @@ export async function getStaticProps({ params }) {
 const NewsDetail = ({ postBy, newProds, newNewsData }) => {
   if (!postBy) return null;
   const data = postBy;
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const decription = document.getElementById('entry-content');
-      if (decription && decription) {
-        decription.innerHTML = data?.content;
-      }
-    }
-  }, []);
   return (
     <div>
       <div id="content" className="blog-wrapper blog-single page-wrapper">
@@ -72,7 +64,11 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                               className="post-1492 post type-post status-publish format-standard hentry category-khong-phan-loai"
                             >
                               <div className="article-inner ">
-                                <div className="entry-content single-page" id="entry-content"></div>
+                                <div
+                                  className="entry-content single-page"
+                                  id="entry-content"
+                                  dangerouslySetInnerHTML={{ __html: data?.content }}
+                                ></div>
                               </div>
                             </article>
                           </div>
