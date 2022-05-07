@@ -165,16 +165,10 @@ export const productDetailGQL = gql`
       shortDescription
       galleryImages {
         nodes {
-          mediaDetails {
-            file
-            meta {
-              aperture
-              camera
-              caption
-              title
-            }
-          }
-          date
+          title
+          uri
+          srcSet
+          sourceUrl
         }
       }
       sku

@@ -92,3 +92,19 @@
   top: 0;
   width: 100%;
 }
+.slider-style-container .flickity-slider > *:not(.is-selected) {
+  opacity: 1;
+}
+
+.flickity-prev-next-button {
+  z-index: 1;
+  opacity: 1 !important;
+  fill: #0082c8 !important;
+  color: #0082c8 !important;
+}
+.flickity-button-icon {
+  fill: #0082c8 !important;
+}
+svg > .arrow {
+  fill: #0082c8 !important; 
+}
