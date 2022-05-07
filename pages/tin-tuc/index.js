@@ -23,16 +23,6 @@ export async function getStaticProps() {
 }
 
 const News = ({ posts, newProds, newNewsData }) => {
-  const returnInnerHtml = (html, slug) => {
-    setTimeout(() => {
-      if (typeof window !== 'undefined') {
-        const sortDescription = document.getElementById(`from_the_blog_excerpt-${slug}`);
-        if (sortDescription) {
-          sortDescription.innerHTML = html.slice(0, 200) + ' [...]';
-        }
-      }
-    }, 0);
-  };
   return (
     <div id="content" className="blog-wrapper blog-archive page-wrapper">
       <div className="row row-large ">
@@ -45,7 +35,7 @@ const News = ({ posts, newProds, newNewsData }) => {
           >
             {posts.map((item) => {
               return (
-                <div className="col post-item post-item-news">
+                <div className="col post-item post-item-news" key={item.slug}>
                   <div className="col-inner col-inner-news">
                     <Link href={`/tin-tuc/${item.slug}`} className="plain">
                       <div className="box box-text-bottom box-blog-post has-hover">
@@ -70,11 +60,11 @@ const News = ({ posts, newProds, newNewsData }) => {
                             <h5 className="post-title is-large ">{item.title}</h5>
                             <p>{moment(item.date).format('DD/MM/YYYY')}</p>
                             <div className="is-divider" />
-                            <p
+                            <div
                               className="from_the_blog_excerpt"
                               id={`from_the_blog_excerpt-${item.slug}`}
                               dangerouslySetInnerHTML={{ __html: item.excerpt }}
-                            ></p>
+                            ></div>
                             {/* <p className="from_the_blog_comments uppercase is-xsmall">4 Comments </p> */}
                           </div>
                         </div>

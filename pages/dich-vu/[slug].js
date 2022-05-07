@@ -1,22 +1,12 @@
 import React, { useEffect } from 'react';
 import { apollo } from '@/api/index';
-import { bynewsGQL, newsGQL, newNewsGQL } from '@/geters/news';
+import { bynewsGQL, newsGQL, newNewsGQL, getNewsbyCategory } from '@/geters/news';
 import { productsNewGQL } from '@/geters/product';
 import InfoRight from '@/components/info-right';
 
-export async function getStaticProps({ params }) {
-  const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
-  const { postBy } = result?.data;
-  const newProducts = await apollo.query({ query: productsNewGQL });
-  const newProds = newProducts?.data?.products?.edges;
-
-  const newNews = await apollo.query({ query: newNewsGQL });
-  const newNewsData = newNews?.data?.posts?.nodes;
-  return { props: { postBy, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
-}
 export async function getStaticPaths() {
-  const { data } = await apollo.query({ query: newsGQL });
-  const paths = data.posts.nodes.map((element) => ({
+  const { data } = await apollo.query({ query: getNewsbyCategory, variables: { slug: 'dich-vu' } });
+  const paths = data.category?.posts?.nodes?.map((element) => ({
     params: { ...element, slug: element.slug }
   }));
   return {
@@ -24,7 +14,21 @@ export async function getStaticPaths() {
     fallback: true
   };
 }
+export async function getStaticProps({ params }) {
+  const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
+  const { postBy } = result?.data;
+  if (!postBy) return { notfound: true };
+
+  const newProducts = await apollo.query({ query: productsNewGQL });
+  const newProds = newProducts?.data?.products?.edges;
+
+  const newNews = await apollo.query({ query: newNewsGQL });
+  const newNewsData = newNews?.data?.posts?.nodes;
+  return { props: { postBy, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
+}
+
 const NewsDetail = ({ postBy, newProds, newNewsData }) => {
+  if (!postBy) return null;
   const data = postBy;
   useEffect(() => {
     if (typeof window !== 'undefined') {

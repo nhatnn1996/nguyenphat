@@ -102,3 +102,17 @@ export const bynewsGQL = gql`
     }
   }
 `;
+
+export const getNewsbyCategory = gql`
+  query news($slug: ID!) {
+    category(id: $slug, idType: SLUG) {
+      id
+      posts {
+        nodes {
+          id
+          slug
+        }
+      }
+    }
+  }
+`;

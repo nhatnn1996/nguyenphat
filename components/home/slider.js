@@ -11,8 +11,6 @@ export const Slider = () => {
         modules={[Navigation]}
         spaceBetween={0}
         slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
         navigation={{ clickable: true }}
       >
         {[1, 2, 3].map((element) => (

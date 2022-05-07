@@ -5,11 +5,11 @@ import { productDetailGQL, productGQL, productByCategoryGQL } from '@/geters/pro
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: productDetailGQL, variables: { _id: params.id } });
   const { product } = result?.data;
-    const productCategory = await apollo.query({
-      query: productByCategoryGQL,
-      variables: { _id: product.productCategories.edges[0].node.id }
-    });
-    const { products } = productCategory.data.productCategory;
+  const productCategory = await apollo.query({
+    query: productByCategoryGQL,
+    variables: { _id: product.productCategories.edges[0].node.id }
+  });
+  const { products } = productCategory.data.productCategory;
   return { props: { product, products }, revalidate: 10 * 60 * 1000 };
 }
 export async function getStaticPaths() {
@@ -23,7 +23,6 @@ export async function getStaticPaths() {
   };
 }
 const ProductDetail = ({ product }) => {
-  console.log(product,'product');
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const sortDescription = document.getElementById('product-short-description');

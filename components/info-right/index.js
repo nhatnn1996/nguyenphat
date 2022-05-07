@@ -107,6 +107,7 @@ const InfoRight = ({ newProds, newNewsData }) => {
                   <div className="row aaa large-columns-1 medium-columns-1 small-columns-1 row-collapse row-full-width has-shadow row-box-shadow-1">
                     {newNewsData.map((item) => (
                       <div
+                        key={item.slug}
                         className="col post-item"
                         style={{
                           margin: '10px 0px',
@@ -147,7 +148,11 @@ const InfoRight = ({ newProds, newNewsData }) => {
                     <div className="tieu-de">Sản phẩm mới nhất</div>
                     <ul className="product_list_widget">
                       {newProds.map((item) => (
-                        <Link href={`/san-pham/${item.node.slug}`} title="Chống thấm pha xi măng AK-Seal">
+                        <Link
+                          href={`/san-pham/${item.node.slug}`}
+                          key={item.node.slug}
+                          title="Chống thấm pha xi măng AK-Seal"
+                        >
                           <li
                             style={{
                               margin: '10px 0px',

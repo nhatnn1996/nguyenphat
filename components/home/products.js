@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 export const ProductsCom = ({ data }) => {
-  // console.log(data);
   return (
     <section className="section danh-muc">
       <div className="bg section-bg fill bg-fill  ">

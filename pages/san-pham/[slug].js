@@ -17,12 +17,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: productDetailGQL, variables: { slug: params.slug } });
   const { product } = result?.data;
-  if (!product)
-    return {
-      redirect: {
-        destination: '/san-pham'
-      }
-    };
+  if (!product) return { notfound: true };
   const productCategories = product?.productCategories?.nodes[0]?.products;
   const newProducts = await apollo.query({ query: productsNewGQL });
 
@@ -31,7 +26,7 @@ export async function getStaticProps({ params }) {
 }
 
 const ProductDetail = ({ product, productCategories, newProds }) => {
-  console.log(product, 'product');
+  if (!product) return null;
   const [isZoom, setZoomProduct] = useState(false);
   const [imageZoom, setImageZoom] = useState(null);
   useEffect(() => {

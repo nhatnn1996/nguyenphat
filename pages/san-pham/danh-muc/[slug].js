@@ -30,10 +30,12 @@ export async function getStaticProps({ params }) {
     data[key] = element;
   });
   data.slug = params.slug;
-  if (!data.productCategory) return { redirect: { destination: '/san-pham' } };
+  if (!data.productCategory) return { notfound: true };
+
   return { props: data, revalidate: 10 * 60 * 1000 };
 }
 const Product = ({ productCategories, productCategory, slug }) => {
+  if (!productCategory) return null;
   const [data, setData] = useState(productCategory.products);
   const [loading, setLoading] = useState(false);
   const { nodes, pageInfo } = data;

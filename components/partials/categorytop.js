@@ -16,7 +16,6 @@ export const CategoryComp = ({ data }) => {
           return (
             <option key={element.slug} value={element.slug}>
               {element.name}
-              {/* <div key={index} className={router.query.slug === element.slug ? 'active' : ''}></div> */}
             </option>
           );
         })}
