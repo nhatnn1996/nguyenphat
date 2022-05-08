@@ -1,6 +1,7 @@
 import { apollo } from '@/api/index';
 import React, { useEffect, useState } from 'react';
-import { productDetailGQL, productGQL, productsNewGQL } from '@/geters/product';
+import { useMutation } from '@apollo/client';
+import { productDetailGQL, productGQL, productsNewGQL, postComment } from '@/geters/product';
 import Link from 'next/link';
 import Slider from 'react-slick';
 
@@ -17,6 +18,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: productDetailGQL, variables: { slug: params.slug } });
   const { product } = result?.data;
+
+  const [{ data, loading, error }] = useMutation(postComment);
   if (!product) return { notfound: true };
   const productCategories = product?.productCategories?.nodes[0]?.products;
   const newProducts = await apollo.query({ query: productsNewGQL });
