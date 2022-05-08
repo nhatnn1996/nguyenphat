@@ -41,10 +41,10 @@ export default function Footer() {
                   </span>
                 </p>
                 <ul>
-                  <li>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ XÂY DỰNG NHÀ AN KHANG</li>
+                  <li>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT</li>
                   <li>MST : 0311620687 , Ngày Cấp : 06-12-2013, Nơi Cấp : Sở kế Hoạch Và Đầu Tư TP.HCM.</li>
                   <li>Số điện thoại : 028 37 27 3679</li>
-                  <li>Email : nhaankhang224@gmail.com</li>
+                  <li>Email : chongthamnguyenphat@gmail.com</li>
                 </ul>
               </div>
             </div>
