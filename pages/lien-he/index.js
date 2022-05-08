@@ -3,18 +3,15 @@ const Contact = () => {
   return (
     <div id="content" role="main" className="content-area">
       <div className="img has-hover x md-x lg-x y md-y lg-y" id="image_1347406328">
-        <div className="img-inner image-cover dark" style={{ paddingTop: '25%' }}>
+        <div className="img-inner image-cover dark" style={{ paddingTop: '40%' }}>
           <img
             width={5693}
-            height={1847}
-            src="https://nhaankhang.com/wp-content/uploads/2019/06/banner-02.jpg"
-            data-src="https://nhaankhang.com/wp-content/uploads/2019/06/banner-02.jpg"
+            height={500}
+            src="/images/banner.jpg"
+            data-src="/images/banner.jpg"
             className="attachment-original size-original lazy-load-active"
             alt=""
             loading="lazy"
-            srcSet="https://nhaankhang.com/wp-content/uploads/2019/06/banner-02.jpg 5693w, https://nhaankhang.com/wp-content/uploads/2019/06/banner-02-300x97.jpg 300w, https://nhaankhang.com/wp-content/uploads/2019/06/banner-02-768x249.jpg 768w, https://nhaankhang.com/wp-content/uploads/2019/06/banner-02-1024x332.jpg 1024w, https://nhaankhang.com/wp-content/uploads/2019/06/banner-02-600x195.jpg 600w"
-            data-srcset="https://nhaankhang.com/wp-content/uploads/2019/06/banner-02.jpg 5693w, https://nhaankhang.com/wp-content/uploads/2019/06/banner-02-300x97.jpg 300w, https://nhaankhang.com/wp-content/uploads/2019/06/banner-02-768x249.jpg 768w, https://nhaankhang.com/wp-content/uploads/2019/06/banner-02-1024x332.jpg 1024w, https://nhaankhang.com/wp-content/uploads/2019/06/banner-02-600x195.jpg 600w"
-            sizes="(max-width: 5693px) 100vw, 5693px"
           />
         </div>
         <style dangerouslySetInnerHTML={{ __html: '\n#image_1347406328 {\n  width: 100%;\n}\n' }} />
@@ -63,28 +60,26 @@ const Contact = () => {
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    – <strong>SĐT:</strong> 090.848.5861/ 097.470.7422
+                    – <strong>SĐT:</strong> 028 37 27 3679
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    – <strong>Email:</strong>&nbsp;nhaankhang224@gmail.com
+                    – <strong>Email:</strong>&nbsp;chongthamnguyenphat@gmail.com
                   </span>
                 </p>
               </div>
             </div>
             <div id="col-711893765" className="col small-12 large-12">
               <div className="col-inner">
-                <p>
-                  <iframe
-                    loading="lazy"
-                    style={{ border: 0 }}
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4661.5230203694055!2d106.64577232353481!3d10.745425691266863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752e619cdf4a17%3A0x5b45155e0124b880!2zMjI0LCAxNDQvMTEgxJDGsOG7nW5nIFBo4bqhbSBWxINuIENow60sIHBoxrDhu51uZyA0LCBRdeG6rW4gNiwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1560738444193!5m2!1sen!2s"
-                    width="100%"
-                    height={350}
-                    frameBorder={0}
-                    allowFullScreen="allowFullScreen"
-                  />
-                </p>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.988547815108!2d106.70878551502078!3d10.812187892297235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528978e2e0a6d%3A0x92373c6e58c808b9!2zQ8O0bmcgVHkgVE5ISCDEkOG6p3UgVMawIFjDonkgROG7sW5nIFRoxrDGoW5nIE3huqFpIE5ndXnDqm4gUGjDoXQ!5e0!3m2!1svi!2s!4v1651996464584!5m2!1svi!2s"
+                  width={'100%'}
+                  height={450}
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </div>

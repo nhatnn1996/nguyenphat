@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
         <div className="section-content relative">
           <div className="row row-small" id="row-548748463">
-            <div id="col-66108098" className="col medium-3 small-6 large-3">
+            <div id="col-66108098" className="col medium-3 small-6 large-4">
               <div className="col-inner">
                 <div>
                   <strong>VĂN PHÒNG GIAO DỊCH</strong>
@@ -29,7 +29,7 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <div id="col-1420996765" className="col medium-3 small-12 large-3">
+            <div id="col-1420996765" className="col medium-3 small-12 large-4">
               <div className="col-inner">
                 <p>
                   <span style={{ fontSize: '90%' }}>
@@ -48,7 +48,7 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-            <div id="col-2049541109" className="col medium-3 small-6 large-3">
+            {/* <div id="col-2049541109" className="col medium-3 small-6 large-3">
               <div className="col-inner">
                 <p>
                   <span style={{ fontSize: '90%', color: '#282828' }}>
@@ -68,9 +68,9 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
 
-            <div id="col-679972034" className="col medium-3 small-12 large-3">
+            <div id="col-679972034" className="col medium-3 small-12 large-4">
               <div className="col-inner list-social">
                 <p>
                   <span style={{ fontSize: '90%', color: '#282828' }}>
