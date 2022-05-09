@@ -143,7 +143,7 @@ const MobileMenu = ({ isOpen, close }) => {
                 })}
 
                 <li className="hotline-nav menu-item menu-item-type-custom menu-item-object-custom menu-item-1658">
-                  <a href="tel:+84908485861">Hotline: 090 84 85 861</a>
+                  <a href="tel:+84908485861">Hotline: 0918 220 639</a>
                 </li>
               </ul>
             </div>

@@ -48,15 +48,11 @@ const NavMenu = ({ items }) => {
                 className="hotline-nav menu-item menu-item-type-custom menu-item-object-custom menu-item-1658 snip-li"
               >
                 <a href="tel:+84908485861" className="nav-top-link snip-a">
-                  Hotline: 028 37 27 3679
+                  Hotline: 0918 220 639
                 </a>
               </li>
               <li className="cart-item has-icon has-dropdown snip-li">
-                <a
-                  href="https://nhaankhang.com/gio-hang/"
-                  title="Giỏ hàng"
-                  className="header-cart-link is-small snip-a"
-                >
+                <a href="#" title="Giỏ hàng" className="header-cart-link is-small snip-a">
                   <span className="cart-icon image-icon">
                     <strong>0</strong>
                   </span>

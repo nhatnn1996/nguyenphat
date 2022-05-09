@@ -71,8 +71,8 @@ const ProductDetail = ({ product }) => {
                     </div>
                     <div className="product-breadcrumb-container is-smaller">
                       <nav className="woocommerce-breadcrumb breadcrumbs uppercase">
-                        <a href="https://nhaankhang.com">Trang chủ</a> <span className="divider">/</span>{' '}
-                        <a href="https://nhaankhang.com/danh-muc/sp-chong-tham-test/">Sản phẩm chống thấm test</a>
+                        <a href="https://nhaankhang.com">Sản phẩm</a> <span className="divider">/</span>{' '}
+                        <a href="https://nhaankhang.com/danh-muc/sp-chong-tham-test/">{product.name}</a>
                       </nav>
                     </div>
                   </div>
@@ -90,7 +90,7 @@ const ProductDetail = ({ product }) => {
                       target="_blank"
                       className="button primary lowercase expand"
                     >
-                      <i className="icon-phone" /> <span>Hotline: 090.848.5861</span>
+                      <i className="icon-phone" /> <span>Hotline:  0918 220 639</span>
                     </a>
                   </div>
                 </div>

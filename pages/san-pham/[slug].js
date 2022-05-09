@@ -1,6 +1,5 @@
 import { apollo } from '@/api/index';
 import React, { useEffect, useState } from 'react';
-import { useMutation } from '@apollo/client';
 import { productDetailGQL, productGQL, productsNewGQL, postComment } from '@/geters/product';
 import Link from 'next/link';
 import Slider from 'react-slick';
@@ -19,7 +18,7 @@ export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: productDetailGQL, variables: { slug: params.slug } });
   const { product } = result?.data;
 
-  const [{ data, loading, error }] = useMutation(postComment);
+  // const [{ data, loading, error }] = useMutation(postComment);
   if (!product) return { notfound: true };
   const productCategories = product?.productCategories?.nodes[0]?.products;
   const newProducts = await apollo.query({ query: productsNewGQL });
@@ -32,6 +31,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
   if (!product) return null;
   const [isZoom, setZoomProduct] = useState(false);
   const [imageZoom, setImageZoom] = useState(null);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const sortDescription = document.getElementById('product-short-description');
@@ -116,38 +116,60 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
       </button>
     );
   }
+
+  const onPreviewProduct = (status) => {
+    var index = 0;
+    if (status) {
+      index = index++;
+      console.log(index, 'ahah');
+    } else {
+      index = index--;
+      console.log(index, 'ahah');
+    }
+    // setPreviewProduct(index);
+  };
   function NextArrowPreview(props) {
     const { onClick } = props;
     return (
-      <button
-        onClick={onClick}
-        className="flickity-button flickity-prev-next-button next"
-        type="button"
-        aria-label="Next"
-      >
-        <svg className="flickity-button-icon" viewBox="0 0 100 100">
-          <path
-            d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
-            className="arrow-product"
-            transform="translate(100, 100) rotate(180) "
-          />
-        </svg>
-      </button>
+      onClick && (
+        <button
+          onClick={() => {
+            onClick();
+            onPreviewProduct(true);
+          }}
+          className="flickity-button flickity-prev-next-button next"
+          type="button"
+          aria-label="Next"
+        >
+          <svg className="flickity-button-icon" viewBox="0 0 100 100">
+            <path
+              d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+              className="arrow-product"
+              transform="translate(100, 100) rotate(180) "
+            />
+          </svg>
+        </button>
+      )
     );
   }
   function PrevArrowPreview(props) {
     const { onClick } = props;
     return (
-      <button
-        onClick={onClick}
-        className="flickity-button flickity-prev-next-button previous"
-        type="button"
-        aria-label="Previous"
-      >
-        <svg className="flickity-button-icon arrow-product" viewBox="0 0 100 100">
-          <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" className="arrow" />
-        </svg>
-      </button>
+      onClick && (
+        <button
+          onClick={() => {
+            onClick();
+            onPreviewProduct(false);
+          }}
+          className="flickity-button flickity-prev-next-button previous"
+          type="button"
+          aria-label="Previous"
+        >
+          <svg className="flickity-button-icon arrow-product" viewBox="0 0 100 100">
+            <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" className="arrow" />
+          </svg>
+        </button>
+      )
     );
   }
 
@@ -166,7 +188,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
   };
   var settingsPreview = {
     arrows: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -221,8 +243,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       </div>
                       <div className="product-breadcrumb-container is-smaller">
                         <nav className="woocommerce-breadcrumb breadcrumbs uppercase">
-                          <a href="https://nhaankhang.com">Trang chủ</a> <span className="divider">/</span>{' '}
-                          <a href="https://nhaankhang.com/danh-muc/sp-chong-tham-test/">Sản phẩm chống thấm test</a>
+                          <Link href="/san-pham">Sản phẩm</Link> <span className="divider">/</span> {product?.name}
                         </nav>
                       </div>
                     </div>
@@ -240,7 +261,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                         target="_blank"
                         className="button primary lowercase expand"
                       >
-                        <i className="icon-phone" /> <span>Hotline: 090.848.5861</span>
+                        <i className="icon-phone" /> <span>Hotline: 0918 220 639</span>
                       </a>
                     </div>
                   </div>
@@ -283,21 +304,19 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                                     // aria-selected="true"
                                     style={{ position: 'absolute', left: '0%' }}
                                   >
-                                    <a href="#">
-                                      <img
-                                        width={433}
-                                        height={577}
-                                        src={item?.sourceUrl}
-                                        className="lazy-load skip-lazy"
-                                        alt={item?.title}
-                                        loading="lazy"
-                                        title="z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview"
-                                        data-caption={item?.title}
-                                        data-large_image_width={433}
-                                        data-large_image_height={577}
-                                        srcSet={item?.srcSet}
-                                      />
-                                    </a>
+                                    <img
+                                      width={433}
+                                      height={577}
+                                      src={item?.sourceUrl}
+                                      className="lazy-load skip-lazy"
+                                      alt={item?.title}
+                                      loading="lazy"
+                                      title="z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview"
+                                      data-caption={item?.title}
+                                      data-large_image_width={433}
+                                      data-large_image_height={577}
+                                      srcSet={item?.srcSet}
+                                    />
                                   </div>
                                 ))}
                               </Slider>
@@ -376,11 +395,11 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       <div className="add-to-cart-container form-normal is-normal" />
                     </div>
                   </div>
-                  <div id="col-1854681923" className="col medium-3 small-12 large-3">
-                    <div className="col-inner">
+                  <div id="col-1854681923" className="contact-product col medium-3 small-12 large-3">
+                    <div className="col-inner contact-product-col">
                       <h3>Địa điểm mua hàng:</h3>
                       <div className="icon-box featured-box icon-box-left text-left">
-                        <div className="icon-box-img" style={{ width: '31px' }}>
+                        {/* <div className="icon-box-img" style={{ width: '31px' }}>
                           <div className="icon">
                             <div className="icon-inner">
                               <img
@@ -393,15 +412,17 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                               />{' '}
                             </div>
                           </div>
-                        </div>
+                        </div> */}
                         <div className="icon-box-text last-reset">
-                          <p>
-                            <span style={{ fontSize: '105%', color: '#000000' }}>
-                              Showroom
-                              <br />
-                            </span>
-                            <span style={{ fontSize: '85%' }}>224/11/7 Phạm Văn chí ,Phường 04,Quận 06 TP HCM</span>
-                          </p>
+                          <span style={{ fontSize: '105%', color: '#000000' }}>
+                            Showroom
+                            <br />
+                          </span>
+                          <span style={{ fontSize: '85%' }}>
+                            201/60/11 Nguyễn Xí, Phường 26, Quận Bình Thạnh, TPHCM
+                          </span>
+                          <p>Điện thoại: 028 37 27 3679</p>
+                          <p>Email: chongthamnguyenphat@gmail.com</p>
                         </div>
                       </div>
                       <div
@@ -411,11 +432,6 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       >
                         <style dangerouslySetInnerHTML={{ __html: '\n#gap-485607457 {\n  padding-top: 12px;\n}\n' }} />
                       </div>
-                      <p>
-                        <span style={{ fontSize: '100%' }}>
-                          Giao hàng và lắp đặt miễn phí ở Hà Nội, TP HCM và Hải Phòng
-                        </span>
-                      </p>
                       <a
                         rel="noopener noreferrer"
                         href="https://messenger.com/t/254300248069701/"
@@ -639,7 +655,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                 </div>
               </div>
               <div id="col-1852040723" className="col medium-4 small-12 large-4">
-                <div className="col-inner" style={{ backgroundColor: 'rgb(251, 240, 240)' }}>
+                <div className="col-inner" style={{ backgroundColor: 'rgba(0, 0, 0,0.1)' }}>
                   <p>
                     <span style={{ color: '#000000', fontSize: '130%' }}>
                       <strong>Sản phẩm mới</strong>
@@ -687,7 +703,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                 <div className="row" id="row-1749262871">
                   <div id="col-1302321468" className="col small-12 large-12">
                     <div className="col-inner">
-                      <p>
+                      <p style={{ marginBottom : "20px"}}>
                         <span style={{ fontSize: '120%' }}>
                           <strong>
                             <span style={{ color: '#000000' }}>Sản phẩm cùng danh mục:</span>
