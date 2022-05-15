@@ -299,7 +299,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       onInput={(e) => getValueComment(e, 'website')}
                     />
                   </p>
-                  <p className="comment-form-cookies-consent">
+                  {/* <p className="comment-form-cookies-consent">
                     <input
                       id="wp-comment-cookies-consent"
                       name="wp-comment-cookies-consent"
@@ -309,7 +309,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                     <label htmlFor="wp-comment-cookies-consent">
                       Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi.
                     </label>
-                  </p>
+                  </p> */}
                   <p className="form-submit">
                     <input
                       style={{ background: '#0082c8', color: 'white' }}

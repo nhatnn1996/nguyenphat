@@ -1,20 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { apollo } from '@/api/index';
-import { bynewsGQL, newNewsGQL, getNewsbyCategory } from '@/geters/news';
+import { useMutation, gql } from '@apollo/client';
+import { bynewsGQL, newsGQL, newNewsGQL, getNewsbyCategory, postComment } from '@/geters/news';
 import { productsNewGQL } from '@/geters/product';
 import InfoRight from '@/components/info-right';
-
-export async function getStaticPaths() {
-  const { data } = await apollo.query({ query: getNewsbyCategory, variables: { slug: 'du-an' } });
-
-  const paths = data.category?.posts?.nodes.map((element) => ({
-    params: { ...element, slug: element.slug }
-  }));
-  return {
-    paths: paths,
-    fallback: true
-  };
-}
+import moment from 'moment';
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
@@ -28,9 +18,61 @@ export async function getStaticProps({ params }) {
   const newNewsData = newNews?.data?.posts?.nodes;
   return { props: { postBy, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
 }
+export async function getStaticPaths() {
+  const { data } = await apollo.query({ query: getNewsbyCategory, variables: { slug: 'du-an' } });
+  const paths = data.category?.posts?.nodes.map((element) => ({
+    params: { ...element, slug: element.slug }
+  }));
+  return {
+    paths: paths,
+    fallback: true
+  };
+}
 const NewsDetail = ({ postBy, newProds, newNewsData }) => {
-  if(!postBy) return null
+  const [valueComment, setValueComment] = useState({
+    comment: '',
+    name: '',
+    email: '',
+    website: ''
+  });
+  if (!postBy) return null;
   const data = postBy;
+  const dataComment = postBy?.comments?.nodes;
+  const [callPostComment] = useMutation(postComment, {
+    variables: {
+      commentOn: data.databaseId,
+      content: valueComment.comment,
+      author: valueComment.name,
+      authorEmail: valueComment.email,
+      authorUrl: valueComment.website,
+      date: Date.now().toString()
+    }
+  });
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+  const submitComment = () => {
+    if (valueComment.comment && valueComment.email && valueComment.name) {
+      if (validateEmail(valueComment.email)) {
+        callPostComment();
+        alert('Gửi bình luận thành công, vui lòng admin duyệt.');
+        document.getElementById('commentform').reset();
+        setValueComment({});
+      } else {
+        alert('Email không đúng định dạng, vui lòng nhập lại.');
+      }
+    }
+  };
+  const getValueComment = (e, type) => {
+    setValueComment({
+      ...valueComment,
+      [type]: e.target.value
+    });
+  };
   return (
     <div>
       <div id="content" className="blog-wrapper blog-single page-wrapper">
@@ -68,7 +110,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                                 <div
                                   className="entry-content single-page"
                                   id="entry-content"
-                                  dangerouslySetInnerHTML={{ __html: data.content }}
+                                  dangerouslySetInnerHTML={{ __html: data?.content }}
                                 ></div>
                               </div>
                             </article>
@@ -138,6 +180,53 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
               </div>
             </article>
             <div id="comments" className="comments-area">
+              <ol className="comment-list">
+                {dataComment.map((item) => (
+                  <li className="comment even thread-even depth-1" id="li-comment-388">
+                    <article id="comment-388" className="comment-inner">
+                      <div className="flex-row align-top">
+                        <div className="flex-col">
+                          <div className="comment-author mr-half">
+                            <img
+                              alt=""
+                              src="https://secure.gravatar.com/avatar/f5d9611e0c8533dfbca3e165476ea437?s=70&d=mm&r=g"
+                              data-src="https://secure.gravatar.com/avatar/f5d9611e0c8533dfbca3e165476ea437?s=70&d=mm&r=g"
+                              srcSet="https://secure.gravatar.com/avatar/f5d9611e0c8533dfbca3e165476ea437?s=140&d=mm&r=g 2x"
+                              data-srcset="https://secure.gravatar.com/avatar/f5d9611e0c8533dfbca3e165476ea437?s=140&d=mm&r=g 2x"
+                              className="avatar avatar-70 photo lazy-load-active"
+                              height={70}
+                              width={70}
+                              loading="lazy"
+                            />{' '}
+                          </div>
+                        </div>
+                        <div className="flex-col flex-grow">
+                          <cite className="strong fn">{item.author.node.name}</cite> <span className="says">says:</span>
+                          <div className="comment-content" dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                          {item?.author?.node?.email && (
+                            <div className="comment-content">
+                              <a href={`mailto:${item?.author?.node?.email}`}>{item?.author?.node?.email}</a>
+                            </div>
+                          )}
+                          {item?.author?.node?.url && (
+                            <div className="comment-content">
+                              <a href={item?.author?.node?.url}>{item?.author?.node?.url}</a>
+                            </div>
+                          )}
+                          <div className="comment-meta commentmetadata uppercase is-xsmall clear">
+                            <time dateTime={moment(item.date).format('DD/MM/YYYY, h:mm:ss a')} className="pull-left">
+                              {moment(item.date).format('DD/MM/YYYY, h:mm:ss a')}
+                            </time>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+
+                    {/* .children */}
+                  </li>
+                ))}
+              </ol>
+
               <div id="respond" className="comment-respond">
                 <h3 id="reply-title" className="comment-reply-title">
                   Trả lời{' '}
@@ -152,13 +241,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                     </a>
                   </small>
                 </h3>
-                <form
-                  action="https://nhaankhang.com/wp-comments-post.php"
-                  method="post"
-                  id="commentform"
-                  className="comment-form"
-                  noValidate
-                >
+                <form id="commentform" className="comment-form" noValidate>
                   <p className="comment-notes">
                     <span id="email-notes">Email của bạn sẽ không được hiển thị công khai.</span> Các trường bắt buộc
                     được đánh dấu <span className="required">*</span>
@@ -173,6 +256,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       maxLength={65525}
                       required="required"
                       defaultValue={''}
+                      onInput={(e) => getValueComment(e, 'comment')}
                     />
                   </p>
                   <p className="comment-form-author">
@@ -183,10 +267,10 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       id="author"
                       name="author"
                       type="text"
-                      defaultValue
                       size={30}
                       maxLength={245}
                       required="required"
+                      onInput={(e) => getValueComment(e, 'name')}
                     />
                   </p>
                   <p className="comment-form-email">
@@ -197,18 +281,25 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       id="email"
                       name="email"
                       type="email"
-                      defaultValue
                       size={30}
                       maxLength={100}
                       aria-describedby="email-notes"
                       required="required"
+                      onInput={(e) => getValueComment(e, 'email')}
                     />
                   </p>
                   <p className="comment-form-url">
                     <label htmlFor="url">Trang web</label>{' '}
-                    <input id="url" name="url" type="url" defaultValue size={30} maxLength={200} />
+                    <input
+                      id="url"
+                      name="url"
+                      type="url"
+                      size={30}
+                      maxLength={200}
+                      onInput={(e) => getValueComment(e, 'website')}
+                    />
                   </p>
-                  <p className="comment-form-cookies-consent">
+                  {/* <p className="comment-form-cookies-consent">
                     <input
                       id="wp-comment-cookies-consent"
                       name="wp-comment-cookies-consent"
@@ -218,9 +309,17 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                     <label htmlFor="wp-comment-cookies-consent">
                       Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi.
                     </label>
-                  </p>
+                  </p> */}
                   <p className="form-submit">
-                    <input name="submit" type="submit" id="submit" className="submit" defaultValue="Phản hồi" />{' '}
+                    <input
+                      style={{ background: '#0082c8', color: 'white' }}
+                      name="submit"
+                      type="button"
+                      id="submit"
+                      className="submit"
+                      defaultValue="Phản hồi"
+                      onClick={submitComment}
+                    />{' '}
                     <input type="hidden" name="comment_post_ID" defaultValue={3617} id="comment_post_ID" />
                     <input type="hidden" name="comment_parent" id="comment_parent" defaultValue={0} />
                   </p>
@@ -228,6 +327,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
               </div>
             </div>
           </div>
+
           <InfoRight newProds={newProds} newNewsData={newNewsData} />
         </div>
       </div>
