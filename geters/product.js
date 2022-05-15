@@ -225,12 +225,3 @@ export const productsNewGQL = gql`
     }
   }
 `;
-export const postComment = gql`
-  mutation MyMutation {
-    createComment(input: { author: "cG9zdDoyMDA=", content: "xinnn chaooo" }) {
-      comment {
-        content
-      }
-    }
-  }
-`;

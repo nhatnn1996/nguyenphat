@@ -99,6 +99,21 @@ export const bynewsGQL = gql`
       title
       postId
       date
+      databaseId
+      comments {
+        nodes {
+          content
+          date
+          author {
+            node {
+              email
+              databaseId
+              url
+              name
+            }
+          }
+        }
+      }
     }
   }
 `;
@@ -112,6 +127,33 @@ export const getNewsbyCategory = gql`
           id
           slug
         }
+      }
+    }
+  }
+`;
+export const postComment = gql`
+  mutation PostComment(
+    $commentOn: Int!
+    $content: String!
+    $author: String!
+    $authorEmail: String!
+    $authorUrl: String
+    $date: String!
+  ) {
+    createComment(
+      input: {
+        commentOn: $commentOn
+        content: $content
+        author: $author
+        authorEmail: $authorEmail
+        authorUrl: $authorUrl
+        date: $date
+      }
+    ) {
+      success
+      comment {
+        content
+        approved
       }
     }
   }
