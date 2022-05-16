@@ -300,7 +300,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                                   <div
                                     data-thumb="https://nhaankhang.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
                                     className=""
-                                    // aria-selected="true"
+                                    
                                     style={{ position: 'absolute', left: '0%' }}
                                   >
                                     <img
@@ -662,7 +662,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                   </p>
                   <ul className="product_list_widget">
                     {newProds?.map((item) => (
-                      <Link href={`/san-pham/${item.node.slug}`} title={item.node.name}>
+                      <Link href={`/san-pham/${item.node.slug}`} key={item.node.slug} title={item.node.name}>
                         <li>
                           <div>
                             <img
@@ -726,7 +726,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           >
                             <Slider {...settings}>
                               {productCategories?.nodes?.map((item) => (
-                                <div className="col is-selected" aria-selected="true" style={{ minWidth: '248px' }}>
+                                <div className="col is-selected" key={item.slug} aria-selected="true" style={{ minWidth: '248px' }}>
                                   <div className="col-inner">
                                     <div className="badge-container absolute left top z-1"></div>
                                     <div className="product-small box has-hover box-normal box-text-bottom">

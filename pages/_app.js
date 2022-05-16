@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }) {
       <HeadSEO />
       <div id="wrapper">
         <Header menuItems={menuItems} />
-
         <motion.main
           key={router.pathname}
           variants={variants} // Pass the variant object into Framer Motion

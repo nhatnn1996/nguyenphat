@@ -144,7 +144,7 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
           {newSearch.length > 0 ? (
             newSearch.map((item) => {
               return (
-                <div className="col post-item post-item-news">
+                <div className="col post-item post-item-news" key={item.slug}>
                   <div className="col-inner col-inner-news">
                     <Link href={`/tin-tuc/${item.slug}`} className="plain">
                       <div className="box box-text-bottom box-blog-post has-hover">
