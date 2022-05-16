@@ -134,7 +134,7 @@ const MobileMenu = ({ isOpen, close }) => {
               <ul className="nav nav-sidebar nav-vertical nav-uppercase nav-anim">
                 {items.map((element) => {
                   return (
-                    <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-18">
+                    <li key={element.path} className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-18">
                       <a href={element.path} aria-current="page">
                         {element.label}
                       </a>

@@ -19,7 +19,7 @@ export const Slider = () => {
               <img
                 width={'100%'}
                 height={'100vh'}
-                src="/images/banner.jpg"
+                src="/images/banner.jpeg"
                 className="attachment-original size-original lazy-load-active"
                 loading="lazy"
               />
