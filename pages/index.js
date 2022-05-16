@@ -306,7 +306,7 @@ export default function Home(props) {
                             className="button alert is-large lowercase expand"
                             style={{ borderRadius: 99 }}
                           >
-                            <i className="icon-phone" /> <span>Hotline: 028.37.27.3679</span>
+                            <i className="icon-phone" /> <span>Hotline:  0918 220 639 </span>
                           </a>
                         </div>
                       </div>
