@@ -1,7 +1,7 @@
 import React from 'react';
 const Introduce = () => {
   return (
-    <div id="content" className="content-area page-wrapper" role="main">
+    <div id="content" className="container content-area page-wrapper" role="main" style={{minHeight : "70vh"}}>
       CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT, xin gửi lời chào trân trọng và lời chúc thành đạt đến Quý
       khách hàng. Với một đội ngũ nhân viên giỏi, nhiều năm kinh nghiệm, NGUYÊN PHÁT luôn tự hào là nhà cung cấp dịch vụ
       chống thấm và hóa chất xây dựng chuyên nghiệp tại Việt Nam. Lĩnh vực hoạt động: Cung cấp vật tư chống thấm, hoá

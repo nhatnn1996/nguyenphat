@@ -48,28 +48,6 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-            {/* <div id="col-2049541109" className="col medium-3 small-6 large-3">
-              <div className="col-inner">
-                <p>
-                  <span style={{ fontSize: '90%', color: '#282828' }}>
-                    <strong>HƯỚNG DẪN</strong>
-                  </span>
-                </p>
-                <ul>
-                  <li className="bullet-arrow">
-                    <a href="https://nhaankhang.com/">
-                      <span style={{ fontSize: '90%' }}>
-                        Tư <span style={{ fontSize: '100%' }}>vấn</span> chọn mẫu
-                      </span>
-                    </a>
-                  </li>
-                  <li className="bullet-arrow">
-                    <a href="https://nhaankhang.com/chinh-sach-bao-mat-thong-tin/">Chính Sách Bảo Mật Thông Tin</a>
-                  </li>
-                </ul>
-              </div>
-            </div> */}
-
             <div id="col-679972034" className="col medium-3 small-12 large-4">
               <div className="col-inner list-social">
                 <p>
