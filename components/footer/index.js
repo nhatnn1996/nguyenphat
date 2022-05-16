@@ -123,7 +123,7 @@ export default function Footer() {
         <style
           dangerouslySetInnerHTML={{
             __html:
-              '\n#section_116701697 {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  background-color: rgb(242, 242, 242);\n}\n#section_116701697 .section-bg.bg-loaded {\n  background-image: url(https://nhaankhang.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n'
+              '\n#section_116701697 {\n  padding-top: 20px;\n  padding-bottom: 20px;\n  background-color: rgb(242, 242, 242);\n}\n#section_116701697 .section-bg.bg-loaded {\n  background-image: url(https://chongthamnguyenphat.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n'
           }}
         />
       </section>

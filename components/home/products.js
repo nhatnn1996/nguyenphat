@@ -72,7 +72,7 @@ export const ProductsCom = ({ data }) => {
       <style
         dangerouslySetInnerHTML={{
           __html:
-            '\n#section_1669588426 {\n  padding-top: 30px;\n  padding-bottom: 30px;\n  background-color: rgb(241, 221, 221);\n}\n#section_1669588426 .section-bg.bg-loaded {\n  background-image: url(https://nhaankhang.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n'
+            '\n#section_1669588426 {\n  padding-top: 30px;\n  padding-bottom: 30px;\n  background-color: rgb(241, 221, 221);\n}\n#section_1669588426 .section-bg.bg-loaded {\n  background-image: url(https://chongthamnguyenphat.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n'
         }}
       />
     </section>

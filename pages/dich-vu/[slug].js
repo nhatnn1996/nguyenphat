@@ -86,7 +86,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                 <header className="entry-header">
                   <div className="entry-header-text entry-header-text-top text-left">
                     <h6 className="entry-category is-xsmall">
-                      <a href="https://nhaankhang.com/chuyen-muc/tin-tuc/" rel="category tag">
+                      <a href="https://chongthamnguyenphat.com/chuyen-muc/tin-tuc/" rel="category tag">
                         Tin tức
                       </a>
                     </h6>
@@ -124,14 +124,14 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                     <div className="is-divider medium" />
                     <div className="social-icons share-icons share-row relative">
                       <a
-                        href="whatsapp://send?text=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p - https://nhaankhang.com/mau-biet-thu-dep/"
+                        href="whatsapp://send?text=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p - https://chongthamnguyenphat.com/mau-biet-thu-dep/"
                         data-action="share/whatsapp/share"
                         className="icon button circle is-outline tooltip whatsapp show-for-medium tooltipstered"
                       >
                         <i className="icon-whatsapp" />
                       </a>
                       <a
-                        href="//www.facebook.com/sharer.php?u=https://nhaankhang.com/mau-biet-thu-dep/"
+                        href="//www.facebook.com/sharer.php?u=https://chongthamnguyenphat.com/mau-biet-thu-dep/"
                         data-label="Facebook"
                         onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
                         rel="noopener noreferrer nofollow"
@@ -141,7 +141,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                         <i className="icon-facebook" />
                       </a>
                       <a
-                        href="//twitter.com/share?url=https://nhaankhang.com/mau-biet-thu-dep/"
+                        href="//twitter.com/share?url=https://chongthamnguyenphat.com/mau-biet-thu-dep/"
                         onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
                         rel="noopener noreferrer nofollow"
                         target="_blank"
@@ -150,14 +150,14 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                         <i className="icon-twitter" />
                       </a>
                       <a
-                        href="mailto:enteryour@addresshere.com?subject=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p&body=Check%20this%20out:%20https://nhaankhang.com/mau-biet-thu-dep/"
+                        href="mailto:enteryour@addresshere.com?subject=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p&body=Check%20this%20out:%20https://chongthamnguyenphat.com/mau-biet-thu-dep/"
                         rel="nofollow"
                         className="icon button circle is-outline tooltip email tooltipstered"
                       >
                         <i className="icon-envelop" />
                       </a>
                       <a
-                        href="//pinterest.com/pin/create/button/?url=https://nhaankhang.com/mau-biet-thu-dep/&media=&description=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p"
+                        href="//pinterest.com/pin/create/button/?url=https://chongthamnguyenphat.com/mau-biet-thu-dep/&media=&description=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p"
                         onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
                         rel="noopener noreferrer nofollow"
                         target="_blank"
@@ -166,7 +166,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                         <i className="icon-pinterest" />
                       </a>
                       <a
-                        href="//www.linkedin.com/shareArticle?mini=true&url=https://nhaankhang.com/mau-biet-thu-dep/&title=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p"
+                        href="//www.linkedin.com/shareArticle?mini=true&url=https://chongthamnguyenphat.com/mau-biet-thu-dep/&title=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p"
                         onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
                         rel="noopener noreferrer nofollow"
                         target="_blank"

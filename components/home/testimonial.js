@@ -68,7 +68,7 @@ export const Testimomial = ({ data }) => {
                                 <div className="star-rating" />
                                 <p>
                                   Là khách hàng lâu năm của công ty, tôi rất hài lòng về sản phẩm và dịch vụ chống thấm
-                                  của Nhà An Khang
+                                  của Chống thấm Nguyên Phát
                                 </p>
                                 <p>
                                   <span style={{ color: '#000000' }}>
@@ -105,7 +105,7 @@ export const Testimomial = ({ data }) => {
       <style
         dangerouslySetInnerHTML={{
           __html:
-            '\n#section_1137954622 {\n  padding-top: 41px;\n  padding-bottom: 41px;\n}\n#section_1137954622 .section-bg.bg-loaded {\n  background-image: url(https://nhaankhang.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n'
+            '\n#section_1137954622 {\n  padding-top: 41px;\n  padding-bottom: 41px;\n}\n#section_1137954622 .section-bg.bg-loaded {\n  background-image: url(https://chongthamnguyenphat.com/wp-content/uploads/2018/03/bg-news1.jpg);\n}\n'
         }}
       />
     </section>

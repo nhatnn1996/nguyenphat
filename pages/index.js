@@ -3,7 +3,6 @@ import { Service, ProductCom, ProductsCom, Video, Slider, NewsCom } from '@/comp
 import { apollo } from '@/api/index';
 import { homeGQL } from '@/geters/home';
 import { Testimomial } from '@/components/home/testimonial';
-
 export async function getStaticProps() {
   const result = await apollo.query({ query: homeGQL });
   const home = {};
@@ -76,8 +75,7 @@ export default function Home(props) {
                             <img
                               width={100}
                               height={100}
-                              src="https://nhaankhang.com/wp-content/uploads/2018/03/Local-seo.png"
-                              data-src="https://nhaankhang.com/wp-content/uploads/2018/03/Local-seo.png"
+                              src="/icons/Local-seo.png"
                               className="attachment-medium size-medium lazy-load-active"
                               alt=""
                               loading="lazy"
@@ -128,8 +126,7 @@ export default function Home(props) {
                             <img
                               width={100}
                               height={100}
-                              src="https://nhaankhang.com/wp-content/uploads/2018/03/map.png"
-                              data-src="https://nhaankhang.com/wp-content/uploads/2018/03/map.png"
+                              src="/icons/map.png"
                               className="attachment-medium size-medium lazy-load-active"
                               alt=""
                               loading="lazy"
@@ -159,8 +156,7 @@ export default function Home(props) {
                             <img
                               width={100}
                               height={100}
-                              src="https://nhaankhang.com/wp-content/uploads/2018/03/pair-ads.png"
-                              data-src="https://nhaankhang.com/wp-content/uploads/2018/03/pair-ads.png"
+                              src="/icons/pair-ads.png"
                               className="attachment-medium size-medium lazy-load-active"
                               alt=""
                               loading="lazy"
@@ -210,13 +206,10 @@ export default function Home(props) {
                             <img
                               width={300}
                               height={300}
-                              src="https://nhaankhang.com/wp-content/uploads/2019/06/shield-300x300.png"
-                              data-src="https://nhaankhang.com/wp-content/uploads/2019/06/shield-300x300.png"
+                              src="/icons/shield.png"
                               className="attachment-medium size-medium lazy-load-active"
                               alt=""
                               loading="lazy"
-                              srcSet="https://nhaankhang.com/wp-content/uploads/2019/06/shield-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2019/06/shield-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2019/06/shield-100x100.png 100w, https://nhaankhang.com/wp-content/uploads/2019/06/shield.png 512w"
-                              data-srcset="https://nhaankhang.com/wp-content/uploads/2019/06/shield-300x300.png 300w, https://nhaankhang.com/wp-content/uploads/2019/06/shield-150x150.png 150w, https://nhaankhang.com/wp-content/uploads/2019/06/shield-100x100.png 100w, https://nhaankhang.com/wp-content/uploads/2019/06/shield.png 512w"
                               sizes="(max-width: 300px) 100vw, 300px"
                             />{' '}
                           </div>
@@ -349,72 +342,7 @@ export default function Home(props) {
           </span>
         </a>
       </div>{' '}
-      <div id="login-form-popup" className="lightbox-content mfp-hide">
-        <div className="woocommerce-notices-wrapper" />
-        <div className="account-container lightbox-inner">
-          <div className="account-login-inner">
-            <h3 className="uppercase">Đăng nhập</h3>
-            <form className="woocommerce-form woocommerce-form-login login" method="post">
-              <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <label htmlFor="username">
-                  Tên tài khoản hoặc địa chỉ email&nbsp;
-                  <span className="required">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="woocommerce-Input woocommerce-Input--text input-text"
-                  name="username"
-                  id="username"
-                  autoComplete="username"
-                  defaultValue=""
-                />{' '}
-              </p>
-              <p className="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <label htmlFor="password">
-                  Mật khẩu&nbsp;<span className="required">*</span>
-                </label>
-                <input
-                  className="woocommerce-Input woocommerce-Input--text input-text"
-                  type="password"
-                  name="password"
-                  id="password"
-                  autoComplete="current-password"
-                />
-              </p>
-              <p className="form-row">
-                <label className="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
-                  <input
-                    className="woocommerce-form__input woocommerce-form__input-checkbox"
-                    name="rememberme"
-                    type="checkbox"
-                    id="rememberme"
-                    defaultValue="forever"
-                  />{' '}
-                  <span>Ghi nhớ mật khẩu</span>
-                </label>
-                <input
-                  type="hidden"
-                  id="woocommerce-login-nonce"
-                  name="woocommerce-login-nonce"
-                  defaultValue="9da3f12e32"
-                />
-                <input type="hidden" name="_wp_http_referer" defaultValue="/" />{' '}
-                <button
-                  type="submit"
-                  className="woocommerce-button button woocommerce-form-login__submit"
-                  name="login"
-                  value="Đăng nhập"
-                >
-                  Đăng nhập
-                </button>
-              </p>
-              <p className="woocommerce-LostPassword lost_password">
-                <a href="https://nhaankhang.com/tai-khoan/lost-password/">Quên mật khẩu?</a>
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
+      
     </>
   );
 }

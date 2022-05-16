@@ -5,15 +5,15 @@ export default function HeadSEO() {
       <>
         <meta charSet="UTF-8" />
         <link rel="profile" href="https://gmpg.org/xfn/11" />
-        <link rel="pingback" href="https://nhaankhang.com/xmlrpc.php" />
+        <link rel="pingback" href="https://chongthamnguyenphat.com/xmlrpc.php" />
         <meta name="robots" content="max-image-preview:large" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         {/* This site is optimized with the Yoast SEO plugin v14.6.1 - https://yoast.com/wordpress/plugins/seo/ */}
-        <title>Trang chủ | Vật liệu chống thấm | Xử lý chống thấm | nhaankhang.com</title>
+        <title>Trang chủ | Vật liệu chống thấm | Xử lý chống thấm | chongthamnguyenphat.com</title>
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        {/* <link rel="canonical" href="https://nhaankhang.com/" /> */}
+        {/* <link rel="canonical" href="https://chongthamnguyenphat.com/" /> */}
         <meta property="og:locale" content="vi_VN" />
         <meta property="og:type" content="website" />
         <meta
@@ -30,20 +30,20 @@ export default function HeadSEO() {
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="Dòng thông tin Vật liệu chống thấm | Xử lý chống thấm | nhaankhang.com »"
-          href="https://nhaankhang.com/feed/"
+          title="Dòng thông tin Vật liệu chống thấm | Xử lý chống thấm | chongthamnguyenphat.com »"
+          href="https://chongthamnguyenphat.com/feed/"
         />
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="Dòng phản hồi Vật liệu chống thấm | Xử lý chống thấm | nhaankhang.com »"
-          href="https://nhaankhang.com/comments/feed/"
+          title="Dòng phản hồi Vật liệu chống thấm | Xử lý chống thấm | chongthamnguyenphat.com »"
+          href="https://chongthamnguyenphat.com/comments/feed/"
         />
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="Vật liệu chống thấm | Xử lý chống thấm | nhaankhang.com » Trang chủ Dòng phản hồi"
-          href="https://nhaankhang.com/trang-chu/feed/"
+          title="Vật liệu chống thấm | Xử lý chống thấm | chongthamnguyenphat.com » Trang chủ Dòng phản hồi"
+          href="https://chongthamnguyenphat.com/trang-chu/feed/"
         />
         <style
           type="text/css"
@@ -78,7 +78,7 @@ export default function HeadSEO() {
         <link
           rel="stylesheet"
           id="flatsome-style-css"
-          href="https://nhaankhang.com/wp-content/themes/funiture/style.css?ver=3.0"
+          href="https://chongthamnguyenphat.com/wp-content/themes/funiture/style.css?ver=3.0"
           type="text/css"
           media="all"
         />
@@ -89,26 +89,26 @@ export default function HeadSEO() {
           type="text/css"
           media="all"
         />
-        <link rel="https://api.w.org/" href="https://nhaankhang.com/wp-json/" />
-        <link rel="alternate" type="application/json" href="https://nhaankhang.com/wp-json/wp/v2/pages/2" />
-        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nhaankhang.com/xmlrpc.php?rsd" />
+        <link rel="https://api.w.org/" href="https://chongthamnguyenphat.com/wp-json/" />
+        <link rel="alternate" type="application/json" href="https://chongthamnguyenphat.com/wp-json/wp/v2/pages/2" />
+        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://chongthamnguyenphat.com/xmlrpc.php?rsd" />
         <link
           rel="wlwmanifest"
           type="application/wlwmanifest+xml"
-          href="https://nhaankhang.com/wp-includes/wlwmanifest.xml"
+          href="https://chongthamnguyenphat.com/wp-includes/wlwmanifest.xml"
         />
         <meta name="generator" content="WordPress 5.8.4" />
         <meta name="generator" content="WooCommerce 4.3.6" />
-        <link rel="shortlink" href="https://nhaankhang.com/" />
+        <link rel="shortlink" href="https://chongthamnguyenphat.com/" />
         <link
           rel="alternate"
           type="application/json+oembed"
-          href="https://nhaankhang.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnhaankhang.com%2F"
+          href="https://chongthamnguyenphat.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fchongthamnguyenphat.com%2F"
         />
         <link
           rel="alternate"
           type="text/xml+oembed"
-          href="https://nhaankhang.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnhaankhang.com%2F&format=xml"
+          href="https://chongthamnguyenphat.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fchongthamnguyenphat.com%2F&format=xml"
         />
         <meta name="google-site-verification" content="g84JCh1ZOT9BIfj_fD_8SoUNyL3Gd0qom-gKjwdQVfk" />
         {/* Analytics by WP-Statistics v13.1.5 - https://wp-statistics.com/ */}
@@ -117,24 +117,24 @@ export default function HeadSEO() {
             __html: '.bg{opacity: 0; transition: opacity 1s; -webkit-transition: opacity 1s;} .bg-loaded{opacity: 1;}'
           }}
         />
-        {/*[if IE]><link rel="stylesheet" type="text/css" href="https://nhaankhang.com/wp-content/themes/flatsome/assets/css/ie-fallback.css"><![endif]*/}{' '}
+        {/*[if IE]><link rel="stylesheet" type="text/css" href="https://chongthamnguyenphat.com/wp-content/themes/flatsome/assets/css/ie-fallback.css"><![endif]*/}{' '}
         <link
           rel="icon"
-          href="https://nhaankhang.com/wp-content/uploads/2018/03/cropped-logo-thuoc-la-dien-tu-01-32x32.png"
+          href="https://chongthamnguyenphat.com/wp-content/uploads/2018/03/cropped-logo-thuoc-la-dien-tu-01-32x32.png"
           sizes="32x32"
         />
         <link
           rel="icon"
-          href="https://nhaankhang.com/wp-content/uploads/2018/03/cropped-logo-thuoc-la-dien-tu-01-192x192.png"
+          href="https://chongthamnguyenphat.com/wp-content/uploads/2018/03/cropped-logo-thuoc-la-dien-tu-01-192x192.png"
           sizes="192x192"
         />
         <link
           rel="apple-touch-icon"
-          href="https://nhaankhang.com/wp-content/uploads/2018/03/cropped-logo-thuoc-la-dien-tu-01-180x180.png"
+          href="https://chongthamnguyenphat.com/wp-content/uploads/2018/03/cropped-logo-thuoc-la-dien-tu-01-180x180.png"
         />
         <meta
           name="msapplication-TileImage"
-          content="https://nhaankhang.com/wp-content/uploads/2018/03/cropped-logo-thuoc-la-dien-tu-01-270x270.png"
+          content="https://chongthamnguyenphat.com/wp-content/uploads/2018/03/cropped-logo-thuoc-la-dien-tu-01-270x270.png"
         />
         <link
           rel="stylesheet"
