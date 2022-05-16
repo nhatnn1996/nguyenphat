@@ -59,7 +59,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
     if (valueComment.comment && valueComment.email && valueComment.name) {
       if (validateEmail(valueComment.email)) {
         callPostComment();
-        alert('Gửi bình luận thành công, vui lòng admin duyệt.');
+        alert('Gửi bình luận thành công, vui lòng chờ admin duyệt.');
         document.getElementById('commentform').reset();
         setValueComment({});
       } else {
