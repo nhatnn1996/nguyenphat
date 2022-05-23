@@ -1,4 +1,4 @@
-p{
+p {
   margin-bottom: 0;
 }
 .collapsible-product {
@@ -109,14 +109,21 @@ p{
   fill: #0082c8 !important;
 }
 svg > .arrow {
-  fill: #0082c8 !important; 
+  fill: #0082c8 !important;
 }
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
-.contact-product{
+.contact-product {
   background-color: rgba(0, 0, 0, 0.03);
 }
-.contact-product-col{
+.contact-product-col {
   background-color: unset !important;
+}
+
+.error {
+  color: rgb(255, 166, 166);
+  margin: 10px 0px !important;
+  text-align: left;
+  font-weight: bold;
 }

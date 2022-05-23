@@ -120,10 +120,8 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
     var index = 0;
     if (status) {
       index = index++;
-      console.log(index, 'ahah');
     } else {
       index = index--;
-      console.log(index, 'ahah');
     }
     // setPreviewProduct(index);
   };
@@ -296,11 +294,11 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           <div className="flickity-viewport" style={{ height: '524.133px', touchAction: 'pan-y' }}>
                             <div className="flickity-slider" style={{ display: 'flex', alignItems: 'center' }}>
                               <Slider {...settingsPreview}>
-                                {product?.galleryImages?.nodes.map((item) => (
+                                {product?.galleryImages?.nodes.map((item, index) => (
                                   <div
+                                    key={index}
                                     data-thumb="https://chongthamnguyenphat.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
                                     className=""
-                                    
                                     style={{ position: 'absolute', left: '0%' }}
                                   >
                                     <img
@@ -726,7 +724,12 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           >
                             <Slider {...settings}>
                               {productCategories?.nodes?.map((item) => (
-                                <div className="col is-selected" key={item.slug} aria-selected="true" style={{ minWidth: '248px' }}>
+                                <div
+                                  className="col is-selected"
+                                  key={item.slug}
+                                  aria-selected="true"
+                                  style={{ minWidth: '248px' }}
+                                >
                                   <div className="col-inner">
                                     <div className="badge-container absolute left top z-1"></div>
                                     <div className="product-small box has-hover box-normal box-text-bottom">
@@ -849,7 +852,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       </button>
                       <ul className="children">
                         <li className="cat-item cat-item-90">
-                          <a href="https://chongthamnguyenphat.com/danh-muc/xu-ly-ro-ri-nuoc/chong-tham-san/">Chống thấm sàn</a>{' '}
+                          <a href="https://chongthamnguyenphat.com/danh-muc/xu-ly-ro-ri-nuoc/chong-tham-san/">
+                            Chống thấm sàn
+                          </a>{' '}
                           <span className="count">(16)</span>
                         </li>
                         <li className="cat-item cat-item-82">
@@ -865,7 +870,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           <span className="count">(10)</span>
                         </li>
                         <li className="cat-item cat-item-84">
-                          <a href="https://chongthamnguyenphat.com/danh-muc/xu-ly-ro-ri-nuoc/water-stop-pvc/">Water stop PVC</a>{' '}
+                          <a href="https://chongthamnguyenphat.com/danh-muc/xu-ly-ro-ri-nuoc/water-stop-pvc/">
+                            Water stop PVC
+                          </a>{' '}
                           <span className="count">(2)</span>
                         </li>
                         <li className="cat-item cat-item-85">
@@ -883,7 +890,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       </ul>
                     </li>
                     <li className="cat-item cat-item-89 cat-parent has-child" aria-expanded="false">
-                      <a href="https://chongthamnguyenphat.com/danh-muc/quy-trinh-bom-keo-pu/">Quy trình thi công bơm keo</a>{' '}
+                      <a href="https://chongthamnguyenphat.com/danh-muc/quy-trinh-bom-keo-pu/">
+                        Quy trình thi công bơm keo
+                      </a>{' '}
                       <span className="count">(3)</span>
                       <button className="toggle">
                         <i className="icon-angle-down" />
@@ -898,7 +907,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       </ul>
                     </li>
                     <li className="cat-item cat-item-15 current-cat active">
-                      <a href="https://chongthamnguyenphat.com/danh-muc/sp-chong-tham-test/">Sản phẩm chống thấm test</a>{' '}
+                      <a href="https://chongthamnguyenphat.com/danh-muc/sp-chong-tham-test/">
+                        Sản phẩm chống thấm test
+                      </a>{' '}
                       <span className="count">(3)</span>
                     </li>
                     <li className="cat-item cat-item-86">
