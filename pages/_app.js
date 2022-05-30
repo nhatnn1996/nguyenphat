@@ -5,6 +5,8 @@ import Footer from '@/components/footer/index';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import Header from '@/components/header';
+import { apollo } from '@/api/index';
+import { getInfoSetting } from '@/geters/home';
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
 
 const apolloClient = new ApolloClient({
@@ -17,16 +19,23 @@ const variants = {
   enter: { opacity: 1, x: 0, y: 0 },
   exit: { opacity: 0, x: 0, y: 0 }
 };
-
-function MyApp({ Component, pageProps }) {
+MyApp.getInitialProps = async () => {
+  const result = await apollo.query({ query: getInfoSetting });
+  const infoSettings = result.data.user;
+  return { infoSettings };
+};
+function MyApp({ Component, pageProps, infoSettings }) {
+  const infoSetingsPage = infoSettings.setting_info;
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('info', JSON.stringify(infoSetingsPage));
+  }
   const router = useRouter();
   const asPath = router.asPath;
-  const { menuItems } = pageProps;
   return (
     <ApolloProvider client={apolloClient}>
       <HeadSEO />
       <div id="wrapper">
-        <Header menuItems={menuItems} />
+        <Header menuItems={pageProps?.menuItems} />
         <motion.main
           key={router.pathname}
           variants={variants} // Pass the variant object into Framer Motion

@@ -68,7 +68,7 @@ export const homeGQL = gql`
     }
     category(id: "tin-tuc", idType: SLUG) {
       id
-      posts(where: {orderby: {field: DATE, order: DESC}}) {
+      posts(where: { orderby: { field: DATE, order: DESC } }) {
         nodes {
           content
           slug
@@ -86,6 +86,23 @@ export const homeGQL = gql`
           date
           excerpt
         }
+      }
+    }
+  }
+`;
+
+export const getInfoSetting = gql`
+  query info {
+    user(id: "admin", idType: SLUG) {
+      setting_info {
+        email
+        phone
+        hotline
+        office
+        address
+        companyName
+        tax
+        taxDate
       }
     }
   }

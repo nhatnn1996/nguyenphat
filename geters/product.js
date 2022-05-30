@@ -163,6 +163,22 @@ export const productDetailGQL = gql`
       }
       description
       shortDescription
+      databaseId
+      reviews {
+        edges {
+          rating
+          node {
+            date
+            content
+            author {
+              node {
+                email
+                name
+              }
+            }
+          }
+        }
+      }
       galleryImages {
         nodes {
           title
@@ -222,6 +238,29 @@ export const productsNewGQL = gql`
           }
         }
       }
+    }
+  }
+`;
+export const postReview = gql`
+  mutation PostReview(
+    $commentOn: Int!
+    $content: String!
+    $author: String!
+    $authorEmail: String!
+    $date: String!
+    $rating: Int!
+  ) {
+    writeReview(
+      input: {
+        commentOn: $commentOn
+        rating: $rating
+        content: $content
+        author: $author
+        authorEmail: $authorEmail
+        date: $date
+      }
+    ) {
+      rating
     }
   }
 `;

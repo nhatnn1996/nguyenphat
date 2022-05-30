@@ -14,6 +14,10 @@ const items = [
 
 export default function Header({ menuItems, pages }) {
   const [isOpen, setOpen] = useState(false);
+  var infoSetting = {};
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   return (
     <header id="header" className="header has-sticky sticky-jump">
       <div className="header-wrapper">
@@ -94,7 +98,10 @@ const MobileMenu = ({ isOpen, close }) => {
               <ul className="nav nav-sidebar nav-vertical nav-uppercase nav-anim">
                 {items.map((element) => {
                   return (
-                    <li key={element.path} className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-18">
+                    <li
+                      key={element.path}
+                      className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-18"
+                    >
                       <a href={element.path} aria-current="page">
                         {element.label}
                       </a>
@@ -103,7 +110,7 @@ const MobileMenu = ({ isOpen, close }) => {
                 })}
 
                 <li className="hotline-nav menu-item menu-item-type-custom menu-item-object-custom menu-item-1658">
-                  <a href="tel:+84908485861">Hotline: 0918 220 639</a>
+                  <a href={`tel:${infoSetting.hotline}`}>Hotline: {infoSetting.hotline}</a>
                 </li>
               </ul>
             </div>

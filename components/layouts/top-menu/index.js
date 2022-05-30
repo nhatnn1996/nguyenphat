@@ -34,6 +34,10 @@ const NavMenu = ({ items }) => {
       }
     }
   }, []);
+  var infoSetting = {};
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   return (
     <>
       <div id="wide-nav" className="header-bottom wide-nav nav-dark hide-for-medium snipcss-io4AT">
@@ -47,8 +51,8 @@ const NavMenu = ({ items }) => {
                 id="menu-item-1658"
                 className="hotline-nav menu-item menu-item-type-custom menu-item-object-custom menu-item-1658 snip-li"
               >
-                <a href="tel:+84908485861" className="nav-top-link snip-a">
-                  Hotline: 0918 220 639
+                <a className="nav-top-link snip-a" href={`tel:${infoSetting.hotline}`}>
+                  Hotline: {infoSetting.hotline}
                 </a>
               </li>
               <li className="cart-item has-icon has-dropdown snip-li">

@@ -1,8 +1,10 @@
 import { apollo } from '@/api/index';
 import React, { useEffect, useState } from 'react';
-import { productDetailGQL, productGQL, productsNewGQL } from '@/geters/product';
+import { productDetailGQL, productGQL, productsNewGQL, postReview } from '@/geters/product';
 import Link from 'next/link';
 import Slider from 'react-slick';
+import { useMutation } from '@apollo/client';
+import moment from 'moment';
 
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: productGQL });
@@ -30,6 +32,25 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
   if (!product) return null;
   const [isZoom, setZoomProduct] = useState(false);
   const [imageZoom, setImageZoom] = useState(null);
+  const [isDisable, setDisable] = useState(true);
+  const [rating, setRating] = useState(0);
+  const [valueComment, setValueComment] = useState({
+    comment: '',
+    author: '',
+    email: '',
+    rating: rating || 0
+  });
+
+  const [callPostReview] = useMutation(postReview, {
+    variables: {
+      commentOn: product.databaseId,
+      rating: rating,
+      content: valueComment.comment,
+      author: valueComment.author,
+      authorEmail: valueComment.email,
+      date: Date.now().toString()
+    }
+  });
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -120,10 +141,8 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
     var index = 0;
     if (status) {
       index = index++;
-      console.log(index, 'ahah');
     } else {
       index = index--;
-      console.log(index, 'ahah');
     }
     // setPreviewProduct(index);
   };
@@ -171,7 +190,35 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
       )
     );
   }
-
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+  const submitComment = () => {
+    if (valueComment.comment && valueComment.email && valueComment.author) {
+      if (validateEmail(valueComment.email)) {
+        callPostReview();
+        alert('Gửi đánh giá thành công, vui lòng chờ admin duyệt.');
+        document.getElementById('commentform').reset();
+        setRating(0);
+        setValueComment({});
+      } else {
+        alert('Email không đúng định dạng, vui lòng nhập lại.');
+      }
+    }
+  };
+  const getValueComment = (e, type) => {
+    setValueComment({
+      ...valueComment,
+      [type]: e.target.value
+    });
+  };
+  const selectRating = (e) => {
+    setRating(e);
+  };
   const zoomProduct = (img) => {
     setZoomProduct(true);
     setImageZoom(img);
@@ -194,6 +241,17 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
     nextArrow: <NextArrowPreview />,
     prevArrow: <PrevArrowPreview />
   };
+  useEffect(() => {
+    if (valueComment.email !== '' && valueComment.author !== '' && valueComment.comment !== '' && rating !== 0) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [valueComment, rating]);
+  var infoSetting = {};
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   return (
     <div>
       {isZoom && (
@@ -260,7 +318,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                         target="_blank"
                         className="button primary lowercase expand"
                       >
-                        <i className="icon-phone" /> <span>Hotline: 0918 220 639</span>
+                        <i className="icon-phone" /> <span>Hotline: {infoSetting.hotline}</span>
                       </a>
                     </div>
                   </div>
@@ -300,7 +358,6 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                                   <div
                                     data-thumb="https://chongthamnguyenphat.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
                                     className=""
-                                    
                                     style={{ position: 'absolute', left: '0%' }}
                                   >
                                     <img
@@ -418,10 +475,10 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                             <br />
                           </span>
                           <span style={{ fontSize: '85%' }}>
-                            201/60/11 Nguyễn Xí, Phường 26, Quận Bình Thạnh, TPHCM
+                            {infoSetting.address}
                           </span>
-                          <p>Điện thoại: 028 37 27 3679</p>
-                          <p>Email: chongthamnguyenphat@gmail.com</p>
+                          <p>Điện thoại: {infoSetting.phone}</p>
+                          <p>Email: {infoSetting.email}</p>
                         </div>
                       </div>
                       <div
@@ -521,14 +578,78 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                         <div id="reviews" className="woocommerce-Reviews row">
                           <div id="comments" className="col large-12">
                             <h3 className="woocommerce-Reviews-title normal">Đánh giá </h3>
-                            <p className="woocommerce-noreviews">Chưa có đánh giá nào.</p>
+                            <ol className="comment-list">
+                              {product?.reviews?.edges.map((item) => (
+                                <li className="comment even thread-even depth-1" id="li-comment-388">
+                                  <article id="comment-388" className="comment-inner">
+                                    <div className="flex-row align-top">
+                                      <div className="flex-col">
+                                        <div className="comment-author mr-half">
+                                          <img
+                                            alt=""
+                                            src="https://secure.gravatar.com/avatar/f5d9611e0c8533dfbca3e165476ea437?s=70&d=mm&r=g"
+                                            data-src="https://secure.gravatar.com/avatar/f5d9611e0c8533dfbca3e165476ea437?s=70&d=mm&r=g"
+                                            srcSet="https://secure.gravatar.com/avatar/f5d9611e0c8533dfbca3e165476ea437?s=140&d=mm&r=g 2x"
+                                            data-srcset="https://secure.gravatar.com/avatar/f5d9611e0c8533dfbca3e165476ea437?s=140&d=mm&r=g 2x"
+                                            className="avatar avatar-70 photo lazy-load-active"
+                                            height={70}
+                                            width={70}
+                                            loading="lazy"
+                                          />{' '}
+                                        </div>
+                                      </div>
+                                      <div className="flex-col flex-grow">
+                                        <cite className="strong fn">{item?.node?.author?.node?.name}</cite>{' '}
+                                        <span className="says">đánh giá :</span>
+                                        <p className="stars start-review">
+                                          {Array.from(Array(item?.rating), (e, i) => {
+                                            return (
+                                              <span key={i}>
+                                                <span>
+                                                  <a className="star-1" href="#">
+                                                    1
+                                                  </a>
+                                                </span>
+                                              </span>
+                                            );
+                                          })}
+                                        </p>
+                                        <div
+                                          className="comment-content"
+                                          dangerouslySetInnerHTML={{ __html: item?.node?.content }}
+                                        ></div>
+                                        {item?.node?.author?.node?.email && (
+                                          <div className="comment-content">
+                                            <a href={`mailto:${item?.node?.author?.node?.email}`}>
+                                              {item?.node?.author?.node?.email}
+                                            </a>
+                                          </div>
+                                        )}
+                                        <div className="comment-meta commentmetadata uppercase is-xsmall clear">
+                                          <time
+                                            dateTime={moment(item?.node?.date).format('DD/MM/YYYY, h:mm:ss a')}
+                                            className="pull-left"
+                                          >
+                                            {moment(item?.node?.date).format('DD/MM/YYYY, h:mm:ss a')}
+                                          </time>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </article>
+
+                                  {/* .children */}
+                                </li>
+                              ))}
+                            </ol>
+
+                            {/* <p className="woocommerce-noreviews">Chưa có đánh giá nào.</p> */}
                           </div>
                           <div id="review_form_wrapper" className="large-12 col">
                             <div id="review_form" className="col-inner">
                               <div className="review-form-inner has-border">
                                 <div id="respond" className="comment-respond">
                                   <h3 id="reply-title" className="comment-reply-title">
-                                    Hãy là người đầu tiên nhận xét {product?.name}
+                                  {product?.reviews?.edges?.length > 0 && <p>Nhận xét {product?.name} </p> || <p>Hãy là người đầu tiên nhận xét {product?.name}</p> } 
                                     <small>
                                       <a
                                         rel="nofollow"
@@ -540,47 +661,24 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                                       </a>
                                     </small>
                                   </h3>
-                                  <form
-                                    action="https://chongthamnguyenphat.com/wp-comments-post.php"
-                                    method="post"
-                                    id="commentform"
-                                    className="comment-form"
-                                    noValidate
-                                  >
-                                    <div className="comment-form-rating">
-                                      <label htmlFor="rating">
-                                        Đánh giá của bạn&nbsp;<span className="required">*</span>
-                                      </label>
-                                      <p className="stars">
-                                        {' '}
-                                        <span>
-                                          {' '}
-                                          <a className="star-1" href="#">
-                                            1
-                                          </a>{' '}
-                                          <a className="star-2" href="#">
-                                            2
-                                          </a>{' '}
-                                          <a className="star-3" href="#">
-                                            3
-                                          </a>{' '}
-                                          <a className="star-4" href="#">
-                                            4
-                                          </a>{' '}
-                                          <a className="star-5" href="#">
-                                            5
-                                          </a>{' '}
-                                        </span>{' '}
-                                      </p>
-                                      <select name="rating" id="rating" required style={{ display: 'none' }}>
-                                        <option value>Xếp hạng…</option>
-                                        <option value={5}>Rất tốt</option>
-                                        <option value={4}>Tốt</option>
-                                        <option value={3}>Trung bình</option>
-                                        <option value={2}>Không tệ</option>
-                                        <option value={1}>Rất tệ</option>
-                                      </select>
-                                    </div>
+                                  <div className="comment-form-rating">
+                                    <label htmlFor="rating">
+                                      Đánh giá của bạn&nbsp;<span className="required">*</span>
+                                    </label>
+                                    <p className="stars">
+                                      <span>
+                                        {Array.from(Array(5), (e, i) => (
+                                          <a
+                                            onClick={() => selectRating(i + 1)}
+                                            className={`star-${i + 1} ${rating === i + 1 ? 'star-selected' : ''}`}
+                                          >
+                                            {i + 1}
+                                          </a>
+                                        ))}
+                                      </span>
+                                    </p>
+                                  </div>
+                                  <form id="commentform" className="comment-form" noValidate>
                                     <p className="comment-form-comment">
                                       <label htmlFor="comment">
                                         Nhận xét của bạn&nbsp;<span className="required">*</span>
@@ -591,40 +689,47 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                                         cols={45}
                                         rows={8}
                                         required
-                                        defaultValue={''}
+                                        onInput={(e) => getValueComment(e, 'comment')}
                                       />
                                     </p>
                                     <p className="comment-form-author">
                                       <label htmlFor="author">
                                         Tên&nbsp;<span className="required">*</span>
                                       </label>
-                                      <input id="author" name="author" type="text" defaultValue="" size={30} required />
+                                      <input
+                                        onInput={(e) => getValueComment(e, 'author')}
+                                        id="author"
+                                        name="author"
+                                        type="text"
+                                        defaultValue=""
+                                        size={30}
+                                        required
+                                      />
                                     </p>
                                     <p className="comment-form-email">
                                       <label htmlFor="email">
                                         Email&nbsp;<span className="required">*</span>
                                       </label>
-                                      <input id="email" name="email" type="email" defaultValue="" size={30} required />
-                                    </p>
-                                    <p className="comment-form-cookies-consent">
                                       <input
-                                        id="wp-comment-cookies-consent"
-                                        name="wp-comment-cookies-consent"
-                                        type="checkbox"
-                                        defaultValue="yes"
-                                      />{' '}
-                                      <label htmlFor="wp-comment-cookies-consent">
-                                        Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế
-                                        tiếp của tôi.
-                                      </label>
+                                        onInput={(e) => getValueComment(e, 'email')}
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        defaultValue=""
+                                        size={30}
+                                        required
+                                      />
                                     </p>
+
                                     <p className="form-submit">
                                       <input
-                                        name="submit"
-                                        type="submit"
+                                        className={`submit ${!isDisable ? 'visable-button' : 'disable-button'}`}
+                                        disabled={isDisable}
+                                        type="button"
                                         id="submit"
-                                        className="submit"
+                                        name="submit"
                                         defaultValue="Gửi đi"
+                                        onClick={() => submitComment()}
                                       />{' '}
                                       <input
                                         type="hidden"
@@ -634,7 +739,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                                       />
                                       <input type="hidden" name="comment_parent" id="comment_parent" defaultValue={0} />
                                     </p>
-                                  </form>{' '}
+                                  </form>
                                 </div>
                                 {/* #respond */}
                               </div>
@@ -726,7 +831,12 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           >
                             <Slider {...settings}>
                               {productCategories?.nodes?.map((item) => (
-                                <div className="col is-selected" key={item.slug} aria-selected="true" style={{ minWidth: '248px' }}>
+                                <div
+                                  className="col is-selected"
+                                  key={item.slug}
+                                  aria-selected="true"
+                                  style={{ minWidth: '248px' }}
+                                >
                                   <div className="col-inner">
                                     <div className="badge-container absolute left top z-1"></div>
                                     <div className="product-small box has-hover box-normal box-text-bottom">
@@ -849,7 +959,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       </button>
                       <ul className="children">
                         <li className="cat-item cat-item-90">
-                          <a href="https://chongthamnguyenphat.com/danh-muc/xu-ly-ro-ri-nuoc/chong-tham-san/">Chống thấm sàn</a>{' '}
+                          <a href="https://chongthamnguyenphat.com/danh-muc/xu-ly-ro-ri-nuoc/chong-tham-san/">
+                            Chống thấm sàn
+                          </a>{' '}
                           <span className="count">(16)</span>
                         </li>
                         <li className="cat-item cat-item-82">
@@ -865,7 +977,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           <span className="count">(10)</span>
                         </li>
                         <li className="cat-item cat-item-84">
-                          <a href="https://chongthamnguyenphat.com/danh-muc/xu-ly-ro-ri-nuoc/water-stop-pvc/">Water stop PVC</a>{' '}
+                          <a href="https://chongthamnguyenphat.com/danh-muc/xu-ly-ro-ri-nuoc/water-stop-pvc/">
+                            Water stop PVC
+                          </a>{' '}
                           <span className="count">(2)</span>
                         </li>
                         <li className="cat-item cat-item-85">
@@ -883,7 +997,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       </ul>
                     </li>
                     <li className="cat-item cat-item-89 cat-parent has-child" aria-expanded="false">
-                      <a href="https://chongthamnguyenphat.com/danh-muc/quy-trinh-bom-keo-pu/">Quy trình thi công bơm keo</a>{' '}
+                      <a href="https://chongthamnguyenphat.com/danh-muc/quy-trinh-bom-keo-pu/">
+                        Quy trình thi công bơm keo
+                      </a>{' '}
                       <span className="count">(3)</span>
                       <button className="toggle">
                         <i className="icon-angle-down" />
@@ -898,7 +1014,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                       </ul>
                     </li>
                     <li className="cat-item cat-item-15 current-cat active">
-                      <a href="https://chongthamnguyenphat.com/danh-muc/sp-chong-tham-test/">Sản phẩm chống thấm test</a>{' '}
+                      <a href="https://chongthamnguyenphat.com/danh-muc/sp-chong-tham-test/">
+                        Sản phẩm chống thấm test
+                      </a>{' '}
                       <span className="count">(3)</span>
                     </li>
                     <li className="cat-item cat-item-86">

@@ -33,6 +33,10 @@ export async function getStaticProps() {
 
 export default function Home(props) {
   const { posts, waterproofing, accessories, news } = props;
+  var infoSetting = {};
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   return (
     <>
       <main id="main" className="">
@@ -299,7 +303,7 @@ export default function Home(props) {
                             className="button alert is-large lowercase expand"
                             style={{ borderRadius: 99 }}
                           >
-                            <i className="icon-phone" /> <span>Hotline:  0918 220 639 </span>
+                            <i className="icon-phone" /> <span>Hotline: {infoSetting.hotline} </span>
                           </a>
                         </div>
                       </div>
@@ -342,7 +346,6 @@ export default function Home(props) {
           </span>
         </a>
       </div>{' '}
-      
     </>
   );
 }

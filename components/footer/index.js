@@ -1,4 +1,8 @@
 export default function Footer() {
+  var infoSetting = {};
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   return (
     <footer id="footer" className="footer-wrapper">
       <section className="section footer-block" id="section_116701697">
@@ -18,14 +22,16 @@ export default function Footer() {
                 <div>
                   <strong>VĂN PHÒNG GIAO DỊCH</strong>
                   <br />
-                  <li>36/31F Đường số 4, Khu phố 6, Phường Hiệp Bình Phước, TP.Thủ Đức, TP.HCM</li>
+                  {/* <li>36/31F Đường số 4, Khu phố 6, Phường Hiệp Bình Phước, TP.Thủ Đức, TP.HCM</li> */}
+                  <li>{infoSetting.office}</li>
                 </div>
                 <div>
                   <strong>
                     ĐỊA CHỈ
                     <br />
                   </strong>
-                  <li>201/60/11 Nguyễn Xí, Phường 26, Quận Bình Thạnh, TPHCM</li>
+                  <li>{infoSetting.address}</li>
+                  {/* <li>201/60/11 Nguyễn Xí, Phường 26, Quận Bình Thạnh, TPHCM</li> */}
                 </div>
               </div>
             </div>
@@ -41,10 +47,16 @@ export default function Footer() {
                   </span>
                 </p>
                 <ul>
-                  <li>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT</li>
-                  <li>MST : 0311620687 , Ngày Cấp : 06-12-2013, Nơi Cấp : Sở kế Hoạch Và Đầu Tư TP.HCM.</li>
-                  <li>Số điện thoại : 028 37 27 3679</li>
-                  <li>Email : chongthamnguyenphat@gmail.com</li>
+                  <li>{infoSetting.companyName}</li>
+                  <li>
+                    MST : {infoSetting.tax}, Ngày cấp : {infoSetting.taxDate}
+                  </li>
+                  <li>Số điện thoại : {infoSetting.phone}</li>
+                  <li>Email : {infoSetting.email}</li>
+                  {/* <li>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT</li> */}
+                  {/* <li>MST : 0311620687 , Ngày Cấp : 06-12-2013, Nơi Cấp : Sở kế Hoạch Và Đầu Tư TP.HCM.</li> */}
+                  {/* <li>Số điện thoại : 028 37 27 3679</li> */}
+                  {/* <li>Email : chongthamnguyenphat@gmail.com</li> */}
                 </ul>
               </div>
             </div>
