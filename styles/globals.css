@@ -138,3 +138,9 @@ svg > .arrow {
   color: white !important;
   background-color: gray !important;
 }
+.error {
+  color: rgb(255, 166, 166);
+  margin: 10px 0px !important;
+  text-align: left;
+  font-weight: bold;
+}

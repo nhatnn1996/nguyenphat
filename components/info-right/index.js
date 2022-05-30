@@ -1,11 +1,33 @@
 import React from 'react';
 import Link from 'next/link';
+import { formSubmit } from '@/geters/form';
+import { useMutation } from '@apollo/client';
+import { Formik } from 'formik';
+
 const InfoRight = ({ newProds, newNewsData }) => {
+  const [submitGfForm, { data, loading, error }] = useMutation(formSubmit);
+  const submit = (value) => {
+    console.log(value);
+    submitGfForm({
+      variables: value
+    });
+  };
+
+  const validate = (values) => {
+    const errors = {};
+    if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/g.test(values.phone)) {
+      errors.phone = 'Số điện thoại không đúng';
+    }
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = 'Email không hợp lệ';
+    }
+    return errors;
+  };
+
   return (
     <div className="post-sidebar large-3 col">
       <div id="secondary" className="widget-area " role="complementary">
         <aside id="text-2" className="widget widget_text">
-          {' '}
           <div className="textwidget">
             <div className="row row-small section-body" id="row-1864619469">
               <div id="col-1901087800" className="col cot4 small-12 large-12">
@@ -17,90 +39,76 @@ const InfoRight = ({ newProds, newNewsData }) => {
                         <p role="status" aria-live="polite" aria-atomic="true"></p>
                         <ul />
                       </div>
-                      <form
-                        action="/mau-biet-thu-dep/#wpcf7-f2153-o1"
-                        method="post"
-                        className="wpcf7-form init"
-                        noValidate="novalidate"
-                        data-status="init"
+                      <Formik
+                        initialValues={{}}
+                        validate={validate}
+                        onSubmit={(values, { setSubmitting, resetForm }) => {
+                          submit(values);
+                          console.log(values);
+                          setSubmitting(true);
+                          resetForm();
+                        }}
                       >
-                        <div style={{ display: 'none' }}>
-                          <input type="hidden" name="_wpcf7" defaultValue={2153} />
-                          <br />
-                          <input type="hidden" name="_wpcf7_version" defaultValue="5.3.2" />
-                          <br />
-                          <input type="hidden" name="_wpcf7_locale" defaultValue="vi" />
-                          <br />
-                          <input type="hidden" name="_wpcf7_unit_tag" defaultValue="wpcf7-f2153-o1" />
-                          <br />
-                          <input type="hidden" name="_wpcf7_container_post" defaultValue={0} />
-                          <br />
-                          <input type="hidden" name="_wpcf7_posted_data_hash" defaultValue />
-                        </div>
-                        <p>
-                          <span className="wpcf7-form-control-wrap text-803">
+                        {({
+                          values,
+                          errors,
+                          touched,
+                          handleChange,
+                          handleBlur,
+                          handleSubmit,
+                          isSubmitting
+                          /* and other goodies */
+                        }) => (
+                          <form onSubmit={handleSubmit}>
+                            <p className="error">{errors.email && touched.email && errors.email}</p>
+                            <p className="error">{errors.phone && touched.phone && errors.phone}</p>
                             <input
                               type="text"
-                              name="text-803"
+                              name="name"
                               size={40}
                               className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
                               placeholder="Họ tên của bạn..."
                             />
-                          </span>
-                          <br />
-                          <span className="wpcf7-form-control-wrap tel-385">
                             <input
                               type="tel"
-                              name="tel-385"
+                              name="phone"
                               size={40}
                               className="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel"
-                              aria-required="true"
-                              aria-invalid="false"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.phone}
                               placeholder="Số điện thoại của bạn..."
                             />
-                          </span>
-                          <br />
-                          <span className="wpcf7-form-control-wrap email-824">
                             <input
                               type="email"
-                              name="email-824"
-                              size={40}
-                              className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
-                              aria-required="true"
-                              aria-invalid="false"
-                              placeholder="Email của bạn..."
+                              name="email"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.email}
+                              placeholder="Email"
+                              className="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel"
                             />
-                          </span>
-                          <br />
-                          <span className="wpcf7-form-control-wrap text-486">
-                            <input
-                              type="text"
-                              name="text-486"
-                              size={40}
-                              className="wpcf7-form-control wpcf7-text"
-                              aria-invalid="false"
-                              placeholder="Bạn cần tư vấn dịch vụ gì?"
-                            />
-                          </span>
-                          <br />
-                          <span className="wpcf7-form-control-wrap textarea-177">
                             <textarea
-                              name="textarea-177"
+                              name="content"
                               cols={40}
                               rows={10}
                               className="wpcf7-form-control wpcf7-textarea"
-                              aria-invalid="false"
-                              placeholder="Thông tin thêm..."
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.content}
+                              placeholder="Bạn quan tâm đến dịch vụ nào ? Thông tin thêm..."
                             />
-                          </span>
-                          <br />
-                          <input type="submit" defaultValue="Gửi liên hệ" className="wpcf7-form-control wpcf7-submit" />
-                          <span className="ajax-loader" />
-                        </p>
-                        <div className="wpcf7-response-output" aria-hidden="true" />
-                      </form>
+                            <input
+                              type="submit"
+                              defaultValue="Gửi liên hệ"
+                              className="wpcf7-form-control wpcf7-submit"
+                              // disabled={isSubmitting}
+                            />
+                          </form>
+                        )}
+                      </Formik>
                     </div>
                   </div>
                   <div className="tieu-de">Tiêu điểm</div>

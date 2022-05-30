@@ -133,7 +133,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       <a
                         href="//www.facebook.com/sharer.php?u=https://chongthamnguyenphat.com/mau-biet-thu-dep/"
                         data-label="Facebook"
-                        onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+                        onClick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
                         rel="noopener noreferrer nofollow"
                         target="_blank"
                         className="icon button circle is-outline tooltip facebook tooltipstered"
@@ -142,7 +142,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       </a>
                       <a
                         href="//twitter.com/share?url=https://chongthamnguyenphat.com/mau-biet-thu-dep/"
-                        onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+                        onClick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
                         rel="noopener noreferrer nofollow"
                         target="_blank"
                         className="icon button circle is-outline tooltip twitter tooltipstered"
@@ -158,7 +158,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       </a>
                       <a
                         href="//pinterest.com/pin/create/button/?url=https://chongthamnguyenphat.com/mau-biet-thu-dep/&media=&description=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p"
-                        onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+                        onClick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
                         rel="noopener noreferrer nofollow"
                         target="_blank"
                         className="icon button circle is-outline tooltip pinterest tooltipstered"
@@ -167,7 +167,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       </a>
                       <a
                         href="//www.linkedin.com/shareArticle?mini=true&url=https://chongthamnguyenphat.com/mau-biet-thu-dep/&title=M%E1%BA%A9u%20Bi%E1%BB%87t%20Th%E1%BB%B1%20%C4%90%E1%BA%B9p"
-                        onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
+                        onClick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;"
                         rel="noopener noreferrer nofollow"
                         target="_blank"
                         className="icon button circle is-outline tooltip linkedin tooltipstered"

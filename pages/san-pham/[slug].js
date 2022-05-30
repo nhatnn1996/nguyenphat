@@ -354,8 +354,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           <div className="flickity-viewport" style={{ height: '524.133px', touchAction: 'pan-y' }}>
                             <div className="flickity-slider" style={{ display: 'flex', alignItems: 'center' }}>
                               <Slider {...settingsPreview}>
-                                {product?.galleryImages?.nodes.map((item) => (
+                                {product?.galleryImages?.nodes.map((item, index) => (
                                   <div
+                                    key={index}
                                     data-thumb="https://chongthamnguyenphat.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
                                     className=""
                                     style={{ position: 'absolute', left: '0%' }}
