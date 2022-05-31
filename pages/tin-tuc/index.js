@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { apollo } from '@/api/index';
 import { newsGQL, newNewsGQL } from '@/geters/news';
@@ -11,18 +11,43 @@ export async function getStaticProps() {
   Object.keys(result?.data || {}).map((key) => {
     const element = result?.data[key];
     props[key] = element?.nodes || [];
+    props['pageInfo'] = element?.pageInfo;
   });
-  const { posts } = props;
   const newProducts = await apollo.query({ query: productsNewGQL });
   const newProds = newProducts?.data?.products?.edges;
 
   const newNews = await apollo.query({ query: newNewsGQL });
   const newNewsData = newNews?.data?.posts?.nodes;
 
-  return { props: { posts, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
+  return { props: { props, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
 }
 
-const News = ({ posts, newProds, newNewsData }) => {
+const News = ({ props, newProds, newNewsData }) => {
+  const [loadingNews, setLoadingNews] = useState(false);
+  const [dataNews, setDataNews] = useState(props);
+  const updateNews = async () => {
+    const news = await apollo.query({
+      query: newsGQL,
+      variables: { categoryName: 'Tin tức', after: dataNews.pageInfo.endCursor }
+    });
+    const contentNews = news.data.posts;
+    setDataNews({ posts: [...dataNews.posts, ...contentNews.nodes], pageInfo: contentNews.pageInfo });
+    setLoadingNews(false);
+  };
+  const loadMoreNews = async () => {
+    setLoadingNews(true);
+    updateNews();
+  };
+  const returnInnerHtml = (html, slug) => {
+    setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        const sortDescription = document.getElementById(`from_the_blog_excerpt-${slug}`);
+        if (sortDescription) {
+          sortDescription.innerHTML = html.slice(0, 200) + ' [...]';
+        }
+      }
+    }, 0);
+  };
   return (
     <div id="content" className="blog-wrapper blog-archive page-wrapper">
       <div className="row row-large ">
@@ -33,11 +58,11 @@ const News = ({ posts, newProds, newNewsData }) => {
             data-packery-options='{"itemSelector": ".col", "gutter": 0, "presentageWidth" : true}'
             style={{ position: 'relative', display: 'flex' }}
           >
-            {posts.map((item) => {
+            {dataNews?.posts?.map((item) => {
               return (
                 <div className="col post-item post-item-news" key={item.slug}>
                   <div className="col-inner col-inner-news">
-                    <Link href={`/tin-tuc/${item.slug}`} className="plain">
+                    <Link href={`/du-an/${item.slug}`} className="plain">
                       <div className="box box-text-bottom box-blog-post has-hover">
                         <div className="box-image">
                           {item.featuredImage?.node?.sourceUrl && (
@@ -82,6 +107,21 @@ const News = ({ posts, newProds, newNewsData }) => {
               );
             })}
           </div>
+          {dataNews?.pageInfo?.hasNextPage && (
+            <div className="mt-5 text-center">
+              {loadingNews && (
+                <div className="lds-ripple">
+                  <div></div>
+                  <div></div>
+                </div>
+              )}
+              {!loadingNews && (
+                <button onClick={loadMoreNews} className="shadow rounded loadmore-button">
+                  Xem thêm tin tức
+                </button>
+              )}
+            </div>
+          )}
         </div>
         <InfoRight newProds={newProds} newNewsData={newNewsData} />
       </div>

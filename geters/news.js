@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 export const searchNewsGQL = gql`
-  query News($search: String) {
-    posts(where: { search: $search }) {
+  query News($after: String, $search: String) {
+    posts(after: $after, first: 6, where: { search: $search }) {
       nodes {
         categories {
           edges {
@@ -26,12 +26,18 @@ export const searchNewsGQL = gql`
         postId
         date
       }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
     }
   }
 `;
 export const newsGQL = gql`
-  query News($categoryName: String) {
-    posts(where: { categoryName: $categoryName }) {
+  query News($after: String, $categoryName: String) {
+    posts(after: $after, first: 6, where: { categoryName: $categoryName }) {
       nodes {
         categories {
           edges {
@@ -56,6 +62,12 @@ export const newsGQL = gql`
         title
         postId
         date
+      }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
       }
     }
   }
@@ -158,4 +170,3 @@ export const postComment = gql`
     }
   }
 `;
-

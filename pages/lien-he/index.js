@@ -7,7 +7,7 @@ const Contact = () => {
           <img
             width={5693}
             height={500}
-            src="/images/banner.jpg"
+            src="/images/banner.jpeg"
             data-src="/images/banner.jpeg"
             className="attachment-original size-original lazy-load-active"
             alt=""

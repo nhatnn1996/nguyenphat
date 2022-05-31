@@ -7,10 +7,10 @@ import { Formik } from 'formik';
 const InfoRight = ({ newProds, newNewsData }) => {
   const [submitGfForm, { data, loading, error }] = useMutation(formSubmit);
   const submit = (value) => {
-    console.log(value);
     submitGfForm({
       variables: value
     });
+    
   };
 
   const validate = (values) => {
@@ -47,6 +47,7 @@ const InfoRight = ({ newProds, newNewsData }) => {
                           console.log(values);
                           setSubmitting(true);
                           resetForm();
+                          alert('Gửi thành công, chúng tôi sẽ gọi lại bạn sớm thôi !');
                         }}
                       >
                         {({
@@ -59,7 +60,7 @@ const InfoRight = ({ newProds, newNewsData }) => {
                           isSubmitting
                           /* and other goodies */
                         }) => (
-                          <form onSubmit={handleSubmit}>
+                          <form onSubmit={handleSubmit} id="contact-form">
                             <p className="error">{errors.email && touched.email && errors.email}</p>
                             <p className="error">{errors.phone && touched.phone && errors.phone}</p>
                             <input

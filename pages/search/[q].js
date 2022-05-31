@@ -1,6 +1,6 @@
 import { apollo } from '@/api/index';
-import React from 'react';
-import { searchProductGQL } from '@/geters/product';
+import React, { useState } from 'react';
+import { searchProductGQL, productGQL } from '@/geters/product';
 import { searchNewsGQL } from '@/geters/news';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
     query: searchNewsGQL,
     variables: { search: q }
   });
-  const newSearch = news?.data?.posts?.nodes;
+  const newSearch = news?.data?.posts;
   const productSearch = products?.data?.products;
   return {
     props: { productSearch, newSearch, q }
@@ -24,16 +24,50 @@ export async function getServerSideProps(context) {
 }
 
 const ProductDetail = ({ productSearch, newSearch, q }) => {
+  const [loading, setLoading] = useState(false);
+  const [loadingNews, setLoadingNews] = useState(false);
+
+  const [data, setData] = useState(productSearch);
+  const [dataNews, setDataNews] = useState(newSearch);
+  const { nodes, pageInfo } = data;
+
   const variants = {
     hidden: { opacity: 0, x: 0, y: -10 },
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0, y: 0 }
   };
+  const updateProduct = async () => {
+    const newProducts = await apollo.query({
+      query: productGQL,
+      variables: { search: q, after: pageInfo.endCursor }
+    });
+    const contentProducts = newProducts.data.products;
+    console.log(contentProducts,'contentProducts');
+    setData({ nodes: [...nodes, ...contentProducts.nodes], pageInfo: contentProducts.pageInfo });
+    setLoading(false);
+  };
+  const updateNews = async () => {
+    const news = await apollo.query({
+      query: searchNewsGQL,
+      variables: { search: q, after: dataNews.pageInfo.endCursor }
+    });
+    const contentNews = news.data.posts;
+    setDataNews({ nodes: [...dataNews.nodes, ...contentNews.nodes], pageInfo: contentNews.pageInfo });
+    setLoadingNews(false);
+  };
+  const loadMore = async () => {
+    setLoading(true);
+    updateProduct();
+  };
+  const loadMoreNews = async () => {
+    setLoadingNews(true);
+    updateNews();
+  };
   const returnInnerHtml = (html, slug) => {
     setTimeout(() => {
       if (typeof window !== 'undefined') {
         const sortDescription = document.getElementById(`from_the_blog_excerpt-${slug}`);
-        if (sortDescription) {
+        if (sortDescription && html) {
           sortDescription.innerHTML = html.slice(0, 200) + ' [...]';
         }
       }
@@ -42,7 +76,7 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
   return (
     <div className="mt-3">
       <div className="shop-page-title category-page-title page-title snipcss-HrhkE container">
-        <div className="is-small mt-2 my-15" style={{ marginTop: '20px' }}>
+        <div className="mt-2 my-15" style={{ marginTop: '20px', fontSize: "17px" }}>
           <span>Tìm kiếm với từ khoá </span>
           <span className="font-bold">{q}</span>
         </div>
@@ -56,8 +90,8 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
             <div className="shop-container">
               <div className="woocommerce-notices-wrapper" />
               <div className="products row large-columns-4 medium-columns-3 small-columns-2 has-equal-box-heights">
-                {productSearch.nodes.length > 0 ? (
-                  productSearch.nodes.map((item) => (
+                {nodes.length > 0 ? (
+                  nodes.map((item) => (
                     <motion.div
                       key={item.id}
                       variants={variants}
@@ -79,9 +113,9 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
                                   src={item?.image?.sourceUrl}
                                   data-src="https://chongthamnguyenphat.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-300x300.png"
                                   className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
-                                  alt={item.image.title}
+                                  alt={item?.image?.title}
                                   loading="lazy"
-                                  srcSet={item.image.srcSet}
+                                  srcSet={item?.image?.srcSet}
                                   data-srcset="https://chongthamnguyenphat.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-300x300.png 300w, https://chongthamnguyenphat.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-150x150.png 150w, https://chongthamnguyenphat.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png 100w"
                                   sizes="(max-width: 300px) 100vw, 300px"
                                 />
@@ -102,7 +136,7 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
                                 <span className="rrp-price">Giá cũ: </span>
                                 <span className="amount">Giá: Liên hệ</span>
                               </span>
-                            </div>{' '}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -112,7 +146,7 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
                   <span>Không có sản phẩm nào</span>
                 )}
               </div>
-              {/* {pageInfo.hasNextPage && (
+              {pageInfo.hasNextPage && (
                 <div className="mt-5 text-center">
                   {loading && (
                     <div className="lds-ripple">
@@ -121,12 +155,12 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
                     </div>
                   )}
                   {!loading && (
-                    <button onClick={loadMore} className="shadow rounded">
+                    <button onClick={loadMore} className="shadow rounded loadmore-button">
                       Xem thêm sản phẩm
                     </button>
                   )}
                 </div>
-              )} */}
+              )}
             </div>
           </div>
         </div>
@@ -141,8 +175,8 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
           data-packery-options='{"itemSelector": ".col", "gutter": 0, "presentageWidth" : true}'
           style={{ position: 'relative', display: 'flex', marginLeft: 'unset', marginBottom: '20px' }}
         >
-          {newSearch.length > 0 ? (
-            newSearch.map((item) => {
+          {dataNews?.nodes?.length > 0 ? (
+            dataNews?.nodes?.map((item) => {
               return (
                 <div className="col post-item post-item-news" key={item.slug}>
                   <div className="col-inner col-inner-news">
@@ -191,6 +225,21 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
             <span>Không có tin tức nào</span>
           )}
         </div>
+        {dataNews.pageInfo.hasNextPage && (
+          <div className="mt-5 text-center">
+            {loadingNews && (
+              <div className="lds-ripple">
+                <div></div>
+                <div></div>
+              </div>
+            )}
+            {!loadingNews && (
+              <button onClick={loadMoreNews} className="shadow rounded loadmore-button">
+                Xem thêm tin tức
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

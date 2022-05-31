@@ -134,7 +134,7 @@ svg > .arrow {
   background-color: #0082c8 !important;
 }
 .disable-button {
-  cursor : not-allowed !important;
+  cursor: not-allowed !important;
   color: white !important;
   background-color: gray !important;
 }
@@ -143,4 +143,7 @@ svg > .arrow {
   margin: 10px 0px !important;
   text-align: left;
   font-weight: bold;
+}
+.loadmore-button:hover {
+  color: #0082c8 !important;
 }
