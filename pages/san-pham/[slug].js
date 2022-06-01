@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Slider from 'react-slick';
 import { useMutation } from '@apollo/client';
 import moment from 'moment';
+import {timeCache} from "@/service/helper"
 
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: productGQL });
@@ -25,7 +26,7 @@ export async function getStaticProps({ params }) {
   const newProducts = await apollo.query({ query: productsNewGQL });
 
   const newProds = newProducts?.data?.products?.edges;
-  return { props: { product, productCategories, newProds }, revalidate: 10 * 60 * 1000 };
+  return { props: { product, productCategories, newProds }, revalidate: timeCache };
 }
 
 const ProductDetail = ({ product, productCategories, newProds }) => {

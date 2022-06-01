@@ -3,6 +3,8 @@ import { Service, ProductCom, ProductsCom, Video, Slider, NewsCom } from '@/comp
 import { apollo } from '@/api/index';
 import { homeGQL } from '@/geters/home';
 import { Testimomial } from '@/components/home/testimonial';
+import {timeCache} from "@/service/helper"
+
 export async function getStaticProps() {
   const result = await apollo.query({ query: homeGQL });
   const home = {};
@@ -27,8 +29,7 @@ export async function getStaticProps() {
         if (accessories.length < 10) accessories.push(element);
       }
     });
-
-  return { props: { menuItems, posts, waterproofing, accessories, news }, revalidate: 10 * 60 * 1000 };
+  return { props: { menuItems, posts, waterproofing, accessories, news }, revalidate: timeCache };
 }
 
 export default function Home(props) {

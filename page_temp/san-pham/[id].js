@@ -1,6 +1,8 @@
 import { apollo } from '@/api/index';
 import React, { useEffect } from 'react';
 import { productDetailGQL, productGQL, productByCategoryGQL } from '@/geters/product';
+import {timeCache} from "@/service/helper"
+
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: productDetailGQL, variables: { _id: params.id } });
@@ -10,7 +12,7 @@ export async function getStaticProps({ params }) {
     variables: { _id: product.productCategories.edges[0].node.id }
   });
   const { products } = productCategory.data.productCategory;
-  return { props: { product, products }, revalidate: 10 * 60 * 1000 };
+  return { props: { product, products }, revalidate: timeCache };
 }
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: productGQL });

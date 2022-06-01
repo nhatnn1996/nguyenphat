@@ -5,6 +5,7 @@ import { bynewsGQL, newsGQL, newNewsGQL, getNewsbyCategory, postComment } from '
 import { productsNewGQL } from '@/geters/product';
 import InfoRight from '@/components/info-right';
 import moment from 'moment';
+import {timeCache} from "@/service/helper"
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
@@ -16,7 +17,7 @@ export async function getStaticProps({ params }) {
 
   const newNews = await apollo.query({ query: newNewsGQL });
   const newNewsData = newNews?.data?.posts?.nodes;
-  return { props: { postBy, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
+  return { props: { postBy, newProds, newNewsData }, revalidate: timeCache };
 }
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: getNewsbyCategory, variables: { slug: 'dich-vu' } });

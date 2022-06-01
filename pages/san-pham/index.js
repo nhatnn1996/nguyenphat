@@ -4,6 +4,7 @@ import { productGQL } from '@/geters/product';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CategoryComp } from '@/components/partials';
+import {timeCache} from "@/service/helper"
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: -10 },
@@ -18,7 +19,7 @@ export async function getStaticProps() {
     const element = result?.data[key];
     data[key] = element;
   });
-  return { props: data, revalidate: 10 * 60 * 1000 };
+  return { props: data, revalidate: timeCache };
 }
 const Product = ({ products, productCategories }) => {
   const [data, setData] = useState(products);

@@ -88,3 +88,4 @@ export const Base64 = {
     return t;
   }
 };
+export const timeCache = 60;

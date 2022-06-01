@@ -5,6 +5,7 @@ import { newsGQL, newNewsGQL } from '@/geters/news';
 import moment from 'moment';
 import InfoRight from '@/components/info-right';
 import { productsNewGQL } from '@/geters/product';
+import {timeCache} from "@/service/helper"
 export async function getStaticProps() {
   const result = await apollo.query({ query: newsGQL, variables: { categoryName: 'Dịch vụ' } });
   const props = {};
@@ -19,7 +20,7 @@ export async function getStaticProps() {
   const newNews = await apollo.query({ query: newNewsGQL });
   const newNewsData = newNews?.data?.posts?.nodes;
 
-  return { props: { props, newProds, newNewsData }, revalidate: 10 * 60 * 1000 };
+  return { props: { props, newProds, newNewsData }, revalidate: timeCache };
 }
 
 const News = ({ props, newProds, newNewsData }) => {
