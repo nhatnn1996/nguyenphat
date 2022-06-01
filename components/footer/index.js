@@ -49,8 +49,9 @@ export default function Footer() {
                 <ul>
                   <li>{infoSetting.companyName}</li>
                   <li>
-                    MST : {infoSetting.tax}, Ngày cấp : {infoSetting.taxDate}
+                    MST : {infoSetting.tax}
                   </li>
+                  <li>Ngày cấp : {infoSetting.taxDate}</li>
                   <li>Số điện thoại : {infoSetting.phone}</li>
                   <li>Email : {infoSetting.email}</li>
                   {/* <li>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT</li> */}
