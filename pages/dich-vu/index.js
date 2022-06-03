@@ -63,7 +63,7 @@ const News = ({ props, newProds, newNewsData }) => {
               return (
                 <div className="col post-item post-item-news" key={item.slug}>
                   <div className="col-inner col-inner-news">
-                    <Link href={`/du-an/${item.slug}`} className="plain">
+                    <Link href={`/dich-vu/${item.slug}`} className="plain">
                       <div className="box box-text-bottom box-blog-post has-hover">
                         <div className="box-image">
                           {item.featuredImage?.node?.sourceUrl && (
