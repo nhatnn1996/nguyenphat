@@ -12,7 +12,7 @@ export const homeGQL = gql`
         path
       }
     }
-    posts(where: { categoryName: "Dịch Vụ" }) {
+    posts(where: { categoryName: "Dịch Vụ", orderby: { field: DATE, order: ASC } }) {
       nodes {
         categories {
           edges {
@@ -36,7 +36,7 @@ export const homeGQL = gql`
         postId
       }
     }
-    products(first: 1000) {
+    products(first: 1000, where: { orderby: { field: DATE, order: ASC } }) {
       nodes {
         image {
           altText

@@ -95,7 +95,7 @@ export const categoriesGQL = gql`
       id
       name
       slug
-      products(after: $after, first: 2, where: { orderby: { field: DATE } }) {
+      products(after: $after, first: 12, where: { orderby: { field: DATE } }) {
         nodes {
           image {
             altText
