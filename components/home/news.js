@@ -139,14 +139,14 @@ const PostItem = ({ data }) => {
                   <img
                     width={600}
                     height={493}
-                    src={image.sourceUrl}
-                    data-src={image.sourceUrl}
+                    src={image?.sourceUrl}
+                    data-src={image?.sourceUrl}
                     className="lazy-load attachment-original size-original wp-post-image"
-                    alt={image.title}
+                    alt={image?.title}
                     loading="lazy"
-                    srcSet={image.srcSet}
-                    data-srcset={image.srcSet}
-                    sizes={image.size}
+                    srcSet={image?.srcSet}
+                    data-srcset={image?.srcSet}
+                    sizes={image?.size}
                   />
                   <div
                     className="overlay"

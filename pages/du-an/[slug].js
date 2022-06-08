@@ -5,7 +5,8 @@ import { bynewsGQL, newsGQL, newNewsGQL, getNewsbyCategory, postComment } from '
 import { productsNewGQL } from '@/geters/product';
 import InfoRight from '@/components/info-right';
 import moment from 'moment';
-import {timeCache} from "@/service/helper"
+import { timeCache } from '@/service/helper';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
@@ -74,6 +75,8 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
       [type]: e.target.value
     });
   };
+  const router = useRouter();
+  if (router.isFallback) return null;
   return (
     <div>
       <div id="content" className="blog-wrapper blog-single page-wrapper">

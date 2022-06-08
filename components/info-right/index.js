@@ -131,7 +131,7 @@ const InfoRight = ({ newProds, newNewsData }) => {
                                   <img
                                     width={221}
                                     height={300}
-                                    src={item.featuredImage.node.sourceUrl}
+                                    src={item.featuredImage.node?.sourceUrl}
                                     className="attachment-medium size-medium wp-post-image lazy-load-active"
                                     alt={item.featuredImage.node.title}
                                     loading="lazy"
@@ -171,11 +171,11 @@ const InfoRight = ({ newProds, newNewsData }) => {
                             <img
                               width={100}
                               height={100}
-                              src={item.node.image.sourceUrl}
+                              src={item.node.image?.sourceUrl}
                               className="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail lazy-load-active"
-                              alt={item.node.image.title}
+                              alt={item.node.image?.title}
                               loading="lazy"
-                              srcSet={item.node.image.srcSet}
+                              srcSet={item.node.image?.srcSet}
                               sizes="(max-width: 100px) 100vw, 100px"
                             />
 

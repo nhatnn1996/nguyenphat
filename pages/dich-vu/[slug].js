@@ -5,7 +5,8 @@ import { bynewsGQL, newsGQL, newNewsGQL, getNewsbyCategory, postComment } from '
 import { productsNewGQL } from '@/geters/product';
 import InfoRight from '@/components/info-right';
 import moment from 'moment';
-import {timeCache} from "@/service/helper"
+import { timeCache } from '@/service/helper';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
@@ -30,13 +31,14 @@ export async function getStaticPaths() {
   };
 }
 const NewsDetail = ({ postBy, newProds, newNewsData }) => {
+  const router = useRouter();
   const [valueComment, setValueComment] = useState({
     comment: '',
     name: '',
     email: '',
     website: ''
   });
-  if (!postBy) return null;
+  if (!postBy || router.isFallback) return null;
   const data = postBy;
   const dataComment = postBy?.comments?.nodes;
   const [callPostComment] = useMutation(postComment, {
