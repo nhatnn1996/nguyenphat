@@ -44,6 +44,7 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
     const contentProducts = newProducts.data.products;
     setData({ nodes: [...nodes, ...contentProducts.nodes], pageInfo: contentProducts.pageInfo });
     setLoading(false);
+    console.log('wtffff');
   };
   const updateNews = async () => {
     const news = await apollo.query({
