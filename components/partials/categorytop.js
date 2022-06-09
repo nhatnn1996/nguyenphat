@@ -8,7 +8,7 @@ export const CategoryComp = ({ data }) => {
     if (slug === 'tat-ca') router.push('/san-pham');
     else router.push('/san-pham/danh-muc/' + slug);
   };
-  console.log('tricker ....');
+  
   return (
     <div className="categories-list  ml-auto">
       <select name="" id="" className="mb-0" onChange={onChange} defaultValue={router.query.slug}>

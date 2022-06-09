@@ -44,7 +44,6 @@ const InfoRight = ({ newProds, newNewsData }) => {
                         validate={validate}
                         onSubmit={(values, { setSubmitting, resetForm }) => {
                           submit(values);
-                          console.log(values);
                           setSubmitting(true);
                           resetForm();
                           alert('Gửi thành công, chúng tôi sẽ gọi lại bạn sớm thôi !');

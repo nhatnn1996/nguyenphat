@@ -42,7 +42,6 @@ const ProductDetail = ({ productSearch, newSearch, q }) => {
       variables: { search: q, after: pageInfo.endCursor }
     });
     const contentProducts = newProducts.data.products;
-    console.log(contentProducts,'contentProducts');
     setData({ nodes: [...nodes, ...contentProducts.nodes], pageInfo: contentProducts.pageInfo });
     setLoading(false);
   };
