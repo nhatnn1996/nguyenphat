@@ -130,11 +130,11 @@ const InfoRight = ({ newProds, newNewsData }) => {
                                   <img
                                     width={221}
                                     height={300}
-                                    src={item.featuredImage.node?.sourceUrl}
+                                    src={item.featuredImage?.node?.sourceUrl}
                                     className="attachment-medium size-medium wp-post-image lazy-load-active"
-                                    alt={item.featuredImage.node.title}
+                                    alt={item.featuredImage?.node.title}
                                     loading="lazy"
-                                    srcSet={item.featuredImage.node.srcSet}
+                                    srcSet={item.featuredImage?.node.srcSet}
                                     sizes="(max-width: 221px) 100vw, 221px"
                                   />{' '}
                                 </div>
@@ -157,8 +157,8 @@ const InfoRight = ({ newProds, newNewsData }) => {
                     <ul className="product_list_widget">
                       {newProds.map((item) => (
                         <Link
-                          href={`/san-pham/${item.node.slug}`}
-                          key={item.node.slug}
+                          href={`/san-pham/${item?.node.slug}`}
+                          key={item?.node.slug}
                           title="Chống thấm pha xi măng AK-Seal"
                         >
                           <li
@@ -170,15 +170,15 @@ const InfoRight = ({ newProds, newNewsData }) => {
                             <img
                               width={100}
                               height={100}
-                              src={item.node.image?.sourceUrl}
+                              src={item?.node.image?.sourceUrl}
                               className="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail lazy-load-active"
-                              alt={item.node.image?.title}
+                              alt={item?.node.image?.title}
                               loading="lazy"
-                              srcSet={item.node.image?.srcSet}
+                              srcSet={item?.node.image?.srcSet}
                               sizes="(max-width: 100px) 100vw, 100px"
                             />
 
-                            <span className="product-title">{item.node.name}</span>
+                            <span className="product-title">{item?.node.name}</span>
                             <br />
                             <span className="amount">Giá: Liên hệ</span>
                           </li>

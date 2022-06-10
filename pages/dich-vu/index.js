@@ -32,7 +32,7 @@ const News = ({ props, newProds, newNewsData }) => {
       variables: { categoryName: 'Dịch vụ', after: dataNews.pageInfo.endCursor }
     });
     const contentNews = news.data.posts;
-    setDataNews({ posts: [...dataNews.posts, ...contentNews.nodes], pageInfo: contentNews.pageInfo });
+    setDataNews({ posts: [...dataNews.posts, ...contentNews?.nodes], pageInfo: contentNews.pageInfo });
     setLoadingNews(false);
   };
   const loadMoreNews = async () => {

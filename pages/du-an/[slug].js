@@ -205,7 +205,7 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                           </div>
                         </div>
                         <div className="flex-col flex-grow">
-                          <cite className="strong fn">{item.author.node.name}</cite> <span className="says">says:</span>
+                          <cite className="strong fn">{item.author?.node.name}</cite> <span className="says">says:</span>
                           <div className="comment-content" dangerouslySetInnerHTML={{ __html: item.content }}></div>
                           {item?.author?.node?.email && (
                             <div className="comment-content">

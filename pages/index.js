@@ -15,14 +15,14 @@ export async function getStaticProps() {
 
   const { menuItems, posts, products, category } = home;
 
-  const news = category.nodes || [];
+  const news = category?.nodes || [];
   const waterproofing = []; // không thấm nước
   const accessories = []; // phụ kiện
   // split the products list into waterproofing group and accessories group
   products &&
     products.forEach((element) => {
       const listCategory = element.productCategories?.edges || [];
-      const item = listCategory.find((element) => element.node.slug === 'san-pham-chong-tham');
+      const item = listCategory.find((element) => element?.node?.slug === 'san-pham-chong-tham');
       if (item) {
         if (waterproofing.length < 10) waterproofing.push(element);
       } else {

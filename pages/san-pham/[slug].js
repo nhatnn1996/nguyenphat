@@ -778,14 +778,14 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                             <img
                               width={100}
                               height={100}
-                              src={item.node.image?.sourceUrl}
+                              src={item.node?.image?.sourceUrl}
                               className="attachment-woocommerce_gallery_thumbnail size-woocommerce_gallery_thumbnail lazy-load-active"
-                              alt={item.node.image?.title}
+                              alt={item.node?.image?.title}
                               loading="lazy"
-                              srcSet={item.node.image?.srcSet}
+                              srcSet={item?.node?.image?.srcSet}
                               sizes="(max-width: 100px) 100vw, 100px"
                             />
-                            <span className="product-title">{item.node.name}</span>
+                            <span className="product-title">{item?.node.name}</span>
                           </div>
 
                           <span className="rrp-price">Giá cũ: </span>

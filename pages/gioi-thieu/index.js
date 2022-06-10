@@ -1,14 +1,14 @@
 import { apollo } from '@/api/index';
+import { bynewsGQL } from '@/geters/news';
 import React from 'react';
 
-export async function getStaticProps({ params }) {
-  const result = await apollo.query({ query: bynewsGQL, variables: { slug: "gioi-thieu" } });
-  const { postBy } = result?.data;
-  if (!postBy) return { notfound: true };
-  return { props: { postBy }, revalidate: timeCache };
-}
-const Introduce = ({postBy}) => {
-  console.log(postBy);
+// export async function getStaticProps({ params }) {
+//   const result = await apollo.query({ query: bynewsGQL, variables: { slug: "gioi-thieu" } });
+//   const { postBy } = result?.data;
+//   if (!postBy) return { notfound: true };
+//   return { props: { postBy }, revalidate: timeCache };
+// }
+const Introduce = () => {
   return (
     <div id="content" className="container content-area page-wrapper" role="main" style={{ minHeight: '70vh' }}>
       CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT, xin gửi lời chào trân trọng và lời chúc thành đạt đến Quý

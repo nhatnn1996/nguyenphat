@@ -9,7 +9,7 @@ export async function getStaticProps({ params }) {
   const { product } = result?.data;
   const productCategory = await apollo.query({
     query: productByCategoryGQL,
-    variables: { _id: product.productCategories.edges[0].node.id }
+    variables: { _id: product.productCategories.edges[0]?.node.id }
   });
   const { products } = productCategory.data.productCategory;
   return { props: { product, products }, revalidate: timeCache };
