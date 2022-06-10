@@ -4,7 +4,7 @@ import { allCategories, categoriesGQL, PaginationGQL } from '@/geters/categories
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CategoryComp } from '@/components/partials';
-import {timeCache} from "@/service/helper"
+import { timeCache } from '@/service/helper';
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: -10 },
@@ -13,7 +13,7 @@ const variants = {
 };
 
 export async function getStaticPaths() {
-  const { data } = await apollo.query({ query: allCategories });
+  const { data } = (await apollo.query({ query: allCategories })) || {};
   const paths = data?.productCategories?.nodes?.map((element) => ({
     params: { slug: element.slug }
   }));

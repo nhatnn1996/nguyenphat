@@ -1,7 +1,16 @@
+import { apollo } from '@/api/';
 import React from 'react';
-const Introduce = () => {
+
+export async function getStaticProps({ params }) {
+  const result = await apollo.query({ query: bynewsGQL, variables: { slug: "gioi-thieu" } });
+  const { postBy } = result?.data;
+  if (!postBy) return { notfound: true };
+  return { props: { postBy }, revalidate: timeCache };
+}
+const Introduce = ({postBy}) => {
+  console.log(postBy);
   return (
-    <div id="content" className="container content-area page-wrapper" role="main" style={{minHeight : "70vh"}}>
+    <div id="content" className="container content-area page-wrapper" role="main" style={{ minHeight: '70vh' }}>
       CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT, xin gửi lời chào trân trọng và lời chúc thành đạt đến Quý
       khách hàng. Với một đội ngũ nhân viên giỏi, nhiều năm kinh nghiệm, NGUYÊN PHÁT luôn tự hào là nhà cung cấp dịch vụ
       chống thấm và hóa chất xây dựng chuyên nghiệp tại Việt Nam. Lĩnh vực hoạt động: Cung cấp vật tư chống thấm, hoá
