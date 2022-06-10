@@ -1,8 +1,8 @@
 export default function Footer() {
   var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+  // if (typeof window !== 'undefined') {
+  //   infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  // }
   return (
     <footer id="footer" className="footer-wrapper">
       <section className="section footer-block" id="section_116701697">
@@ -48,9 +48,7 @@ export default function Footer() {
                 </p>
                 <ul>
                   <li>{infoSetting.companyName}</li>
-                  <li>
-                    MST : {infoSetting.tax}
-                  </li>
+                  <li>MST : {infoSetting.tax}</li>
                   <li>Ngày cấp : {infoSetting.taxDate}</li>
                   <li>Số điện thoại : {infoSetting.phone}</li>
                   <li>Email : {infoSetting.email}</li>

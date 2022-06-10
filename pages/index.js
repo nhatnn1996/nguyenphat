@@ -3,7 +3,7 @@ import { Service, ProductCom, ProductsCom, Video, Slider, NewsCom } from '@/comp
 import { apollo } from '@/api/index';
 import { homeGQL } from '@/geters/home';
 import { Testimomial } from '@/components/home/testimonial';
-import {timeCache} from "@/service/helper"
+import { timeCache } from '@/service/helper';
 
 export async function getStaticProps() {
   const result = await apollo.query({ query: homeGQL });
@@ -35,9 +35,9 @@ export async function getStaticProps() {
 export default function Home(props) {
   const { posts, waterproofing, accessories, news } = props;
   var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+  // if (typeof window !== 'undefined') {
+  //   infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  // }
   return (
     <>
       <main id="main" className="">

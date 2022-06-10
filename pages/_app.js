@@ -19,16 +19,18 @@ const variants = {
   enter: { opacity: 1, x: 0, y: 0 },
   exit: { opacity: 0, x: 0, y: 0 }
 };
-MyApp.getInitialProps = async () => {
-  const result = await apollo.query({ query: getInfoSetting });
-  const infoSettings = result.data.user;
-  return { infoSettings };
-};
-function MyApp({ Component, pageProps, infoSettings }) {
-  const infoSetingsPage = infoSettings.setting_info;
-  if (typeof window !== 'undefined') {
-    window.localStorage.setItem('info', JSON.stringify(infoSetingsPage));
-  }
+
+// MyApp.getInitialProps = async () => {
+//   const result = await apollo.query({ query: getInfoSetting });
+//   const infoSettings = result.data.user;
+//   return { infoSettings };
+// };
+
+function MyApp({ Component, pageProps, infoSettings = {} }) {
+  // const infoSetingsPage = infoSettings.setting_info;
+  // if (typeof window !== 'undefined') {
+  //   window.localStorage.setItem('info', JSON.stringify(infoSetingsPage));
+  // }
   const router = useRouter();
   const asPath = router.asPath;
   return (
