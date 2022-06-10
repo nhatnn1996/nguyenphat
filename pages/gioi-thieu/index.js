@@ -1,4 +1,4 @@
-import { apollo } from '@/api/';
+import { apollo } from '@/api/index';
 import React from 'react';
 
 export async function getStaticProps({ params }) {
