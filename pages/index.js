@@ -32,7 +32,9 @@ export async function getStaticProps() {
   return { props: { menuItems, posts, waterproofing, accessories, news }, revalidate: timeCache };
 }
 
+
 export default function Home(props) {
+  console.log('trickerBuild');
   const { posts, waterproofing, accessories, news } = props;
   var infoSetting = {};
   // if (typeof window !== 'undefined') {
