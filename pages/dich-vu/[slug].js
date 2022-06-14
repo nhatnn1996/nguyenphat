@@ -41,9 +41,9 @@ export async function getStaticPaths() {
 }
 const NewsDetail = ({ props, postBy, newProds, newNewsData }) => {
   const router = useRouter();
-  const {slug} = router.query
-  const posts = props.posts;
-  var arrPosts = [...posts];
+  const { slug } = router.query;
+  const posts = props?.posts;
+  var arrPosts = posts ? [...posts] : [];
   arrPosts = arrPosts.slice(0, 10).filter((item) => item.slug !== slug);
   const [valueComment, setValueComment] = useState({
     comment: '',
