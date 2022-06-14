@@ -47,15 +47,11 @@ export default function Footer() {
                   </span>
                 </p>
                 <ul>
-                  <li>{infoSetting.companyName}</li>
+                  <li>{infoSetting.companyname}</li>
                   <li>MST : {infoSetting.tax}</li>
-                  <li>Ngày cấp : {infoSetting.taxDate}</li>
+                  <li>Ngày cấp : {infoSetting.taxdate}</li>
                   <li>Số điện thoại : {infoSetting.phone}</li>
                   <li>Email : {infoSetting.email}</li>
-                  {/* <li>CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT</li> */}
-                  {/* <li>MST : 0311620687 , Ngày Cấp : 06-12-2013, Nơi Cấp : Sở kế Hoạch Và Đầu Tư TP.HCM.</li> */}
-                  {/* <li>Số điện thoại : 028 37 27 3679</li> */}
-                  {/* <li>Email : chongthamnguyenphat@gmail.com</li> */}
                 </ul>
               </div>
             </div>

@@ -100,9 +100,9 @@ export const getInfoSetting = gql`
         hotline
         office
         address
-        companyName
+        companyname
         tax
-        taxDate
+        taxdate
       }
     }
   }
