@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login GHCR Docker
+      run: echo ${{secrets.CI_TOKEN}} | docker login ghcr.io --username ${{secrets.CI_USER}} --password-stdin
+    - uses: actions/checkout@v2
+    - name: Build Docker Image
+      run: chmod +x ./local-build.sh  && ./local-build.sh
