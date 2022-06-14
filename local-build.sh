@@ -1,7 +1,7 @@
 VERSION=$2
 REGISTRY='ghcr.io'
-REGISTRY_PATH=‘image_path’
-IMAGE_NAME=image_name
+REGISTRY_PATH=‘nguyenphat’
+IMAGE_NAME=nextjs
 IMAGE=$REGISTRY/$REGISTRY_PATH/$IMAGE_NAME
 
 if [ -z "$2" ]; then
