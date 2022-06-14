@@ -32,7 +32,9 @@ export async function getStaticProps() {
   return { props: { menuItems, posts, waterproofing, accessories, news }, revalidate: timeCache };
 }
 
+
 export default function Home(props) {
+  console.log('trickerBuild');
   const { posts, waterproofing, accessories, news } = props;
   var infoSetting = {};
   // if (typeof window !== 'undefined') {
@@ -219,16 +221,6 @@ export default function Home(props) {
                             />{' '}
                           </div>
                         </div>
-                      </div>
-                      <div className="icon-box-text last-reset">
-                        <h3>Bảo hành kim cương</h3>
-                        <p>
-                          <span style={{ fontSize: '90%' }}>
-                            Các công trình đều được bảo hành 3-5 năm và cam kết hoàn tiền nếu không hài lòng về chế độ
-                            bảo hành
-                            <br />
-                          </span>
-                        </p>
                       </div>
                     </div>
                     <div
