@@ -34,7 +34,7 @@ export async function getStaticProps() {
 
 
 export default function Home(props) {
-  console.log('trickerBuild');
+  // console.log('trickerBuild');
   const { posts, waterproofing, accessories, news } = props;
   var infoSetting = {};
   if (typeof window !== 'undefined') {
