@@ -71,7 +71,7 @@ export default function Home(props) {
                 </div>
               </div>
               <div className="row" id="row-261932049">
-                <div id="col-39344610" className="col hide-for-small medium-3 small-12 large-3">
+                <div id="col-39344610" className="col hide-for-small medium-3 small-12 large-4">
                   <div className="col-inner">
                     <div className="icon-box featured-box icon-box-left text-left">
                       <div className="icon-box-img" style={{ width: 80 }}>
@@ -122,7 +122,7 @@ export default function Home(props) {
                     </div>
                   </div>
                 </div>
-                <div id="col-1610140310" className="col hide-for-small medium-3 small-12 large-3">
+                <div id="col-1610140310" className="col hide-for-small medium-3 small-12 large-4">
                   <div className="col-inner">
                     <div className="icon-box featured-box icon-box-left text-left">
                       <div className="icon-box-img" style={{ width: 80 }}>
@@ -143,7 +143,7 @@ export default function Home(props) {
                         <h3>Nhập khẩu Đài Loan – Hàn Quốc</h3>
                         <p>
                           <span style={{ fontSize: '104%' }}>
-                            Nói không với hàng trôi nổi, hàng Trung Quốc, tất cả sản phẩm đều được nhập khẩu chính
+                            Tất cả sản phẩm đều được nhập khẩu chính
                             ngạch, có CO, CQ kiểm định chất lượng sản phẩm
                           </span>
                         </p>
@@ -152,7 +152,7 @@ export default function Home(props) {
                     </div>
                   </div>
                 </div>
-                <div id="col-1864456353" className="col hide-for-small medium-3 small-12 large-3">
+                <div id="col-1864456353" className="col hide-for-small medium-3 small-12 large-4">
                   <div className="col-inner">
                     <div className="icon-box featured-box icon-box-left text-left">
                       <div className="icon-box-img" style={{ width: 80 }}>
@@ -202,7 +202,7 @@ export default function Home(props) {
                     </div>
                   </div>
                 </div>
-                <div id="col-1650652205" className="col hide-for-small medium-3 small-12 large-3">
+                {/* <div id="col-1650652205" className="col hide-for-small medium-3 small-12 large-3">
                   <div className="col-inner">
                     <div className="icon-box featured-box icon-box-left text-left">
                       <div className="icon-box-img" style={{ width: 80 }}>
@@ -254,7 +254,7 @@ export default function Home(props) {
                       />
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <style
@@ -266,7 +266,7 @@ export default function Home(props) {
           <Service data={posts} />
           <ProductCom data={waterproofing} />
           <ProductsCom data={accessories} />
-          <Video />
+          {/* <Video /> */}
 
           <section className="section cam-ket">
             <div className="bg section-bg fill bg-fill  ">

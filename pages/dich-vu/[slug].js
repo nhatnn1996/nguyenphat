@@ -7,18 +7,27 @@ import InfoRight from '@/components/info-right';
 import moment from 'moment';
 import { timeCache } from '@/service/helper';
 import { useRouter } from 'next/router';
+import Slider from 'react-slick';
+import Link from 'next/link';
 
 export async function getStaticProps({ params }) {
   const result = await apollo.query({ query: bynewsGQL, variables: { slug: params.slug } });
   const { postBy } = result?.data;
   if (!postBy) return { notfound: true };
 
+  const resultData = await apollo.query({ query: newsGQL, variables: { categoryName: 'Dịch vụ' } });
+  const props = {};
+  Object.keys(resultData?.data || {}).map((key) => {
+    const element = resultData?.data[key];
+    props[key] = element?.nodes || [];
+  });
+
   const newProducts = await apollo.query({ query: productsNewGQL });
   const newProds = newProducts?.data?.products?.edges;
 
   const newNews = await apollo.query({ query: newNewsGQL });
   const newNewsData = newNews?.data?.posts?.nodes;
-  return { props: { postBy, newProds, newNewsData }, revalidate: timeCache };
+  return { props: { props, postBy, newProds, newNewsData }, revalidate: timeCache };
 }
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: getNewsbyCategory, variables: { slug: 'dich-vu' } });
@@ -30,8 +39,12 @@ export async function getStaticPaths() {
     fallback: true
   };
 }
-const NewsDetail = ({ postBy, newProds, newNewsData }) => {
+const NewsDetail = ({ props, postBy, newProds, newNewsData }) => {
   const router = useRouter();
+  const {slug} = router.query
+  const posts = props.posts;
+  var arrPosts = [...posts];
+  arrPosts = arrPosts.slice(0, 10).filter((item) => item.slug !== slug);
   const [valueComment, setValueComment] = useState({
     comment: '',
     name: '',
@@ -75,6 +88,50 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
       ...valueComment,
       [type]: e.target.value
     });
+  };
+  function NextArrow(props) {
+    const { onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className="flickity-button flickity-prev-next-button next"
+        type="button"
+        aria-label="Next"
+      >
+        <svg className="flickity-button-icon" viewBox="0 0 100 100">
+          <path
+            d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
+            className="arrow"
+            transform="translate(100, 100) rotate(180) "
+          />
+        </svg>
+      </button>
+    );
+  }
+  function PrevArrow(props) {
+    const { onClick } = props;
+    return (
+      <button
+        onClick={onClick}
+        className="flickity-button flickity-prev-next-button previous"
+        type="button"
+        aria-label="Previous"
+      >
+        <svg className="flickity-button-icon" viewBox="0 0 100 100">
+          <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" className="arrow" />
+        </svg>
+      </button>
+    );
+  }
+
+  var settings = {
+    arrows: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   };
   return (
     <div>
@@ -204,7 +261,8 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                           </div>
                         </div>
                         <div className="flex-col flex-grow">
-                          <cite className="strong fn">{item.author?.node?.name}</cite> <span className="says">says:</span>
+                          <cite className="strong fn">{item.author?.node?.name}</cite>{' '}
+                          <span className="says">says:</span>
                           <div className="comment-content" dangerouslySetInnerHTML={{ __html: item.content }}></div>
                           {item?.author?.node?.email && (
                             <div className="comment-content">
@@ -229,8 +287,81 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                   </li>
                 ))}
               </ol>
-
-              <div id="respond" className="comment-respond">
+              <div className="section-content relative">
+                <div className="row" id="row-1749262871">
+                  <div id="col-1302321468" className="col small-12 large-12">
+                    <div className="col-inner">
+                      <p style={{ marginBottom: '20px' }}>
+                        <span style={{ fontSize: '120%' }}>
+                          <strong>
+                            <span style={{ color: '#000000' }}>Dịch vụ liên quan:</span>
+                          </strong>
+                        </span>
+                      </p>
+                      <div
+                        className="row large-columns-5 medium-columns-3 small-columns-2 row-small row-full-width has-shadow row-box-shadow-1 slider row-slider slider-nav-simple slider-nav-outside slider-nav-push is-draggable flickity-enabled slider-lazy-load-active"
+                        data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'
+                        tabIndex={0}
+                      >
+                        <div className="flickity-viewport" style={{ height: '345.641px', touchAction: 'pan-y' }}>
+                          <div
+                            className="flickity-slider"
+                            style={{
+                              left: '0px',
+                              // transform: 'translateX(-120%)',
+                              display: 'flex',
+                              alignItems: 'center'
+                            }}
+                          >
+                            <Slider {...settings}>
+                              {arrPosts?.map((item) => (
+                                <div
+                                  className="col is-selected"
+                                  key={item.slug}
+                                  aria-selected="true"
+                                  style={{ minWidth: '248px' }}
+                                >
+                                  <div className="col-inner">
+                                    <div className="badge-container absolute left top z-1"></div>
+                                    <div className="product-small box has-hover box-normal box-text-bottom">
+                                      <div className="box-image">
+                                        <div className="image-cover" style={{ paddingTop: '100%' }}>
+                                          <Link href={`/dich-vu/${item.slug}`}>
+                                            <img
+                                              width={300}
+                                              height={300}
+                                              src={item.featuredImage?.node?.sourceUrl}
+                                              className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail lazy-load-active"
+                                              alt=""
+                                              loading="lazy"
+                                              srcSet={item.featuredImage?.node?.srcSet}
+                                              sizes="(max-width: 300px) 100vw, 300px"
+                                            />
+                                          </Link>
+                                        </div>
+                                        <div className="image-tools top right show-on-hover"></div>
+                                        <div className="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"></div>
+                                      </div>
+                                      <div className="box-text text-center">
+                                        <div className="title-wrapper">
+                                          <p className="name product-title woocommerce-loop-product__title">
+                                            <Link href={`/dich-vu/${item.slug}`}>{item.title}</Link>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </Slider>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* <div id="respond" className="comment-respond">
                 <h3 id="reply-title" className="comment-reply-title">
                   Trả lời{' '}
                   <small>
@@ -302,17 +433,6 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                       onInput={(e) => getValueComment(e, 'website')}
                     />
                   </p>
-                  {/* <p className="comment-form-cookies-consent">
-                    <input
-                      id="wp-comment-cookies-consent"
-                      name="wp-comment-cookies-consent"
-                      type="checkbox"
-                      defaultValue="yes"
-                    />{' '}
-                    <label htmlFor="wp-comment-cookies-consent">
-                      Lưu tên của tôi, email, và trang web trong trình duyệt này cho lần bình luận kế tiếp của tôi.
-                    </label>
-                  </p> */}
                   <p className="form-submit">
                     <input
                       style={{ background: '#0082c8', color: 'white' }}
@@ -326,8 +446,8 @@ const NewsDetail = ({ postBy, newProds, newNewsData }) => {
                     <input type="hidden" name="comment_post_ID" defaultValue={3617} id="comment_post_ID" />
                     <input type="hidden" name="comment_parent" id="comment_parent" defaultValue={0} />
                   </p>
-                </form>{' '}
-              </div>
+                </form>
+              </div> */}
             </div>
           </div>
 

@@ -147,3 +147,6 @@ svg > .arrow {
 .loadmore-button:hover {
   color: #0082c8 !important;
 }
+.row-box-shadow-1 .col-inner {
+  border: none !important;
+}
