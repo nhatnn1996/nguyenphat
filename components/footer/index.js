@@ -1,8 +1,8 @@
 export default function Footer() {
   var infoSetting = {};
-  // if (typeof window !== 'undefined') {
-  //   infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  // }
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   return (
     <footer id="footer" className="footer-wrapper">
       <section className="section footer-block" id="section_116701697">

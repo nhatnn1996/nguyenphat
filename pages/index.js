@@ -37,9 +37,9 @@ export default function Home(props) {
   console.log('trickerBuild');
   const { posts, waterproofing, accessories, news } = props;
   var infoSetting = {};
-  // if (typeof window !== 'undefined') {
-  //   infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  // }
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   return (
     <>
       <main id="main" className="">

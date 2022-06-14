@@ -35,9 +35,9 @@ const NavMenu = ({ items }) => {
     }
   }, []);
   var infoSetting = {};
-  // if (typeof window !== 'undefined') {
-  //   infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  // }
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   return (
     <>
       <div id="wide-nav" className="header-bottom wide-nav nav-dark hide-for-medium snipcss-io4AT">

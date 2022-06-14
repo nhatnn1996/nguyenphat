@@ -251,9 +251,9 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
     }
   }, [valueComment, rating]);
   var infoSetting = {};
-  // if (typeof window !== 'undefined') {
-  //   infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  // }
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
   const router = useRouter();
   if (router.isFallback) return null;
   return (
