@@ -256,7 +256,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
   }
   const router = useRouter();
   let images = product?.galleryImages?.nodes;
-  if(images.length === 0) images = [product.image];
+  if (images.length === 0) images = [product.image];
   if (router.isFallback) return null;
   return (
     <div>
@@ -460,7 +460,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                   </div>
                   <div id="col-1854681923" className="contact-product col medium-3 small-12 large-3">
                     <div className="col-inner contact-product-col">
-                      <h3>Địa điểm mua hàng:</h3>
+                      <h3>Địa chỉ mua hàng:</h3>
                       <div className="icon-box featured-box icon-box-left text-left">
                         {/* <div className="icon-box-img" style={{ width: '31px' }}>
                           <div className="icon">
@@ -477,13 +477,18 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           </div>
                         </div> */}
                         <div className="icon-box-text last-reset">
-                          <span style={{ fontSize: '105%', color: '#000000' }}>
-                            Showroom
+                          {/* <span style={{ fontSize: '105%', color: '#000000' }}>
+                            Địa chỉ mua hàng
                             <br />
-                          </span>
-                          <span style={{ fontSize: '85%' }}>{infoSetting.address}</span>
-                          <p>Điện thoại: {infoSetting.phone}</p>
-                          <p>Email: {infoSetting.email}</p>
+                          </span> */}
+                          <span style={{ fontWeight: 'bold' }}>Địa chỉ: </span>
+                          <span>{infoSetting.office}</span>
+                          <br />
+                          <span style={{ fontWeight: 'bold' }}>Điện thoại: </span>
+                          <span>{infoSetting.hotline}</span>
+                          <br />
+                          <span style={{ fontWeight: 'bold' }}>Email: </span>
+                          <span>{infoSetting.email}</span>
                         </div>
                       </div>
                       <div

@@ -293,7 +293,7 @@ const ProductDetail = ({ product }) => {
                       <div className="icon-box-text last-reset">
                         <p>
                           <span style={{ fontSize: '105%', color: '#000000' }}>
-                            Showroom
+                            Địa chỉ mua hàng
                             <br />
                           </span>
                           <span style={{ fontSize: '85%' }}>224/11/7 Phạm Văn chí ,Phường 04,Quận 06 TP HCM</span>

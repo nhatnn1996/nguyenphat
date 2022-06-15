@@ -58,7 +58,7 @@ export const NewsCom = ({ data = [] }) => {
                     <span style={{ color: '#008000', fontSize: '120%' }}>Nhập khẩu Đài Loan, Korea</span>
                   </p>
                   <p>
-                    <span style={{ fontSize: '95%' }}>Xách tay về từ các thị trường USA, Korea, Malaysia, Đức…</span>
+                    <span style={{ fontSize: '95%' }}>Hàng hoá được nhập từ các thị trường Đài Loan, Hàn Quốc…</span>
                   </p>
                 </div>
               </div>
