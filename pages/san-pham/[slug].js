@@ -476,11 +476,11 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                         </div> */}
                         <div className="icon-box-text last-reset">
                           <span style={{ fontSize: '105%', color: '#000000' }}>
-                            Showroom
+                            Địa chỉ mua hàng
                             <br />
                           </span>
-                          <span style={{ fontSize: '85%' }}>{infoSetting.address}</span>
-                          <p>Điện thoại: {infoSetting.phone}</p>
+                          <span style={{ fontSize: '85%' }}>{infoSetting.office}</span>
+                          <p>Điện thoại: {infoSetting.hotline}</p>
                           <p>Email: {infoSetting.email}</p>
                         </div>
                       </div>
