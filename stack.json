@@ -1,0 +1,6 @@
+{
+  "id": 12,
+  "StackFileContent": "version: \"3.9\"\nnetworks:\n  traefik-net:\n    external: true\n  \nservices:\n\n  nextjs:\n    image: ghcr.io/nhatnn1996/nguyenphat/nextjs:$VERSION\n    restart: always\n    labels:\n      - \"traefik.enable=true\"\n      - \"traefik.http.routers.nextjs.rule=Host(`chongthamnguyenphat.com`)\"\n      - \"traefik.http.routers.nextjs.entrypoints=websecure\"\n      - \"traefik.http.routers.nextjs.tls.certresolver=myresolver\"\n      #- \"traefik.port=80\"\n      - \"traefik.http.services.nextjs.loadbalancer.server.port=3000\"\n    networks: \n      - traefik-net",
+  "Env": [{ "name": "VERSION", "value": "1.0.0" }],
+  "Prune": false
+}

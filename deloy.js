@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-const stack = require('./stackdeploy.json');
-const currentService = 'BE_VERSION';
+const stack = require('./stack.json');
+const currentService = 'VERSION';
 const currentVersion = require('./package.json').version.toString();
 stack.Env.find((env) => env.name === currentService).value = currentVersion;
 const domain = 'http://103.101.162.28:9000';
@@ -39,7 +39,7 @@ async function deploy() {
   const data = JSON.stringify(stack);
   const config = {
     method: 'put',
-    url: `${domain}/api/stacks/3?endpointId=2`,
+    url: `${domain}/api/stacks/12?endpointId=2`,
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`
@@ -50,6 +50,7 @@ async function deploy() {
   axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response?.data));
+      console.log('Deploy success')
     })
     .catch(function (error) {
       throw new Error(error);
