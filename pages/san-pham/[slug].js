@@ -255,6 +255,8 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
     infoSetting = JSON.parse(window.localStorage.getItem('info'));
   }
   const router = useRouter();
+  let images = product?.galleryImages?.nodes;
+  if(images.length === 0) images = [product.image];
   if (router.isFallback) return null;
   return (
     <div>
@@ -358,7 +360,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                           <div className="flickity-viewport" style={{ height: '524.133px', touchAction: 'pan-y' }}>
                             <div className="flickity-slider" style={{ display: 'flex', alignItems: 'center' }}>
                               <Slider {...settingsPreview}>
-                                {product?.galleryImages?.nodes.map((item, index) => (
+                                {images.map((item, index) => (
                                   <div
                                     key={index}
                                     data-thumb="https://chongthamnguyenphat.com/wp-content/uploads/2022/03/z3238397563620_bcd45c4e422f83eb718e41f7c5b51033-removebg-preview-100x100.png"
