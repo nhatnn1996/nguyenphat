@@ -26,7 +26,10 @@ export const Service = ({ data }) => {
                   }}
                 />
               </div>
-              <div className="row large-columns-5 medium-columns-3 small-columns-2 row-small">
+              <div
+                className="row large-columns-5 medium-columns-3 small-columns-2 row-small"
+                style={{ display: 'flex', justifyContent : "center" }}
+              >
                 {data.map((element) => {
                   const { featuredImage, slug, title } = element;
                   const image = featuredImage?.node || {};

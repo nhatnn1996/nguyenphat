@@ -150,3 +150,21 @@ svg > .arrow {
 .row-box-shadow-1 .col-inner {
   border: none !important;
 }
+.product-small, .col-inner{
+  height: 100% !important;
+}
+.phone-icon {
+  top: 75% !important;
+}
+.mess-icon {
+  top: 86% !important;
+}
+
+@media screen and (max-width: 768px) {
+  .mess-icon {
+    top: 83% !important;
+  }
+  .phone-icon {
+    top: 70% !important;
+  }
+}
