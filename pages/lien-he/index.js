@@ -1,5 +1,10 @@
 import React from 'react';
 const Contact = () => {
+  var infoSetting = {};
+  if (typeof window !== 'undefined') {
+    infoSetting = JSON.parse(window.localStorage.getItem('info'));
+  }
+  console.log(infoSetting);
   return (
     <div id="content" role="main" className="content-area">
       <div className="img has-hover x md-x lg-x y md-y lg-y" id="image_1347406328">
@@ -50,21 +55,19 @@ const Contact = () => {
                 </p>
                 <p>
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                    laoreet dolore magna aliquam erat volutpat.
-                  </span>
-                </p>
-                <p>
-                  <span style={{ fontSize: '95%', color: '#333333' }}>
-                    –<strong> Địa chỉ:</strong> 224/11/7 Phạm Văn Chí Phường4 Quận 6 HCM{' '}
+                    –<strong> Văn phòng giao dịch:</strong> {infoSetting.office}
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    – <strong>SĐT:</strong> 028 37 27 3679
+                    –<strong> Địa chỉ:</strong> {infoSetting.address}
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    – <strong>Email:</strong>&nbsp;chongthamnguyenphat@gmail.com
+                    – <strong>SĐT:</strong> {infoSetting.phone}
+                  </span>
+                  <br />
+                  <span style={{ fontSize: '95%', color: '#333333' }}>
+                    – <strong>Email:</strong>&nbsp;{infoSetting.email}
                   </span>
                 </p>
               </div>
