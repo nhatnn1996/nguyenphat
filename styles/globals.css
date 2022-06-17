@@ -171,10 +171,13 @@ svg > .arrow {
 }
 @media screen and (max-width: 768px) {
   .mess-icon {
-    top: 83% !important;
+    top: 64% !important;
   }
   .phone-icon {
-    top: 70% !important;
+    top: 85% !important;
+  }
+  .phone-icon2 {
+    top: 76% !important;
   }
 }
 a.phone-icon .suntory-alo-ph-img-circle {
