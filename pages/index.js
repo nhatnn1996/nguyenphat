@@ -32,7 +32,6 @@ export async function getStaticProps() {
   return { props: { menuItems, posts, waterproofing, accessories, news }, revalidate: timeCache };
 }
 
-
 export default function Home(props) {
   // console.log('trickerBuild');
   const { posts, waterproofing, accessories, news } = props;
@@ -145,8 +144,7 @@ export default function Home(props) {
                         <h3>Nhập khẩu Đài Loan – Hàn Quốc</h3>
                         <p>
                           <span style={{ fontSize: '104%' }}>
-                            Tất cả sản phẩm đều được nhập khẩu chính
-                            ngạch, có CO, CQ kiểm định chất lượng sản phẩm
+                            Tất cả sản phẩm đều được nhập khẩu chính ngạch, có CO, CQ kiểm định chất lượng sản phẩm
                           </span>
                         </p>
                         <p>&nbsp;</p>
@@ -326,17 +324,17 @@ export default function Home(props) {
         </div>
       </main>
       <div className="tool-icon">
-        <a href="tel:+02837273679" className="phone-icon">
-          <span className="suntory-alo-ph-circle-fill" />
-          <span className="suntory-alo-ph-img-circle">
-            <i className="fa fa-phone" />
-          </span>
-        </a>
         <a href="https://zalo.me/02837273679" className="mess-icon" target="_blank">
           <span className="suntory-alo-ph-circle-fill" />
           <span className="suntory-alo-ph-img-circle">
             <img src="/icons/zalo.png" alt="" className="icon-center" />
           </span>
+        </a>
+        <a href={`tel:${infoSetting.hotline}`} className="phone-icon">
+          <span className="suntory-alo-ph-img-circle">{infoSetting.hotline}</span>
+        </a>
+        <a href={`tel:${infoSetting.phone}`} className="phone-icon phone-icon2">
+          <span className="suntory-alo-ph-img-circle phone2-img">{infoSetting.phone}</span>
         </a>
       </div>{' '}
     </>
