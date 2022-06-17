@@ -4,7 +4,6 @@ const Contact = () => {
   if (typeof window !== 'undefined') {
     infoSetting = JSON.parse(window.localStorage.getItem('info'));
   }
-  console.log(infoSetting);
   return (
     <div id="content" role="main" className="content-area">
       <div className="img has-hover x md-x lg-x y md-y lg-y" id="image_1347406328">
@@ -55,15 +54,15 @@ const Contact = () => {
                 </p>
                 <p>
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    –<strong> Văn phòng giao dịch:</strong> {infoSetting.office}
+                    –<strong> Địa chỉ:</strong> {infoSetting.address}{' '}
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    –<strong> Địa chỉ:</strong> {infoSetting.address}
+                    –<strong> Văn phòng giao dịch:</strong> {infoSetting.office}{' '}
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    – <strong>SĐT:</strong> {infoSetting.phone}
+                    – <strong>SĐT:</strong> {infoSetting.hotline}
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
