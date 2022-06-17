@@ -159,7 +159,12 @@ svg > .arrow {
 .mess-icon {
   top: 86% !important;
 }
-
+#col-13678866{
+  margin-top: 20px;
+}
+#col-1756564835 {
+  padding-bottom: 0 !important;
+}
 @media screen and (max-width: 768px) {
   .mess-icon {
     top: 83% !important;

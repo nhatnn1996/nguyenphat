@@ -8,7 +8,7 @@ import { useRef } from 'react';
 const testimonials = [
   { img: '/images/customer-1.jpeg', name: 'chị Hồ Thị Ngọc Thảo ' },
   { img: '/images/customer-2.jpeg', name: 'anh Đặng Tuấn Vũ' },
-  { img: '/images/anhnhat.jpeg', name: 'anh Nguyễn Ngọc Nhất ' },
+  { img: '/images/customer-3.png', name: 'anh Nguyễn Ngọc Nhất ' },
   { img: '/images/customer-4.jpeg', name: 'chị Trần Thị Kim Oanh ' }
 ];
 
