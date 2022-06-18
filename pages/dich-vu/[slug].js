@@ -287,7 +287,7 @@ const NewsDetail = ({ props, postBy, newProds, newNewsData }) => {
                   </li>
                 ))}
               </ol>
-              <div className="section-content relative">
+              {arrPosts?.length > 0 && <div className="section-content relative">
                 <div className="row" id="row-1749262871">
                   <div id="col-1302321468" className="col small-12 large-12">
                     <div className="col-inner">
@@ -360,7 +360,8 @@ const NewsDetail = ({ props, postBy, newProds, newNewsData }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>}
+              
               {/* <div id="respond" className="comment-respond">
                 <h3 id="reply-title" className="comment-reply-title">
                   Trả lời{' '}
