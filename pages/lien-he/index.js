@@ -74,6 +74,14 @@ const Contact = () => {
             <div id="col-711893765" className="col small-12 large-12">
               <div className="col-inner">
                 <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d251637.95196238213!2d105.6189045!3d9.779349!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752879901d7eb9%3A0x6564e6992ce6bcec!2zMzYsIDMxIMSQxrDhu51uZyBT4buRIDQsIEhp4buHcCBCw6xuaCBQaMaw4bubYywgVGjhu6cgxJDhu6ljLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1655539137276!5m2!1svi!2s"
+                  width={'100%'}
+                  height={450}
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+                {/* <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.988547815108!2d106.70878551502078!3d10.812187892297235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528978e2e0a6d%3A0x92373c6e58c808b9!2zQ8O0bmcgVHkgVE5ISCDEkOG6p3UgVMawIFjDonkgROG7sW5nIFRoxrDGoW5nIE3huqFpIE5ndXnDqm4gUGjDoXQ!5e0!3m2!1svi!2s!4v1651996464584!5m2!1svi!2s"
                   width={'100%'}
                   height={450}
@@ -81,7 +89,7 @@ const Contact = () => {
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                />
+                /> */}
               </div>
             </div>
           </div>

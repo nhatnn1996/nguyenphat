@@ -258,7 +258,7 @@ export default function Home(props) {
           <Service data={posts} />
           <ProductCom data={waterproofing} />
           <ProductsCom data={accessories} />
-          {/* <Video /> */}
+          <Video />
 
           <section className="section cam-ket">
             <div className="bg section-bg fill bg-fill  ">
