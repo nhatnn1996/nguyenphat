@@ -23,7 +23,7 @@ export const Video = () => {
                       title="Thi công dán màn khò chống thấm"
                       width={1020}
                       height={765}
-                      src="https://www.youtube.com/embed/--j5QOtG0M0?feature=oembed"
+                      src="https://www.youtube.com/embed/heHoNBoH0Qc?feature=oembed"
                       frameBorder={0}
                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen=""
@@ -41,7 +41,7 @@ export const Video = () => {
                       title="Chống nứt bằng máy bơm keo Epoxy, PU sl500 lh 090 84 85 86 1"
                       width={1020}
                       height={765}
-                      src="https://www.youtube.com/embed/Z7IC-F-kCA4?feature=oembed"
+                      src="https://www.youtube.com/embed/ElnjbXgwG3s?feature=oembed"
                       frameBorder={0}
                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen=""
