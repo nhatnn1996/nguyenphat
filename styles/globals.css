@@ -199,6 +199,7 @@ a.phone-icon .suntory-alo-ph-img-circle {
   background-position: right;
   background-position-x: 138px;
   background-position-y: 7px;
+  animation: 1s ease-in-out;
 }
 a.phone-icon .suntory-alo-ph-circle-fill {
   width: 150px !important;
