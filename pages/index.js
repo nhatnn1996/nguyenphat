@@ -4,6 +4,7 @@ import { apollo } from '@/api/index';
 import { homeGQL } from '@/geters/home';
 import { Testimomial } from '@/components/home/testimonial';
 import { timeCache } from '@/service/helper';
+import { useInfo } from 'context/info';
 
 export async function getStaticProps() {
   const result = await apollo.query({ query: homeGQL });
@@ -33,12 +34,8 @@ export async function getStaticProps() {
 }
 
 export default function Home(props) {
-  // console.log('trickerBuild');
   const { posts, waterproofing, accessories, news } = props;
-  var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+  const { infoSetting } = useInfo();
   return (
     <>
       <main id="main" className="">
@@ -294,7 +291,7 @@ export default function Home(props) {
                             className="button alert is-large lowercase expand"
                             style={{ borderRadius: 99 }}
                           >
-                            <i className="icon-phone" /> <span>Hotline: {infoSetting.hotline} </span>
+                            <i className="icon-phone" /> <span>Hotline: {infoSetting?.hotline} </span>
                           </a>
                         </div>
                       </div>
@@ -330,11 +327,11 @@ export default function Home(props) {
             <img src="/icons/zalo.png" alt="" className="icon-center" />
           </span>
         </a>
-        <a href={`tel:${infoSetting.hotline}`} className="phone-icon">
-          <span className="suntory-alo-ph-img-circle">{infoSetting.hotline}</span>
+        <a href={`tel:${infoSetting?.hotline}`} className="phone-icon">
+          <span className="suntory-alo-ph-img-circle">{infoSetting?.hotline}</span>
         </a>
-        <a href={`tel:${infoSetting.phone}`} className="phone-icon phone-icon2">
-          <span className="suntory-alo-ph-img-circle phone2-img">{infoSetting.phone}</span>
+        <a href={`tel:${infoSetting?.phone}`} className="phone-icon phone-icon2">
+          <span className="suntory-alo-ph-img-circle phone2-img">{infoSetting?.phone}</span>
         </a>
       </div>{' '}
     </>

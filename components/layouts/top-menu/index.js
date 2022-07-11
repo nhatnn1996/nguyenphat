@@ -1,8 +1,10 @@
+import { useInfo } from 'context/info';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 
 const NavMenu = ({ items }) => {
+  const { infoSetting } = useInfo();
   const [value, setValue] = useState('');
   const history = useRouter();
   const onSearch = () => {
@@ -34,10 +36,7 @@ const NavMenu = ({ items }) => {
       }
     }
   }, []);
-  var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+
   return (
     <>
       <div id="wide-nav" className="header-bottom wide-nav nav-dark hide-for-medium snipcss-io4AT">
@@ -51,8 +50,8 @@ const NavMenu = ({ items }) => {
                 id="menu-item-1658"
                 className="hotline-nav menu-item menu-item-type-custom menu-item-object-custom menu-item-1658 snip-li"
               >
-                <a className="nav-top-link snip-a" href={`tel:${infoSetting.hotline}`}>
-                  Hotline: {infoSetting.hotline}
+                <a className="nav-top-link snip-a" href={`tel:${infoSetting?.hotline}`}>
+                  Hotline: {infoSetting?.hotline}
                 </a>
               </li>
               <li className="cart-item has-icon has-dropdown snip-li">

@@ -1,8 +1,7 @@
+import { useInfo } from 'context/info';
+
 export default function Footer() {
-  var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+  const { infoSetting } = useInfo();
   return (
     <footer id="footer" className="footer-wrapper">
       <section className="section footer-block" id="section_116701697">
@@ -23,14 +22,14 @@ export default function Footer() {
                   <strong>VĂN PHÒNG GIAO DỊCH</strong>
                   <br />
                   {/* <li>36/31F Đường số 4, Khu phố 6, Phường Hiệp Bình Phước, TP.Thủ Đức, TP.HCM</li> */}
-                  <li>{infoSetting.office}</li>
+                  <li>{infoSetting?.office}</li>
                 </div>
                 <div>
                   <strong>
                     ĐỊA CHỈ
                     <br />
                   </strong>
-                  <li>{infoSetting.address}</li>
+                  <li>{infoSetting?.address}</li>
                   {/* <li>201/60/11 Nguyễn Xí, Phường 26, Quận Bình Thạnh, TPHCM</li> */}
                 </div>
               </div>
@@ -47,11 +46,11 @@ export default function Footer() {
                   </span>
                 </p>
                 <ul>
-                  <li>{infoSetting.companyname}</li>
-                  <li>MST : {infoSetting.tax}</li>
-                  <li>Ngày cấp : {infoSetting.taxdate}</li>
-                  <li>Số điện thoại : {infoSetting.phone}</li>
-                  <li>Email : {infoSetting.email}</li>
+                  <li>{infoSetting?.companyname}</li>
+                  <li>MST : {infoSetting?.tax}</li>
+                  <li>Ngày cấp : {infoSetting?.taxdate}</li>
+                  <li>Số điện thoại : {infoSetting?.phone}</li>
+                  <li>Email : {infoSetting?.email}</li>
                 </ul>
               </div>
             </div>

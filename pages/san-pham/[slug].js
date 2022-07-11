@@ -7,6 +7,7 @@ import { useMutation } from '@apollo/client';
 import moment from 'moment';
 import { timeCache } from '@/service/helper';
 import { useRouter } from 'next/router';
+import { useInfo } from 'context/info';
 
 export async function getStaticPaths() {
   const { data } = await apollo.query({ query: productGQL });
@@ -250,10 +251,8 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
       setDisable(true);
     }
   }, [valueComment, rating]);
-  var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+
+  const { infoSetting } = useInfo();
   const router = useRouter();
   let images = product?.galleryImages?.nodes;
   if (images.length === 0) images = [product.image];
@@ -324,7 +323,7 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                         target="_blank"
                         className="button primary lowercase expand"
                       >
-                        <i className="icon-phone" /> <span>Hotline: {infoSetting.hotline}</span>
+                        <i className="icon-phone" /> <span>Hotline: {infoSetting?.hotline}</span>
                       </a>
                     </div>
                   </div>
@@ -482,13 +481,13 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
                             <br />
                           </span> */}
                           <span style={{ fontWeight: 'bold' }}>Địa chỉ: </span>
-                          <span>{infoSetting.office}</span>
+                          <span>{infoSetting?.office}</span>
                           <br />
                           <span style={{ fontWeight: 'bold' }}>Điện thoại: </span>
-                          <span>{infoSetting.hotline}</span>
+                          <span>{infoSetting?.hotline}</span>
                           <br />
                           <span style={{ fontWeight: 'bold' }}>Email: </span>
-                          <span>{infoSetting.email}</span>
+                          <span>{infoSetting?.email}</span>
                         </div>
                       </div>
                       <div

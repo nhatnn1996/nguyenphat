@@ -103,6 +103,7 @@ export const getInfoSetting = gql`
         companyname
         tax
         taxdate
+        banner
       }
     }
   }

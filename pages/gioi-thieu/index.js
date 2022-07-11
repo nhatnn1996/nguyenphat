@@ -1,13 +1,11 @@
+import { useInfo } from 'context/info';
 import React from 'react';
 
 const Introduce = () => {
-  var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+  const { infoSetting } = useInfo();
   return (
     <div>
-      <h3 style={{ textAlign: 'center', marginTop : "100px" }}>{infoSetting.companyname}</h3>
+      <h3 style={{ textAlign: 'center', marginTop: '100px' }}>{infoSetting.companyname}</h3>
       <div id="content" className="container content-area page-wrapper" role="main" style={{ minHeight: '70vh' }}>
         CÔNG TY TNHH ĐẦU TƯ XÂY DỰNG THƯƠNG MẠI NGUYÊN PHÁT, xin gửi lời chào trân trọng và lời chúc thành đạt đến Quý
         khách hàng. Với một đội ngũ nhân viên giỏi, nhiều năm kinh nghiệm, NGUYÊN PHÁT luôn tự hào là nhà cung cấp dịch

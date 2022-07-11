@@ -1,9 +1,7 @@
+import { useInfo } from 'context/info';
 import React from 'react';
 const Contact = () => {
-  var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+  const { sliders, infoSetting } = useInfo();
   return (
     <div id="content" role="main" className="content-area">
       <div className="img has-hover x md-x lg-x y md-y lg-y" id="image_1347406328">
@@ -11,8 +9,8 @@ const Contact = () => {
           <img
             width={5693}
             height={500}
-            src="/images/banner.jpeg"
-            data-src="/images/banner.jpeg"
+            src={sliders[0] || '/images/banner.jpeg'}
+            data-src={sliders[0] || '/images/banner.jpeg'}
             className="attachment-original size-original lazy-load-active"
             alt=""
             loading="lazy"
@@ -54,19 +52,19 @@ const Contact = () => {
                 </p>
                 <p>
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    –<strong> Địa chỉ:</strong> {infoSetting.address}{' '}
+                    –<strong> Địa chỉ:</strong> {infoSetting?.address}{' '}
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    –<strong> Văn phòng giao dịch:</strong> {infoSetting.office}{' '}
+                    –<strong> Văn phòng giao dịch:</strong> {infoSetting?.office}{' '}
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    – <strong>SĐT:</strong> {infoSetting.hotline}
+                    – <strong>SĐT:</strong> {infoSetting?.hotline}
                   </span>
                   <br />
                   <span style={{ fontSize: '95%', color: '#333333' }}>
-                    – <strong>Email:</strong>&nbsp;{infoSetting.email}
+                    – <strong>Email:</strong>&nbsp;{infoSetting?.email}
                   </span>
                 </p>
               </div>

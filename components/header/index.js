@@ -1,3 +1,4 @@
+import { useInfo } from 'context/info';
 import Link from 'next/link';
 import { useState } from 'react';
 import NavMenu from '../layouts/top-menu';
@@ -14,10 +15,7 @@ const items = [
 
 export default function Header({ menuItems, pages }) {
   const [isOpen, setOpen] = useState(false);
-  var infoSetting = {};
-  if (typeof window !== 'undefined') {
-    infoSetting = JSON.parse(window.localStorage.getItem('info'));
-  }
+
   return (
     <header id="header" className="header has-sticky sticky-jump">
       <div className="header-wrapper">
@@ -84,6 +82,7 @@ export default function Header({ menuItems, pages }) {
 }
 
 const MobileMenu = ({ isOpen, close }) => {
+  const { infoSetting } = useInfo();
   if (!isOpen) return null;
   return (
     <div
@@ -110,7 +109,7 @@ const MobileMenu = ({ isOpen, close }) => {
                 })}
 
                 <li className="hotline-nav menu-item menu-item-type-custom menu-item-object-custom menu-item-1658">
-                  <a href={`tel:${infoSetting.hotline}`}>Hotline: {infoSetting.hotline}</a>
+                  <a href={`tel:${infoSetting?.hotline}`}>Hotline: {infoSetting?.hotline}</a>
                 </li>
               </ul>
             </div>
