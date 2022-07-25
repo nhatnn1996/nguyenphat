@@ -7,6 +7,7 @@ const NavMenu = ({ items }) => {
   const { infoSetting } = useInfo();
   const [value, setValue] = useState('');
   const history = useRouter();
+  console.log('//');
   const onSearch = () => {
     if (value !== '' && value !== null) {
       history.push(`/search/${value}`);
