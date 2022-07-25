@@ -88,4 +88,4 @@ export const Base64 = {
     return t;
   }
 };
-export const timeCache = 60;
+export const timeCache = 60 * 60;
