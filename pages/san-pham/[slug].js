@@ -265,7 +265,6 @@ const ProductDetail = ({ product, productCategories, newProds }) => {
             <img src={imageZoom}></img>
           </div>
           <p onClick={() => setZoomProduct(false)} className="close-zoom">
-            {' '}
           </p>
         </>
       )}
