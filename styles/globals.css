@@ -53,6 +53,19 @@ p {
 .product_list_widget .product-title:hover {
   color: black;
 }
+.img-magnifier-container {
+  position: relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 200px;
+  height: 200px;
+}
 .zoom-popup {
   background: rgba(0, 0, 0, 0.6);
   z-index: 1111;
@@ -189,8 +202,8 @@ a.phone-icon .suntory-alo-ph-img-circle {
   display: flex !important;
   align-items: center;
   justify-items: center;
-  color : white;
-  padding-left : 10px;
+  color: white;
+  padding-left: 10px;
   font-weight: bold;
   background-color: orange;
   background-image: url(../public/icons/phone.png);
