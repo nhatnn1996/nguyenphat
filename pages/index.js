@@ -321,7 +321,7 @@ export default function Home(props) {
         </div>
       </main>
       <div className="tool-icon">
-        <a href="https://zalo.me/02837273679" className="mess-icon" target="_blank">
+        <a href={`https://zalo.me/${infoSetting?.hotline?.replaceAll(" ", "")}`} className="mess-icon" target="_blank">
           <span className="suntory-alo-ph-circle-fill" />
           <span className="suntory-alo-ph-img-circle">
             <img src="/icons/zalo.png" alt="" className="icon-center" />
